@@ -1,5 +1,13 @@
+<?php
+
+include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\ReservationClasses\LstReservation.php';
+   $Reservations = clsLstReservations::getLstReservation();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -7,18 +15,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-    
+
     <input type="checkbox" id="sidebar-toggle">
     <div class="sidebar">
         <div class="sidebar-header">
             <h3 class="brand">
-                <span class="ti-unlink"></span> 
+                <span class="ti-unlink"></span>
                 <span>easywire</span>
-            </h3> 
+            </h3>
             <label for="sidebar-toggle" class="ti-menu-alt"></label>
         </div>
-        
+
         <div class="sidebar-menu">
             <ul>
                 <li>
@@ -72,87 +81,48 @@
             </ul>
         </div>
     </div>
-    
-    
+
+
     <div class="main-content">
-        
+
         <header>
             <div class="search-wrapper">
                 <span class="ti-search"></span>
                 <input type="search" placeholder="Search">
             </div>
-            
+
             <div class="social-icons">
                 <span class="ti-bell"></span>
                 <span class="ti-comment"></span>
                 <div></div>
             </div>
         </header>
-        
+
         <main>
-            
-            <h2 class="dash-title">Overview</h2>
-            
-            <div class="dash-cards">
-                <div class="card-single">
-                    <div class="card-body">
-                        <span class="ti-briefcase"></span>
-                        <div>
-                            <h5>Account Balance</h5>
-                            <h4>$30,659.45</h4>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
-                
-                <div class="card-single">
-                    <div class="card-body">
-                        <span class="ti-reload"></span>
-                        <div>
-                            <h5>Pending</h5>
-                            <h4>$19,500.45</h4>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
-                
-                <div class="card-single">
-                    <div class="card-body">
-                        <span class="ti-check-box"></span>
-                        <div>
-                            <h5>Processed</h5>
-                            <h4>$20,659</h4>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
-            </div>
-            
-            
+
+            <h1 class="dash-title">Reservations List</h1>
+
             <section class="recent">
                 <div class="activity-grid">
                     <div class="activity-card">
                         <h3>Recent activity</h3>
-                        
+
                         <div class="table-responsive">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Project</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
-                                        <th>Team</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Reservation Date</th>
+                                        <th>Time</th>
+                                        <th>Guests Number</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+
+
+                                    <!-- <tr>
                                         <td>App Development</td>
                                         <td>15 Aug, 2020</td>
                                         <td>22 Aug, 2020</td>
@@ -216,12 +186,12 @@
                                         <td>
                                             <span class="badge success">Success</span>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    
+
                     <div class="summary">
                         <div class="summary-card">
                             <div class="summary-single">
@@ -246,7 +216,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="bday-card">
                             <div class="bday-flex">
                                 <div class="bday-img"></div>
@@ -255,7 +225,7 @@
                                     <small>Birthday Today</small>
                                 </div>
                             </div>
-                            
+
                             <div class="text-center">
                                 <button>
                                     <span class="ti-gift"></span>
@@ -266,10 +236,11 @@
                     </div>
                 </div>
             </section>
-            
+
         </main>
-        
+
     </div>
-    
+
 </body>
+
 </html>

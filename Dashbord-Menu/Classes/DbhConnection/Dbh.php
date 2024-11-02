@@ -1,6 +1,6 @@
 <?php
 
-class Dbh 
+class clsDbh 
 {
     private $host = "localhost";
     private $dbname = "restaurant";
@@ -21,4 +21,4 @@ class Dbh
         }
     }
     
-}
+} 
