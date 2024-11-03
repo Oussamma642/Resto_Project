@@ -37,9 +37,6 @@ CREATE TABLE reservations (
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
-    public function __construct($userID, $resID, $lname, $resDate, $timeSlot, $nbrGuests, $status) {
-
-
 
 CREATE TABLE orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,

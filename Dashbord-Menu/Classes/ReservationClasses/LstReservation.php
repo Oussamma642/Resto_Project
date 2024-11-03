@@ -6,16 +6,32 @@
 
 include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\DbhConnection\Dbh.php';
 
-class clsLstReservations extends clsDbh
+// class clsLstReservations extends clsDbh
+// {
+//     static public function getLstReservation()
+//     {
+
+//         $stmt = parent::connect()->prepare("call Reservation_List()");
+//         $stmt->execute();
+//         return $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch all reservations as an associative array
+//     }
+// }
+
+class clsLstReservations 
 {
     static public function getLstReservation()
     {
+        // Get the database connection
+        $conn = Dbh::connect();
 
-        $stmt = parent::connect()->prepare("select u.user_id, r.reservation_id, u.first_name, u.last_name, r.reservation_date, r.time_slot, r.nbrGuests, r.status 
-                                from user u 
-                                inner join reservations r on u.user_id = r.user_id;
-                                ");
+        // Prepare and execute the statement
+        $stmt = $conn->prepare("CALL Reservation_List()");
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch all reservations as an associative array
+
+        // Fetch all reservations as an associative array
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
+
+// Usage example:
+// $reservations = clsLstReservations::getLstReservation();

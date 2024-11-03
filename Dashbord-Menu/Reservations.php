@@ -1,7 +1,10 @@
 <?php
 
 include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\ReservationClasses\LstReservation.php';
-   $Reservations = clsLstReservations::getLstReservation();
+    // $reservations = clsLstReservations::getLstReservation();
+    // print_r($reservations);
+
+    $reservations = clsLstReservations::getLstReservation();
 ?>
 
 
@@ -120,73 +123,22 @@ include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\Reserv
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                foreach($reservations as $r)
+                                {
+                                    ?>
+                                    <tr>
+                                        <td><?=$r['first_name']?></td>
+                                        <td><?=$r['last_name']?></td>
+                                        <td><?=$r['reservation_date']?></td>
+                                        <td><?=$r['time_slot']?></td>
+                                        <td><?=$r['number_of_guests']?></td>
+                                        <td><?=$r['status']?></td>
+                                    </tr>
+                                    <?php   
+                                }
+                            ?>
 
-
-                                    <!-- <tr>
-                                        <td>App Development</td>
-                                        <td>15 Aug, 2020</td>
-                                        <td>22 Aug, 2020</td>
-                                        <td class="td-team">
-                                            <div class="img-1"></div>
-                                            <div class="img-2"></div>
-                                            <div class="img-3"></div>
-                                        </td>
-                                        <td>
-                                            <span class="badge success">Success</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Logo Design</td>
-                                        <td>15 Aug, 2020</td>
-                                        <td>22 Aug, 2020</td>
-                                        <td class="td-team">
-                                            <div class="img-1"></div>
-                                            <div class="img-2"></div>
-                                            <div class="img-3"></div>
-                                        </td>
-                                        <td>
-                                            <span class="badge warning">Processing</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Server setup</td>
-                                        <td>15 Aug, 2020</td>
-                                        <td>22 Aug, 2020</td>
-                                        <td class="td-team">
-                                            <div class="img-1"></div>
-                                            <div class="img-2"></div>
-                                            <div class="img-3"></div>
-                                        </td>
-                                        <td>
-                                            <span class="badge success">Success</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Front-end Design</td>
-                                        <td>15 Aug, 2020</td>
-                                        <td>22 Aug, 2020</td>
-                                        <td class="td-team">
-                                            <div class="img-1"></div>
-                                            <div class="img-2"></div>
-                                            <div class="img-3"></div>
-                                        </td>
-                                        <td>
-                                            <span class="badge warning">Processing</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Web Development</td>
-                                        <td>15 Aug, 2020</td>
-                                        <td>22 Aug, 2020</td>
-                                        <td class="td-team">
-                                            <div class="img-1"></div>
-                                            <div class="img-2"></div>
-                                            <div class="img-3"></div>
-                                        </td>
-                                        <td>
-                                            <span class="badge success">Success</span>
-                                        </td>
-                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
