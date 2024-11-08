@@ -103,12 +103,12 @@ include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\Reserv
 
         <main>
 
-            <h1 class="dash-title">Reservations List</h1>
+            <h1 class="dash-title">Reservations Field</h1>
 
             <section class="recent">
                 <div class="activity-grid">
                     <div class="activity-card">
-                        <h3>Recent activity</h3>
+                        <h3>Reservation List</h3>
 
                         <div class="table-responsive">
                             <table>
