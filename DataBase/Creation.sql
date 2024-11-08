@@ -1,5 +1,5 @@
-CREATE DATABASE Restaurant;
 
+CREATE DATABASE Restaurant;
 USE Restaurant;
 
 CREATE TABLE users (

@@ -1,139 +1,66 @@
-<?php
-include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\OrderClasses\LstOrders.php';
-$orders = OrderList();
-
-/* Show the message of the modification on an order within alert JS function */
-session_start();  // Start the session
-// Check if a message is set in the session
-if (isset($_SESSION['Message'])) {
-    // Retrieve the message from the session
-    $message = $_SESSION['Message'];
-
-    // Display the message in a JavaScript alert
-    echo "<script type='text/javascript'>alert('$message');</script>";
-
-    // Clear the message after displaying it so it doesn't show again on refresh
-    unset($_SESSION['Message']);
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet" href="../css/style.css">
-
-    <style>
-    /* Style of Button Handle Staut  */
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-    }
-
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    .dropdown-content a:hover {
-        background-color: #ddd;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-
-    .dropbtn {
-        width: 100px;
-        /* border-radius: 30%; */
-        border-radius: 10%;
-
-        width: 150px;
-        height: 50px;
-
-    }
-
-    .dropdown:hover .dropbtn {
-
-        border-radius: 0%;
-        background-color: rgb(156, 85, 85);
-        color: white;
-
-    }
-    </style>
-
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
-<body>
-
+<body> 
     <input type="checkbox" id="sidebar-toggle">
     <div class="sidebar">
         <div class="sidebar-header">
             <h3 class="brand">
-                <span class="ti-unlink"></span>
+                <span class="ti-unlink"></span> 
                 <span>easywire</span>
-            </h3>
+            </h3> 
             <label for="sidebar-toggle" class="ti-menu-alt"></label>
         </div>
-
+        
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="../Home.html">
+                    <a href="./Home.html">
                         <span class="ti-home"></span>
                         <span>Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="./Reservations.php">
+                    <a href="">
                         <span class="ti-face-smile"></span>
-                        <span>Reservation</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./Orders.php">
-                        <span class="ti-agenda"></span>
-                        <span>Orders</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./Users.html">
-                        <span class="ti-clipboard"></span>
-                        <span>Users</span>
+                        <span><a href="Dashbord-Menu/Reservations.php">Reservations</a></span>
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <span class="ti-folder"></span>
-                        <span>Projects</span>
+                        <span class="ti-agenda"></span>
+                        <span><a href="Dashbord-Menu/Orders.php">Orders</a></span>
                     </a>
                 </li>
                 <li>
                     <a href="">
                         <span class="ti-time"></span>
-                        <span>Timesheet</span>
+                        <span><a href="Dashbord-Menu/MenuPlats.html">Menu</a></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="ti-clipboard"></span>
+                        <span><a href="Dashbord-Menu/Avis.html">Avis</a></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="ti-folder"></span>
+                        <span><a href="Dashbord-Menu/OuvertureFermeture.html">Ouverture/Fermeture</a></span>
                     </a>
                 </li>
                 <li>
                     <a href="">
                         <span class="ti-book"></span>
-                        <span>Contacts</span>
+                        <span><a href="Dashbord-Menu/Contact.html">Contact</a></span>
                     </a>
                 </li>
                 <li>
@@ -145,27 +72,27 @@ if (isset($_SESSION['Message'])) {
             </ul>
         </div>
     </div>
-
-
+    
+    
     <div class="main-content">
-
+        
         <header>
             <div class="search-wrapper">
                 <span class="ti-search"></span>
                 <input type="search" placeholder="Search">
             </div>
-
+            
             <div class="social-icons">
                 <span class="ti-bell"></span>
                 <span class="ti-comment"></span>
                 <div></div>
             </div>
         </header>
-
+        
         <main>
-
+            
             <h2 class="dash-title">Overview</h2>
-
+            
             <div class="dash-cards">
                 <div class="card-single">
                     <div class="card-body">
@@ -179,7 +106,7 @@ if (isset($_SESSION['Message'])) {
                         <a href="">View all</a>
                     </div>
                 </div>
-
+                
                 <div class="card-single">
                     <div class="card-body">
                         <span class="ti-reload"></span>
@@ -192,7 +119,7 @@ if (isset($_SESSION['Message'])) {
                         <a href="">View all</a>
                     </div>
                 </div>
-
+                
                 <div class="card-single">
                     <div class="card-body">
                         <span class="ti-check-box"></span>
@@ -206,68 +133,95 @@ if (isset($_SESSION['Message'])) {
                     </div>
                 </div>
             </div>
+            
+            
             <section class="recent">
                 <div class="activity-grid">
                     <div class="activity-card">
-                        <h3>Orders</h3>
-
+                        <h3>Recent activity</h3>
+                        
                         <div class="table-responsive">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Dishes</th>
-                                        <th>Date</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Total Amount</th>
-                                        <th>Delivery Method</th>
-                                        <th>Adress</th>
+                                        <th>Project</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Team</th>
                                         <th>Status</th>
-                                        <th>Handle Status</th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
-
-                                    <?php
-                                    foreach($orders as $or)
-                                    {   
-                                    ?>
                                     <tr>
-                                        <td><?=$or['last_name']?></td>
-                                        <td><?=$or['DishName']?></td>
-                                        <td><?=$or['order_date']?></td>
-                                        <td><?=$or['price']?></td>
-                                        <td><?=$or['quantity']?></td>
-                                        <td><?=$or['Total_Amount']?></td>
-                                        <td><?=$or['delivery_method']?></td>
-                                        <td><?=(empty($or['delivery_address']))? 'Takeaway' : $or['delivery_address']?>
+                                        <td>App Development</td>
+                                        <td>15 Aug, 2020</td>
+                                        <td>22 Aug, 2020</td>
+                                        <td class="td-team">
+                                            <div class="img-1"></div>
+                                            <div class="img-2"></div>
+                                            <div class="img-3"></div>
                                         </td>
-                                        <td><?=$or['status']?></td>
                                         <td>
-                                            <div class="dropdown">
-                                                <button class="dropbtn">Handle Status</button>
-                                                <div class="dropdown-content">
-                                                    <a
-                                                        href="./Classes/OrderClasses/ModifyOrder.php?status=completed&id=<?=$or['order_id']?>">Completed</a>
-                                                    <a
-                                                        href="./Classes/OrderClasses/ModifyOrder.php?status=canceled&id=<?=$or['order_id']?>">Canceled</a>
-                                                    <a
-                                                        href="./Classes/OrderClasses/ModifyOrder.php?status=pending&id=<?=$or['order_id']?>">Pending</a>
-                                                </div>
-                                            </div>
+                                            <span class="badge success">Success</span>
                                         </td>
                                     </tr>
-                                    <?php
-                                    }
-                                    ?>
-
+                                    <tr>
+                                        <td>Logo Design</td>
+                                        <td>15 Aug, 2020</td>
+                                        <td>22 Aug, 2020</td>
+                                        <td class="td-team">
+                                            <div class="img-1"></div>
+                                            <div class="img-2"></div>
+                                            <div class="img-3"></div>
+                                        </td>
+                                        <td>
+                                            <span class="badge warning">Processing</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Server setup</td>
+                                        <td>15 Aug, 2020</td>
+                                        <td>22 Aug, 2020</td>
+                                        <td class="td-team">
+                                            <div class="img-1"></div>
+                                            <div class="img-2"></div>
+                                            <div class="img-3"></div>
+                                        </td>
+                                        <td>
+                                            <span class="badge success">Success</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Front-end Design</td>
+                                        <td>15 Aug, 2020</td>
+                                        <td>22 Aug, 2020</td>
+                                        <td class="td-team">
+                                            <div class="img-1"></div>
+                                            <div class="img-2"></div>
+                                            <div class="img-3"></div>
+                                        </td>
+                                        <td>
+                                            <span class="badge warning">Processing</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Web Development</td>
+                                        <td>15 Aug, 2020</td>
+                                        <td>22 Aug, 2020</td>
+                                        <td class="td-team">
+                                            <div class="img-1"></div>
+                                            <div class="img-2"></div>
+                                            <div class="img-3"></div>
+                                        </td>
+                                        <td>
+                                            <span class="badge success">Success</span>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
+                    
                     <div class="summary">
                         <div class="summary-card">
                             <div class="summary-single">
@@ -292,7 +246,7 @@ if (isset($_SESSION['Message'])) {
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="bday-card">
                             <div class="bday-flex">
                                 <div class="bday-img"></div>
@@ -301,7 +255,7 @@ if (isset($_SESSION['Message'])) {
                                     <small>Birthday Today</small>
                                 </div>
                             </div>
-
+                            
                             <div class="text-center">
                                 <button>
                                     <span class="ti-gift"></span>
@@ -312,11 +266,10 @@ if (isset($_SESSION['Message'])) {
                     </div>
                 </div>
             </section>
-
+            
         </main>
-
+        
     </div>
-
+    
 </body>
-
 </html>

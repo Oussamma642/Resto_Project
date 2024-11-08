@@ -99,27 +99,27 @@ if (isset($_SESSION['Message'])) {
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="">
+                    <a href="../Home.html">
                         <span class="ti-home"></span>
                         <span><a href="../index.html">Home</a></span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="./Reservations.php">
                         <span class="ti-face-smile"></span>
-                        <span>Team</span>
+                        <span>Reservation</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="./Orders.php">
                         <span class="ti-agenda"></span>
-                        <span>Tasks</span>
+                        <span>Orders</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="./Users.html">
                         <span class="ti-clipboard"></span>
-                        <span>Leaves</span>
+                        <span>Users</span>
                     </a>
                 </li>
                 <li>
