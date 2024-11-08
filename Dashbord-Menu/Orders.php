@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -7,22 +8,23 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-    
+
     <input type="checkbox" id="sidebar-toggle">
     <div class="sidebar">
         <div class="sidebar-header">
             <h3 class="brand">
-                <span class="ti-unlink"></span> 
+                <span class="ti-unlink"></span>
                 <span>easywire</span>
-            </h3> 
+            </h3>
             <label for="sidebar-toggle" class="ti-menu-alt"></label>
         </div>
-        
+
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="">
+                    <a href="../index.html">
                         <span class="ti-home"></span>
                         <span>Home</span>
                     </a>
@@ -72,27 +74,27 @@
             </ul>
         </div>
     </div>
-    
-    
+
+
     <div class="main-content">
-        
+
         <header>
             <div class="search-wrapper">
                 <span class="ti-search"></span>
                 <input type="search" placeholder="Search">
             </div>
-            
+
             <div class="social-icons">
                 <span class="ti-bell"></span>
                 <span class="ti-comment"></span>
                 <div></div>
             </div>
         </header>
-        
+
         <main>
-            
+
             <h2 class="dash-title">Overview</h2>
-            
+
             <div class="dash-cards">
                 <div class="card-single">
                     <div class="card-body">
@@ -106,7 +108,7 @@
                         <a href="">View all</a>
                     </div>
                 </div>
-                
+
                 <div class="card-single">
                     <div class="card-body">
                         <span class="ti-reload"></span>
@@ -119,7 +121,7 @@
                         <a href="">View all</a>
                     </div>
                 </div>
-                
+
                 <div class="card-single">
                     <div class="card-body">
                         <span class="ti-check-box"></span>
@@ -133,95 +135,36 @@
                     </div>
                 </div>
             </div>
-            
-            
+
+
             <section class="recent">
                 <div class="activity-grid">
                     <div class="activity-card">
-                        <h3>Recent activity</h3>
-                        
+                        <h3>Orders</h3>
+
                         <div class="table-responsive">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Project</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
-                                        <th>Team</th>
+                                        <th>Name</th>
+                                        <th>Dishes</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total Amount</th>
+                                        <th>Delivery Method</th>
+                                        <th>Adress</th>
                                         <th>Status</th>
+                                        <th>Handle Status</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
-                                    <tr>
-                                        <td>App Development</td>
-                                        <td>15 Aug, 2020</td>
-                                        <td>22 Aug, 2020</td>
-                                        <td class="td-team">
-                                            <div class="img-1"></div>
-                                            <div class="img-2"></div>
-                                            <div class="img-3"></div>
-                                        </td>
-                                        <td>
-                                            <span class="badge success">Success</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Logo Design</td>
-                                        <td>15 Aug, 2020</td>
-                                        <td>22 Aug, 2020</td>
-                                        <td class="td-team">
-                                            <div class="img-1"></div>
-                                            <div class="img-2"></div>
-                                            <div class="img-3"></div>
-                                        </td>
-                                        <td>
-                                            <span class="badge warning">Processing</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Server setup</td>
-                                        <td>15 Aug, 2020</td>
-                                        <td>22 Aug, 2020</td>
-                                        <td class="td-team">
-                                            <div class="img-1"></div>
-                                            <div class="img-2"></div>
-                                            <div class="img-3"></div>
-                                        </td>
-                                        <td>
-                                            <span class="badge success">Success</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Front-end Design</td>
-                                        <td>15 Aug, 2020</td>
-                                        <td>22 Aug, 2020</td>
-                                        <td class="td-team">
-                                            <div class="img-1"></div>
-                                            <div class="img-2"></div>
-                                            <div class="img-3"></div>
-                                        </td>
-                                        <td>
-                                            <span class="badge warning">Processing</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Web Development</td>
-                                        <td>15 Aug, 2020</td>
-                                        <td>22 Aug, 2020</td>
-                                        <td class="td-team">
-                                            <div class="img-1"></div>
-                                            <div class="img-2"></div>
-                                            <div class="img-3"></div>
-                                        </td>
-                                        <td>
-                                            <span class="badge success">Success</span>
-                                        </td>
-                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    
+
                     <div class="summary">
                         <div class="summary-card">
                             <div class="summary-single">
@@ -246,7 +189,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="bday-card">
                             <div class="bday-flex">
                                 <div class="bday-img"></div>
@@ -255,7 +198,7 @@
                                     <small>Birthday Today</small>
                                 </div>
                             </div>
-                            
+
                             <div class="text-center">
                                 <button>
                                     <span class="ti-gift"></span>
@@ -266,10 +209,11 @@
                     </div>
                 </div>
             </section>
-            
+
         </main>
-        
+
     </div>
-    
+
 </body>
+
 </html>
