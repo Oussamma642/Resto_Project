@@ -1,12 +1,25 @@
 <?php
 
+
 include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\ReservationClasses\LstReservation.php';
-    // $reservations = clsLstReservations::getLstReservation();
-    // print_r($reservations);
+$reservations = getReservationList();
 
-    $reservations = clsLstReservations::getLstReservation();
+
+/* Show the message of the modification on a reservation within alert JS function */
+
+session_start();  // Start the session
+// Check if a message is set in the session
+if (isset($_SESSION['Message'])) {
+    // Retrieve the message from the session
+    $message = $_SESSION['Message'];
+
+    // Display the message in a JavaScript alert
+    echo "<script type='text/javascript'>alert('$message');</script>";
+
+    // Clear the message after displaying it so it doesn't show again on refresh
+    unset($_SESSION['Message']);
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -189,11 +202,12 @@ include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\Reserv
                                         <td><?=$r['status']?></td>
                                         <td>
                                             <div class="dropdown">
-                                                <button class="dropbtn">Choose a status</button>
+                                                <button class="dropbtn"><?=$r['status']?></button>
                                                 <div class="dropdown-content">
                                                     <a
-                                                        href="./Classes/ReservationClasses/ModifyReservation.php?status=confirmed&id=<?=$r['reservation_id']?>">Accept</a>
-                                                    <a href="https://example.com/page2">Delete</a>
+                                                        href="./Classes/ReservationClasses/AcceptReservation.php?id=<?=$r['reservation_id']?>">Accept</a>
+                                                    <a
+                                                        href="./Classes/ReservationClasses/CancelReservation.php?id=<?=$r['reservation_id']?>">Cancel</a>
                                                 </div>
                                             </div>
 
@@ -254,9 +268,7 @@ include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\Reserv
             </section>
 
         </main>
-
     </div>
-
 </body>
 
 </html>
