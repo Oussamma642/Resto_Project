@@ -17,6 +17,58 @@ include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\Reserv
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="../css/style.css">
+
+
+    <style>
+    /* Style of Button Handle Staut  */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropbtn {
+        width: 100px;
+        /* border-radius: 30%; */
+        border-radius: 10%;
+
+        width: 150px;
+        height: 50px;
+
+    }
+
+    .dropdown:hover .dropbtn {
+
+        border-radius: 0%;
+        background-color: rgb(156, 85, 85);
+        color: white;
+
+    }
+    </style>
+
 </head>
 
 <body>
@@ -120,6 +172,7 @@ include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\Reserv
                                         <th>Time</th>
                                         <th>Guests Number</th>
                                         <th>Status</th>
+                                        <th>Handle Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -134,6 +187,17 @@ include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\Reserv
                                         <td><?=$r['time_slot']?></td>
                                         <td><?=$r['number_of_guests']?></td>
                                         <td><?=$r['status']?></td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="dropbtn">Choose a status</button>
+                                                <div class="dropdown-content">
+                                                    <a
+                                                        href="./Classes/ReservationClasses/ModifyReservation.php?status=confirmed&id=<?=$r['reservation_id']?>">Accept</a>
+                                                    <a href="https://example.com/page2">Delete</a>
+                                                </div>
+                                            </div>
+
+                                        </td>
                                     </tr>
                                     <?php   
                                 }
