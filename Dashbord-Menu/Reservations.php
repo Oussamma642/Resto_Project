@@ -101,7 +101,7 @@ if (isset($_SESSION['Message'])) {
                 <li>
                     <a href="">
                         <span class="ti-home"></span>
-                        <span>Home</span>
+                        <span><a href="../index.html">Home</a></span>
                     </a>
                 </li>
                 <li>

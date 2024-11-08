@@ -1,6 +1,5 @@
 <?php
 
-
 function CancelReservation()
 {
     include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\ReservationClasses\MainClass.php';
@@ -31,5 +30,4 @@ function CancelReservation()
     exit();  // Make sure no further code is executed after the redirect
 
 }
-
 CancelReservation();
