@@ -1,3 +1,24 @@
+<?php
+
+include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\OrderClasses\LstOrders.php';
+$orders = OrderList();
+
+/* Show the message of the modification on an order within alert JS function */
+
+session_start();  // Start the session
+// Check if a message is set in the session
+if (isset($_SESSION['Message'])) {
+    // Retrieve the message from the session
+    $message = $_SESSION['Message'];
+
+    // Display the message in a JavaScript alert
+    echo "<script type='text/javascript'>alert('$message');</script>";
+
+    // Clear the message after displaying it so it doesn't show again on refresh
+    unset($_SESSION['Message']);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +28,58 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+    /* Style of Button Handle Staut  */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropbtn {
+        width: 100px;
+        /* border-radius: 30%; */
+        border-radius: 10%;
+
+        width: 150px;
+        height: 50px;
+
+    }
+
+    .dropdown:hover .dropbtn {
+
+        border-radius: 0%;
+        background-color: rgb(156, 85, 85);
+        color: white;
+
+    }
+    </style>
+
+
 </head>
 
 <body>
@@ -30,15 +103,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="./Reservations.php">
                         <span class="ti-face-smile"></span>
-                        <span>Team</span>
+                        <span>Reservation</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="/">
                         <span class="ti-agenda"></span>
-                        <span>Tasks</span>
+                        <span>Orders</span>
                     </a>
                 </li>
                 <li>
@@ -135,8 +208,6 @@
                     </div>
                 </div>
             </div>
-
-
             <section class="recent">
                 <div class="activity-grid">
                     <div class="activity-card">
@@ -148,6 +219,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Dishes</th>
+                                        <th>Date</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Total Amount</th>
@@ -159,6 +231,39 @@
                                 </thead>
 
                                 <tbody>
+
+                                    <?php
+                                    foreach($orders as $or)
+                                    {   
+                                    ?>
+                                    <tr>
+                                        <td><?=$or['last_name']?></td>
+                                        <td><?=$or['DishName']?></td>
+                                        <td><?=$or['order_date']?></td>
+                                        <td><?=$or['price']?></td>
+                                        <td><?=$or['quantity']?></td>
+                                        <td><?=$or['Total_Amount']?></td>
+                                        <td><?=$or['delivery_method']?></td>
+                                        <td><?=(empty($or['delivery_address']))? 'Takeaway' : $or['delivery_address']?>
+                                        </td>
+                                        <td><?=$or['status']?></td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="dropbtn">Handle Status</button>
+                                                <div class="dropdown-content">
+                                                    <a
+                                                        href="./Classes/OrderClasses/ModifyOrder.php?status=completed&id=<?=$or['order_id']?>">Completed</a>
+                                                    <a
+                                                        href="./Classes/OrderClasses/ModifyOrder.php?status=canceled&id=<?=$or['order_id']?>">Canceled</a>
+                                                    <a
+                                                        href="./Classes/OrderClasses/ModifyOrder.php?status=pending&id=<?=$or['order_id']?>">Pending</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
 
                                 </tbody>
                             </table>

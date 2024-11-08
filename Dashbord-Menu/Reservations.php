@@ -19,8 +19,8 @@ if (isset($_SESSION['Message'])) {
     // Clear the message after displaying it so it doesn't show again on refresh
     unset($_SESSION['Message']);
 }
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 

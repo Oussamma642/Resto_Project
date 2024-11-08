@@ -4,6 +4,7 @@ DELIMITER //
 CREATE PROCEDURE Orders_Liste()
 BEGIN
     SELECT 
+        orders.order_id,
         users.last_name,
         menu_items.name AS DishName,
         orders.order_date, 
