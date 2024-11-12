@@ -1,7 +1,5 @@
 <?php
 
-include_once './Global.php';
-
 class clsUser
 {
 
@@ -30,29 +28,7 @@ class clsUser
         $this->role = $role;
     }    
 
-
-    // Find The user 
-    public static function Find($email, $pswd)
-    {
-        $conn = clsUser::Conncect();
-
-        // Prepare and execute the statement
-        $stmt = $conn->prepare("SELECT * from users where password = '$pswd' and email='$email'");
-        $stmt->execute();
-        
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-        if ($user) 
-        {
-            $currUser = new clsUser($user['user_id'], $user['first_name'], $user['last_name'], $user['email'], $user['password'], $user['phone_number'], $user['role']);
-            return $currUser;
-        }
-        else
-            return null;
-    }
-  
-    
-     // Getter for user_id (read-only)
+    // Getter for user_id (read-only)
      public function getUserId()
      {
          return $this->user_id;
@@ -123,4 +99,36 @@ class clsUser
      {
          $this->role = $role;
      }
+
+     // Find The user 
+    public static function Find($email, $pswd)
+    {
+        $conn = clsUser::Conncect();
+
+        // Prepare and execute the statement
+        $stmt = $conn->prepare("SELECT * from users where password = '$pswd' and email='$email'");
+        $stmt->execute();
+        
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($user) 
+        {
+            $currUser = new clsUser($user['user_id'], $user['first_name'], $user['last_name'], $user['email'], $user['password'], $user['phone_number'], $user['role']);
+            return $currUser;
+        }
+        else
+            return null;
+    }
+
+    // ListUsers
+    public static function ListUsers()
+    {
+        $conn = clsUser::Conncect();
+
+        // Prepare and execute the statement
+        $stmt = $conn->prepare("CALL list_users_admin()");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
  }

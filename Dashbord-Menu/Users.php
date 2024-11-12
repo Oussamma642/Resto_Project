@@ -3,6 +3,7 @@
     include_once 'Classes/UserClasses/clsUser.php';
     session_start();
     $currUser = $_SESSION['currUser'];
+    $LstUsers = clsUser::ListUsers();
     
  ?>
 <!DOCTYPE html>
@@ -58,7 +59,7 @@
                 <li>
                     <a href="">
                         <span class="ti-time"></span>
-                        <span><a href="Users.php">Users</a></span>
+                        <span><a href="Dashbord-Menu/MenuPlats.html">Users</a></span>
                     </a>
                 </li>
 
@@ -152,80 +153,45 @@
                         <div class="table-responsive">
                             <table>
                                 <thead>
+
+
                                     <tr>
-                                        <th>Project</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
-                                        <th>Team</th>
-                                        <th>Status</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Password</th>
+                                        <th>Phone Number</th>
+                                        <th>Handle Permissions</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
+
+                                    <!-- user_id INT AUTO_INCREMENT PRIMARY KEY,
+                                    first_name VARCHAR(100) NOT NULL,
+                                    last_name VARCHAR(100) NOT NULL,
+                                    email VARCHAR(150) NOT NULL UNIQUE,
+                                    password VARCHAR(255) NOT NULL,
+                                    role ENUM('admin', 'client') NOT NULL,
+                                    phone_number VARCHAR(20), -->
+
+
+                                    <?php
+    foreach($LstUsers as $usr )
+    {
+        ?>
                                     <tr>
-                                        <td>App Development</td>
-                                        <td>15 Aug, 2020</td>
-                                        <td>22 Aug, 2020</td>
-                                        <td class="td-team">
-                                            <div class="img-1"></div>
-                                            <div class="img-2"></div>
-                                            <div class="img-3"></div>
-                                        </td>
-                                        <td>
-                                            <span class="badge success">Success</span>
-                                        </td>
+                                        <td><?=$usr['first_name']?></td>
+                                        <td><?=$usr['last_name']?></td>
+                                        <td><?=$usr['email']?></td>
+                                        <td><?=$usr['password']?></td>
+                                        <td><?=$usr['phone_number']?></td>
+                                        <td>Coming soon</td>
                                     </tr>
-                                    <tr>
-                                        <td>Logo Design</td>
-                                        <td>15 Aug, 2020</td>
-                                        <td>22 Aug, 2020</td>
-                                        <td class="td-team">
-                                            <div class="img-1"></div>
-                                            <div class="img-2"></div>
-                                            <div class="img-3"></div>
-                                        </td>
-                                        <td>
-                                            <span class="badge warning">Processing</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Server setup</td>
-                                        <td>15 Aug, 2020</td>
-                                        <td>22 Aug, 2020</td>
-                                        <td class="td-team">
-                                            <div class="img-1"></div>
-                                            <div class="img-2"></div>
-                                            <div class="img-3"></div>
-                                        </td>
-                                        <td>
-                                            <span class="badge success">Success</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Front-end Design</td>
-                                        <td>15 Aug, 2020</td>
-                                        <td>22 Aug, 2020</td>
-                                        <td class="td-team">
-                                            <div class="img-1"></div>
-                                            <div class="img-2"></div>
-                                            <div class="img-3"></div>
-                                        </td>
-                                        <td>
-                                            <span class="badge warning">Processing</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Web Development</td>
-                                        <td>15 Aug, 2020</td>
-                                        <td>22 Aug, 2020</td>
-                                        <td class="td-team">
-                                            <div class="img-1"></div>
-                                            <div class="img-2"></div>
-                                            <div class="img-3"></div>
-                                        </td>
-                                        <td>
-                                            <span class="badge success">Success</span>
-                                        </td>
-                                    </tr>
+                                    <?php
+    }
+                                ?>
+
                                 </tbody>
                             </table>
                         </div>
@@ -275,11 +241,8 @@
                     </div>
                 </div>
             </section>
-
         </main>
-
     </div>
-
 </body>
 
 </html>

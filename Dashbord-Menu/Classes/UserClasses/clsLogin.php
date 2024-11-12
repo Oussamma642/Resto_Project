@@ -6,10 +6,10 @@ class clsLogin
 {
     public static function Login()
     {
-        // Do not call session_start() here; it's already started in the main page
         $currUser = clsUser::Find($_POST['email'], $_POST['pswd']);
         
-        if ($currUser != null) {
+        if ($currUser != null) 
+        {
             $_SESSION['currUser'] = $currUser;
             header("Location:Dashbord-Menu/Home.php");
             exit(); // Stop further execution after redirect

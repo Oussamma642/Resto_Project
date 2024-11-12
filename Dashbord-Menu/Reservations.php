@@ -19,7 +19,6 @@ function afficherMessage()
         unset($_SESSION['Message']);
     }    
 }
-
 afficherMessage();
 
 ?>
@@ -126,7 +125,7 @@ afficherMessage();
                 <li>
                     <a href="">
                         <span class="ti-folder"></span>
-                        <span>Projects</span>
+                        <span>Menu Plats</span>
                     </a>
                 </li>
                 <li>
