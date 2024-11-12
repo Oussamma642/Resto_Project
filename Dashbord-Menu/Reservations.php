@@ -1,24 +1,26 @@
 <?php
 
-
 include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\ReservationClasses\LstReservation.php';
 $reservations = getReservationList();
 
-
 /* Show the message of the modification on a reservation within alert JS function */
-
-session_start();  // Start the session
-// Check if a message is set in the session
-if (isset($_SESSION['Message'])) {
-    // Retrieve the message from the session
-    $message = $_SESSION['Message'];
-
-    // Display the message in a JavaScript alert
-    echo "<script type='text/javascript'>alert('$message');</script>";
-
-    // Clear the message after displaying it so it doesn't show again on refresh
-    unset($_SESSION['Message']);
+function afficherMessage()
+{
+    session_start();  // Start the session
+    // Check if a message is set in the session
+    if (isset($_SESSION['Message'])) {
+        // Retrieve the message from the session
+        $message = $_SESSION['Message'];
+    
+        // Display the message in a JavaScript alert
+        echo "<script type='text/javascript'>alert('$message');</script>";
+    
+        // Clear the message after displaying it so it doesn't show again on refresh
+        unset($_SESSION['Message']);
+    }    
 }
+
+afficherMessage();
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +32,6 @@ if (isset($_SESSION['Message'])) {
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="../css/style.css">
-
 
     <style>
     /* Style of Button Handle Staut  */
