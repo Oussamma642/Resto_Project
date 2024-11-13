@@ -78,7 +78,7 @@
                 <li>
                     <a href="">
                         <span class="ti-folder"></span>
-                        <span><a href="Dashbord-Menu/OuvertureFermeture.html">Ouverture/Fermeture</a></span>
+                        <span><a href="OuvertureFermeture.php">Ouverture/Fermeture</a></span>
                     </a>
                 </li>
                 <li>
