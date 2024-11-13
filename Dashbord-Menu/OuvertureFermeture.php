@@ -1,6 +1,5 @@
 <?php
 
-
 include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\OpeningClosingClasses\clsOpeningClose.php';
 $list = clsOpeningClose::ListOpCl();
 
@@ -12,7 +11,6 @@ if (isset($_POST['btn']))
         header("location:OuvertureFermeture.php");
     }
 }
-
 
 
 ?>
@@ -29,6 +27,13 @@ if (isset($_POST['btn']))
 
 </head>
 
+<style>
+a {
+    text-decoration: none;
+    /* Retains the link’s original color */
+}
+</style>
+
 <body>
 
     <input type="checkbox" id="sidebar-toggle">
@@ -44,7 +49,7 @@ if (isset($_POST['btn']))
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="">
+                    <a href="Home.php">
                         <span class="ti-home"></span>
                         <span>Home</span>
                     </a>
@@ -52,25 +57,46 @@ if (isset($_POST['btn']))
                 <li>
                     <a href="">
                         <span class="ti-face-smile"></span>
-                        <span><a href="Dashbord-Menu/Reservations.html">Reservations</a></span>
+                        <span><a href="Reservations.php">Reservations</a></span>
                     </a>
                 </li>
                 <li>
                     <a href="">
                         <span class="ti-agenda"></span>
-                        <span><a href="Dashbord-Menu/Commandes.html">Commandes</a></span>
+                        <span><a href="Orders.php">Orders</a></span>
                     </a>
                 </li>
                 <li>
                     <a href="">
                         <span class="ti-clipboard"></span>
-                        <span><a href="Dashbord-Menu/Avis.html">Avis</a></span>
+                        <span><a href="MenuPlats.php">Dishes Menu</a></span>
                     </a>
                 </li>
                 <li>
                     <a href="">
+                        <span class="ti-clipboard"></span>
+                        <span><a href="Users.php">Users</a></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="ti-clipboard"></span>
+                        <span><a href="Avis.php">Avis</a></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="ti-clipboard"></span>
+                        <span><a href="Contact.php">Contact</a></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="OuvertureFermeture.php">
                         <span class="ti-folder"></span>
-                        <span><a href="Dashbord-Menu/OuvertureFermeture.html">Ouverture/Fermeture</a></span>
+                        <span><a href="OuvertureFermeture.php">Ouverture/Fermeture</a></span>
                     </a>
                 </li>
                 <li>
@@ -102,7 +128,9 @@ if (isset($_POST['btn']))
             <div class="row">
                 <div class="col-sm-12 mt-5">
 
-                    <h2 class="">Ouverture/Fermeture</h2>
+                    <h2 class="text-center">
+                        Opening/Closing Time
+                    </h2>
 
                     <table class="table table-striped mt-5 ">
                         <thead>
