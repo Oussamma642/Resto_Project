@@ -81,3 +81,11 @@ CREATE TABLE reviews (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
+
+create table OuvertureFermeture()
+{
+    id int primary key AUTO_INCREMENT,
+    ouverture time,
+    fermeture time,
+    Dy VARCHAR(30)
+}
