@@ -1,11 +1,14 @@
 <?php
 
 include_once 'Classes/UserClasses/clsListUsers.php';
-
+include_once 'Classes/UserClasses/clsAddNewUser.php';
 
 session_start();
 
+//Object's Instantiation of the Login user ;
 $currUser = $_SESSION['currUser'];
+
+// Get List Of Users
 $LstUsers = clsListUsers::ListUsers();
 
 // Show The status of the deleted user
@@ -19,6 +22,14 @@ if (isset($_SESSION['deleteStatus']))
 
     // Clear the message after displaying it so it doesn't show again on refresh
     unset($_SESSION['deleteStatus']);
+}
+
+//When Click on Add User button
+if (isset($_POST['addUserBtn']))
+{
+    
+    clsAddNewUser::AddNewUser();
+    // Shof, F kolla input permission dir une valeur binary
 }
 
 ?>
@@ -164,8 +175,6 @@ if (isset($_SESSION['deleteStatus']))
         </main>
     </div>
 
-
-
     <!-- Add User Modal -->
     <div class=" modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -177,7 +186,7 @@ if (isset($_SESSION['deleteStatus']))
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="addUserForm">
+                    <form id="addUserForm" method="post">
                         <!-- First Name -->
                         <div class="form-group">
                             <label for="newFirstName"><b>First Name:</b></label>
@@ -250,12 +259,10 @@ if (isset($_SESSION['deleteStatus']))
                                 <label class="form-check-label" for="permission2">Opening/Closing
                                     Times</label>
                             </div>
-
                         </div>
 
-
                         <!-- Submit Button -->
-                        <button type="submit" class="btn btn-primary">Add User</button>
+                        <button type="submit" name="addUserBtn" class="btn btn-primary">Add User</button>
                     </form>
                 </div>
             </div>
