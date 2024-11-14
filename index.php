@@ -44,15 +44,16 @@ if (isset($_POST['btn']))
         background: rgba(255, 255, 255, 0.2);
         border-radius: 15px;
         padding: 30px;
-        /* width: 400px; */
+        width: 400px;
         position: relative;
         backdrop-filter: blur(7px);
         -webkit-backdrop-filter: blur(7px);
         border: 1px solid rgba(255, 255, 255, 0.18);
         right: 350px;
         bottom: 50px;
-
+        margin-top: 100px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
     }
 
     h2 {

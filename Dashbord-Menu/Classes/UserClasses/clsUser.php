@@ -1,5 +1,18 @@
 <?php
 
+enum Permissions : int
+{
+    case All = -1;
+    case Reservation = 1;
+    case Orders = 2;
+    case DishesMenu = 4;
+    case Users = 8;
+    case CommentsSection = 16;
+    case Contact = 32;
+    case OpClose = 64;
+
+}
+
 class clsUser
 {
 
@@ -10,14 +23,16 @@ class clsUser
     private $password;
     private $phone_number;
     private $role;
-    
+    private $permissions;
+        
+
     private static function Conncect()
     {
         include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\DbhConnection\Dbh.php';
         return Dbh::connect();
     }
     
-    public function __construct($id, $fname, $lname, $email, $pswd, $phone ,$role)
+    public function __construct($id, $fname, $lname, $email, $pswd, $phone ,$role, $prmsn)
     {
         $this->user_id = $id;
         $this->first_name = $fname;
@@ -26,6 +41,7 @@ class clsUser
         $this->password = $pswd;
         $this->phone_number = $phone;
         $this->role = $role;
+        $this->permissions = $prmsn;
     }    
 
     // Getter for user_id (read-only)
@@ -100,10 +116,23 @@ class clsUser
          $this->role = $role;
      }
 
+    
+     // Getter and setter for permissions
+     public function getPermissions()
+     {
+        return $this->permissions;
+     
+     }
+
+     public function setPermissions($prmsn)
+     {
+        $this->permissions = $prmsn;
+     }
+    
      // Find The user 
     public static function Find($email, $pswd)
     {
-        $conn = clsUser::Conncect();
+        $conn = self::Conncect();
 
         // Prepare and execute the statement
         $stmt = $conn->prepare("SELECT * from users where password = '$pswd' and email='$email'");
@@ -113,7 +142,7 @@ class clsUser
         
         if ($user) 
         {
-            $currUser = new clsUser($user['user_id'], $user['first_name'], $user['last_name'], $user['email'], $user['password'], $user['phone_number'], $user['role']);
+            $currUser = new clsUser($user['user_id'], $user['first_name'], $user['last_name'], $user['email'], $user['password'], $user['phone_number'], $user['role'], $user['permissions']);
             return $currUser;
         }
         else
@@ -124,11 +153,22 @@ class clsUser
     public static function ListUsers()
     {
         $conn = clsUser::Conncect();
-
         // Prepare and execute the statement
         $stmt = $conn->prepare("CALL list_users_admin()");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    // DeleteUser
+
+    public function DeleteUser($id)
+    {
+        $conn = self::Conncect();
+        $stmt = $conn->prepare("DELETE FROM users WHERE user_id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+
+    }
+
+    
  }

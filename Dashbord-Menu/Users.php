@@ -1,11 +1,27 @@
 <?php
-    
-    include_once 'Classes/UserClasses/clsUser.php';
-    session_start();
-    $currUser = $_SESSION['currUser'];
-    $LstUsers = clsUser::ListUsers();
-    
- ?>
+
+include_once 'Classes/UserClasses/clsListUsers.php';
+
+
+session_start();
+
+$currUser = $_SESSION['currUser'];
+$LstUsers = clsListUsers::ListUsers();
+
+// Show The status of the deleted user
+if (isset($_SESSION['deleteStatus'])) 
+{
+    // Retrieve the message from the session
+    $message = $_SESSION['deleteStatus'];
+
+    // Display the message in a JavaScript alert
+    echo "<script type='text/javascript'>alert('$message');</script>";
+
+    // Clear the message after displaying it so it doesn't show again on refresh
+    unset($_SESSION['deleteStatus']);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,20 +31,21 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 
 <body>
 
     <input type="checkbox" id="sidebar-toggle">
     <div class="sidebar">
-        <div class="sidebar-header">
+        <div class="sidebar-header mt-3">
             <h3 class="brand">
                 <span class="ti-unlink"></span>
                 <span>easywire</span>
             </h3>
             <label for="sidebar-toggle" class="ti-menu-alt"></label>
         </div>
-
+        <!-- Sidebar Content -->
         <div class="sidebar-menu">
             <ul>
                 <li>
@@ -38,48 +55,39 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="Reservations.php">
                         <span class="ti-face-smile"></span>
-                        <span><a href="Reservations.php">Reservations</a></span>
+                        <span>Reservations</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="Dashbord-Menu/Orders.php">
                         <span class="ti-agenda"></span>
-                        <span><a href="Dashbord-Menu/Orders.php">Orders</a></span>
+                        <span>Orders</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="Dashbord-Menu/MenuPlats.html">
                         <span class="ti-clipboard"></span>
-                        <span><a href="Dashbord-Menu/Avis.html">Menu Plats</a></span>
+                        <span>Menu Plats</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="">
-                        <span class="ti-time"></span>
-                        <span><a href="Dashbord-Menu/MenuPlats.html">Users</a></span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="">
+                    <a href="Dashbord-Menu/Avis.html">
                         <span class="ti-clipboard"></span>
-                        <span><a href="Dashbord-Menu/Avis.html">Avis</a></span>
+                        <span>Avis</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="Dashbord-Menu/Contact.html">
                         <span class="ti-book"></span>
-                        <span><a href="Dashbord-Menu/Contact.html">Contact</a></span>
+                        <span>Contact</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="">
+                    <a href="Dashbord-Menu/OuvertureFermeture.html">
                         <span class="ti-folder"></span>
-                        <span><a href="Dashbord-Menu/OuvertureFermeture.html">Ouverture/Fermeture</a></span>
+                        <span>Ouverture/Fermeture</span>
                     </a>
                 </li>
                 <li>
@@ -92,157 +100,236 @@
         </div>
     </div>
 
-
     <div class="main-content">
-
         <header>
-            <h1 style="padding-left: 30%;">Welcome <?=$currUser->getLastName() . ' ' . $currUser->getFirstName()?></h1>
+            <h3 class="mt-3" style="padding-left: 30%;">Welcome
+                <?=$currUser->getLastName() . ' ' . $currUser->getFirstName()?></h3>
         </header>
 
         <main>
+            <h3 class="text-center">List Of Users</h3>
 
-            <h2 class="dash-title">Overview</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-striped mt-3">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Password</th>
+                                    <th>Phone Number</th>
+                                    <th>Add User</th>
+                                    <th>Delete User</th>
+                                    <th>Modify User</th>
+                                </tr>
+                            </thead>
 
-            <div class="dash-cards">
-                <div class="card-single">
-                    <div class="card-body">
-                        <span class="ti-briefcase"></span>
-                        <div>
-                            <h5>Account Balance</h5>
-                            <h4>$30,659.45</h4>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
+                            <tbody>
+                                <?php foreach ($LstUsers as $usr) { ?>
+                                <tr>
+                                    <td><?= $usr['first_name'] ?></td>
+                                    <td><?= $usr['last_name'] ?></td>
+                                    <td><?= $usr['email'] ?></td>
+                                    <td><?= $usr['password'] ?></td>
+                                    <td><?= $usr['phone_number'] ?></td>
+                                    <td>
+                                        <button style="width: 100%" type="button" class="btn btn-danger"
+                                            data-toggle="modal" data-target="#addUserModal">
+                                            Add
+                                        </button>
+                                    </td>
 
-                <div class="card-single">
-                    <div class="card-body">
-                        <span class="ti-reload"></span>
-                        <div>
-                            <h5>Pending</h5>
-                            <h4>$19,500.45</h4>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
+                                    </td>
+                                    <td><a onclick="return confirm('Are you sure you want to delete this user?');"
+                                            href="Classes/UserClasses/clsDeleteUser.php?id=<?=$usr['user_id']?>"
+                                            class="btn btn-danger">Delete</a>
+                                    </td>
+                                    <td>
+                                        <button style="width: 100%" type="button" class="btn btn-danger"
+                                            data-toggle="modal" data-target="#modifyModal"
+                                            onclick="populateForm(<?= htmlspecialchars(json_encode($usr)) ?>)">
+                                            Modify
+                                        </button>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
 
-                <div class="card-single">
-                    <div class="card-body">
-                        <span class="ti-check-box"></span>
-                        <div>
-                            <h5>Processed</h5>
-                            <h4>$20,659</h4>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
+                        </table>
                     </div>
                 </div>
             </div>
-
-
-            <section class="recent">
-                <div class="activity-grid">
-                    <div class="activity-card">
-                        <h3>Recent activity</h3>
-
-                        <div class="table-responsive">
-                            <table>
-                                <thead>
-
-
-                                    <tr>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Email</th>
-                                        <th>Password</th>
-                                        <th>Phone Number</th>
-                                        <th>Handle Permissions</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-
-                                    <!-- user_id INT AUTO_INCREMENT PRIMARY KEY,
-                                    first_name VARCHAR(100) NOT NULL,
-                                    last_name VARCHAR(100) NOT NULL,
-                                    email VARCHAR(150) NOT NULL UNIQUE,
-                                    password VARCHAR(255) NOT NULL,
-                                    role ENUM('admin', 'client') NOT NULL,
-                                    phone_number VARCHAR(20), -->
-
-
-                                    <?php
-    foreach($LstUsers as $usr )
-    {
-        ?>
-                                    <tr>
-                                        <td><?=$usr['first_name']?></td>
-                                        <td><?=$usr['last_name']?></td>
-                                        <td><?=$usr['email']?></td>
-                                        <td><?=$usr['password']?></td>
-                                        <td><?=$usr['phone_number']?></td>
-                                        <td>Coming soon</td>
-                                    </tr>
-                                    <?php
-    }
-                                ?>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="summary">
-                        <div class="summary-card">
-                            <div class="summary-single">
-                                <span class="ti-id-badge"></span>
-                                <div>
-                                    <h5>196</h5>
-                                    <small>Number of staff</small>
-                                </div>
-                            </div>
-                            <div class="summary-single">
-                                <span class="ti-calendar"></span>
-                                <div>
-                                    <h5>16</h5>
-                                    <small>Number of leave</small>
-                                </div>
-                            </div>
-                            <div class="summary-single">
-                                <span class="ti-face-smile"></span>
-                                <div>
-                                    <h5>12</h5>
-                                    <small>Profile update request</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bday-card">
-                            <div class="bday-flex">
-                                <div class="bday-img"></div>
-                                <div class="bday-info">
-                                    <h5>Dwayne F. Sanders</h5>
-                                    <small>Birthday Today</small>
-                                </div>
-                            </div>
-
-                            <div class="text-center">
-                                <button>
-                                    <span class="ti-gift"></span>
-                                    Wish him
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </main>
     </div>
+
+    <!-- Add User Modal -->
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addUserModalLabel">Add New User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addUserForm">
+                        <!-- First Name -->
+                        <div class="form-group">
+                            <label for="newFirstName">First Name:</label>
+                            <input type="text" class="form-control" id="newFirstName" name="firstName" required>
+                        </div>
+                        <!-- Last Name -->
+                        <div class="form-group">
+                            <label for="newLastName">Last Name:</label>
+                            <input type="text" class="form-control" id="newLastName" name="lastName" required>
+                        </div>
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="newEmail">Email:</label>
+                            <input type="email" class="form-control" id="newEmail" name="email" required>
+                        </div>
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="newPassword">Password:</label>
+                            <input type="password" class="form-control" id="newPassword" name="password" required>
+                        </div>
+                        <!-- Phone Number -->
+                        <div class="form-group">
+                            <label for="newPhoneNumber">Phone Number:</label>
+                            <input type="tel" class="form-control" id="newPhoneNumber" name="phoneNumber" required>
+                        </div>
+                        <!-- Permissions -->
+                        <div class="form-group">
+                            <label>Permissions:</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission1"
+                                    id="newPermission1">
+                                <label class="form-check-label" for="newPermission1">Permission 1</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
+                                    id="newPermission2">
+                                <label class="form-check-label" for="newPermission2">Permission 2</label>
+                            </div>
+                            <!-- Repeat for all 7 permissions -->
+                        </div>
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary">Add User</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modify Modal -->
+    <div class="modal fade" id="modifyModal" tabindex="-1" aria-labelledby="modifyModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modifyModalLabel">Modify User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="modifyForm" method="post">
+                        <!-- First Name -->
+                        <div class="form-group">
+                            <label for="firstName"><b>First Name:</b></label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" required>
+                        </div>
+                        <!-- Last Name -->
+                        <div class="form-group">
+                            <label for="lastName"><b>Last Name:</b></label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" required>
+                        </div>
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email"><b>Email:</b></label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="password"><b>Password:</b></label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <!-- Phone Number -->
+                        <div class="form-group">
+                            <label for="phoneNumber"><b>Phone Number:</b></label>
+                            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+                        </div>
+                        <!-- Permissions -->
+                        <div class="form-group">
+                            <label><b>Permissions:</b></label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission1"
+                                    id="permission1">
+                                <label class="form-check-label" for="permission1">Reservation</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
+                                    id="permission2">
+                                <label class="form-check-label" for="permission2">Orders</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
+                                    id="permission2">
+                                <label class="form-check-label" for="permission2">Dishes Menu</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
+                                    id="permission2">
+                                <label class="form-check-label" for="permission2">Users</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
+                                    id="permission2">
+                                <label class="form-check-label" for="permission2">Comments Section</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
+                                    id="permission2">
+                                <label class="form-check-label" for="permission2">Contact</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
+                                    id="permission2">
+                                <label class="form-check-label" for="permission2">Opening/Closing Times</label>
+                            </div>
+
+                        </div>
+                        <!-- Submit -->
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to Populate Form -->
+    <script>
+    function populateForm(user) {
+        document.getElementById('firstName').value = user.first_name;
+        document.getElementById('lastName').value = user.last_name;
+        document.getElementById('email').value = user.email;
+        document.getElementById('password').value = user.password;
+        document.getElementById('phoneNumber').value = user.phone_number;
+        // Further logic to populate permissions if needed
+    }
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -89,3 +89,6 @@ create table OuvertureFermeture()
     fermeture time,
     Dy VARCHAR(30)
 }
+
+alter table users
+add column permissions int DEFAULT -1;
