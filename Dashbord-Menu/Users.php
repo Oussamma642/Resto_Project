@@ -120,7 +120,6 @@ if (isset($_SESSION['deleteStatus']))
                                     <th>Email</th>
                                     <th>Password</th>
                                     <th>Phone Number</th>
-                                    <th>Add User</th>
                                     <th>Delete User</th>
                                     <th>Modify User</th>
                                 </tr>
@@ -134,14 +133,6 @@ if (isset($_SESSION['deleteStatus']))
                                     <td><?= $usr['email'] ?></td>
                                     <td><?= $usr['password'] ?></td>
                                     <td><?= $usr['phone_number'] ?></td>
-                                    <td>
-                                        <button style="width: 100%" type="button" class="btn btn-danger"
-                                            data-toggle="modal" data-target="#addUserModal">
-                                            Add
-                                        </button>
-                                    </td>
-
-                                    </td>
                                     <td><a onclick="return confirm('Are you sure you want to delete this user?');"
                                             href="Classes/UserClasses/clsDeleteUser.php?id=<?=$usr['user_id']?>"
                                             class="btn btn-danger">Delete</a>
@@ -155,17 +146,28 @@ if (isset($_SESSION['deleteStatus']))
                                     </td>
                                 </tr>
                                 <?php } ?>
-                            </tbody>
 
+                            </tbody>
                         </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-3">
+
+                        <button style="width:100%" type="button" class="btn btn-danger" data-toggle="modal"
+                            data-target="#addUserModal">
+                            Add User
+                        </button>
                     </div>
                 </div>
             </div>
         </main>
     </div>
 
+
+
     <!-- Add User Modal -->
-    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class=" modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -178,44 +180,80 @@ if (isset($_SESSION['deleteStatus']))
                     <form id="addUserForm">
                         <!-- First Name -->
                         <div class="form-group">
-                            <label for="newFirstName">First Name:</label>
+                            <label for="newFirstName"><b>First Name:</b></label>
                             <input type="text" class="form-control" id="newFirstName" name="firstName" required>
                         </div>
                         <!-- Last Name -->
                         <div class="form-group">
-                            <label for="newLastName">Last Name:</label>
+                            <label for="newLastName"><b>Last Name:</b></label>
                             <input type="text" class="form-control" id="newLastName" name="lastName" required>
                         </div>
                         <!-- Email -->
                         <div class="form-group">
-                            <label for="newEmail">Email:</label>
+                            <label for="newEmail"><b>Email:</b></label>
                             <input type="email" class="form-control" id="newEmail" name="email" required>
                         </div>
                         <!-- Password -->
                         <div class="form-group">
-                            <label for="newPassword">Password:</label>
+                            <label for="newPassword"><b>Password:</b></label>
                             <input type="password" class="form-control" id="newPassword" name="password" required>
                         </div>
                         <!-- Phone Number -->
                         <div class="form-group">
-                            <label for="newPhoneNumber">Phone Number:</label>
+                            <label for="newPhoneNumber"><b>Phone Number:</b></label>
                             <input type="tel" class="form-control" id="newPhoneNumber" name="phoneNumber" required>
                         </div>
+
                         <!-- Permissions -->
                         <div class="form-group">
-                            <label>Permissions:</label>
+                            <label><b>Permissions:</b></label>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="permissions[]" value="permission1"
-                                    id="newPermission1">
-                                <label class="form-check-label" for="newPermission1">Permission 1</label>
+                                    id="permission1">
+                                <label class="form-check-label" for="permission1">Reservation</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
-                                    id="newPermission2">
-                                <label class="form-check-label" for="newPermission2">Permission 2</label>
+                                    id="permission2">
+                                <label class="form-check-label" for="permission2">Orders</label>
                             </div>
-                            <!-- Repeat for all 7 permissions -->
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
+                                    id="permission2">
+                                <label class="form-check-label" for="permission2">Dishes
+                                    Menu</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
+                                    id="permission2">
+                                <label class="form-check-label" for="permission2">Users</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
+                                    id="permission2">
+                                <label class="form-check-label" for="permission2">Comments
+                                    Section</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
+                                    id="permission2">
+                                <label class="form-check-label" for="permission2">Contact</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
+                                    id="permission2">
+                                <label class="form-check-label" for="permission2">Opening/Closing
+                                    Times</label>
+                            </div>
+
                         </div>
+
+
                         <!-- Submit Button -->
                         <button type="submit" class="btn btn-primary">Add User</button>
                     </form>
@@ -278,7 +316,8 @@ if (isset($_SESSION['deleteStatus']))
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
                                     id="permission2">
-                                <label class="form-check-label" for="permission2">Dishes Menu</label>
+                                <label class="form-check-label" for="permission2">Dishes
+                                    Menu</label>
                             </div>
 
                             <div class="form-check">
@@ -290,7 +329,8 @@ if (isset($_SESSION['deleteStatus']))
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
                                     id="permission2">
-                                <label class="form-check-label" for="permission2">Comments Section</label>
+                                <label class="form-check-label" for="permission2">Comments
+                                    Section</label>
                             </div>
 
                             <div class="form-check">
@@ -302,7 +342,8 @@ if (isset($_SESSION['deleteStatus']))
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
                                     id="permission2">
-                                <label class="form-check-label" for="permission2">Opening/Closing Times</label>
+                                <label class="form-check-label" for="permission2">Opening/Closing
+                                    Times</label>
                             </div>
 
                         </div>
