@@ -22,7 +22,6 @@ class clsAddNewUser
     {
         if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['phoneNumber']) && isset($_POST['permissions'])) {
 
-
             $perms = $_POST['permissions'];
                         
             if (in_array(-1, $perms)) 
@@ -30,7 +29,7 @@ class clsAddNewUser
             else 
                 self::handlePermissions($perms);
                 
-            $newUser = new User(
+            $newUser = new clsUser(
                 null, 
                 trim($_POST['firstName']), 
                 trim($_POST['lastName']), 

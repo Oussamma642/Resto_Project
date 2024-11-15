@@ -30,6 +30,18 @@ if (isset($_POST['addUserBtn']))
     clsAddNewUser::AddNewUser();
 }
 
+if (isset($_SESSION['addUserStatus']))
+{
+    // Retrieve the message from the session
+    $message = $_SESSION['addUserStatus'];
+    // Display the message in a JavaScript alert
+    echo "<script type='text/javascript'>alert('$message');</script>";
+
+    // Clear the message after displaying it so it doesn't show again on refresh
+    unset($_SESSION['addUserStatus']);
+    
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
