@@ -183,7 +183,6 @@ class clsUser
 
         $conn = self::Conncect();
         $stmt = $conn->prepare("CALL add_new_user('$fname', '$lname', '$email', '$pswd', '$role', '$phone', $prmsn)");
-        
         return $stmt->execute();
     }
     
