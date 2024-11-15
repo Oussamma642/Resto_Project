@@ -1,5 +1,4 @@
 <?php
-
 include_once 'clsUser.php';
 
 class clsAddNewUser
@@ -9,7 +8,6 @@ class clsAddNewUser
     private static function handlePermissions($perms)
     {
         $validPermissions = [1, 2, 4, 8, 16, 32, 64]; 
-        
         foreach ($perms as $p) 
         {
             if (in_array($p, $validPermissions)) {

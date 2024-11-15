@@ -2,6 +2,7 @@
 
 include_once 'Classes/UserClasses/clsListUsers.php';
 include_once 'Classes/UserClasses/clsAddNewUser.php';
+include_once 'Classes/UserClasses/ModifyUser.php';
 
 session_start();
 
@@ -30,6 +31,13 @@ if (isset($_POST['addUserBtn']))
     clsAddNewUser::AddNewUser();
 }
 
+//When Click on Modify User button
+if (isset($_POST['modifyUserBtn']))
+{
+    clsModifyUser::ModifyUser();
+}
+
+// Message to indicate the status of adding a new user
 if (isset($_SESSION['addUserStatus']))
 {
     // Retrieve the message from the session
@@ -41,6 +49,18 @@ if (isset($_SESSION['addUserStatus']))
     unset($_SESSION['addUserStatus']);
     
 }
+
+// Message to indicate the status of Updating a user
+if (isset($_SESSION['updateUserStatus']))
+{
+    // Retrieve the message from the session
+    $message = $_SESSION['updateUserStatus'];
+    // Display the message in a JavaScript alert
+    echo "<script type='text/javascript'>alert('$message');</script>";
+    // Clear the message after displaying it so it doesn't show again on refresh
+    unset($_SESSION['updateUserStatus']);
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -296,6 +316,13 @@ if (isset($_SESSION['addUserStatus']))
                 </div>
                 <div class="modal-body">
                     <form id="modifyForm" method="post">
+
+                        <!-- User ID -->
+                        <div class="form-group">
+                            <label for="firstName"><b>User ID:</b></label>
+                            <input type="text" disabled class="form-control" id="id" name="id">
+                        </div>
+
                         <!-- First Name -->
                         <div class="form-group">
                             <label for="firstName"><b>First Name:</b></label>
@@ -375,7 +402,6 @@ if (isset($_SESSION['addUserStatus']))
                                 <label class="form-check-label" for="opclose">Opening/Closing
                                     Times</label>
                             </div>
-
                         </div>
                         <!-- Submit -->
                         <button type="submit" name="modifyUserBtn" class="btn btn-primary">Save changes</button>
@@ -388,6 +414,7 @@ if (isset($_SESSION['addUserStatus']))
     <!-- JavaScript to Populate Form -->
     <script>
     function populateForm(user) {
+        document.getElementById('id').value = user.user_id;
         document.getElementById('firstName').value = user.first_name;
         document.getElementById('lastName').value = user.last_name;
         document.getElementById('email').value = user.email;

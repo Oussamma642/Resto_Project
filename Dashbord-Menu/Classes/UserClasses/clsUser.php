@@ -169,6 +169,25 @@ class clsUser
 
     }
 
+    // Update Method into the database
+
+    public function Update()
+    {
+        $id = $this->user_id;
+        $fname = $this->first_name;
+        $lname = $this->last_name;
+        $email = $this->email;
+        $pswd = $this->password;
+        $phone = $this->phone_number;
+        $role = $this->role;
+        $prmsn = $this->permissions;
+
+        $conn = self::Conncect();
+        $stmt = $conn->prepare("CALL update_user($id,'$fname', '$lname', '$email', '$pswd', '$role', '$phone', $prmsn)");
+        return $stmt->execute();
+
+    }
+
     // Save method to insert a new user into the database
     public function Save()
     {
@@ -179,7 +198,6 @@ class clsUser
         $phone = $this->phone_number;
         $role = $this->role;
         $prmsn = $this->permissions;
-
 
         $conn = self::Conncect();
         $stmt = $conn->prepare("CALL add_new_user('$fname', '$lname', '$email', '$pswd', '$role', '$phone', $prmsn)");
