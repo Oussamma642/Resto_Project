@@ -27,7 +27,6 @@ if (isset($_SESSION['deleteStatus']))
 //When Click on Add User button
 if (isset($_POST['addUserBtn']))
 {
-    
     clsAddNewUser::AddNewUser();
     // Shof, F kolla input permission dir une valeur binary
 }
@@ -217,46 +216,52 @@ if (isset($_POST['addUserBtn']))
                         <div class="form-group">
                             <label><b>Permissions:</b></label>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission1"
-                                    id="permission1">
-                                <label class="form-check-label" for="permission1">Reservation</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
-                                    id="permission2">
-                                <label class="form-check-label" for="permission2">Orders</label>
+                                <input class="form-check-input" onclick="toggleAllPermissions(this)" type="checkbox"
+                                    name="permissions[]" value="-1" id="all">
+                                <label class="form-check-label" for="all">All</label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
-                                    id="permission2">
-                                <label class="form-check-label" for="permission2">Dishes
+                                <input onclick="togglePermission(this)" class="form-check-input permission"
+                                    type="checkbox" name="permissions[]" value="1" id="reservation">
+                                <label class="form-check-label" for="reservation">Reservation</label>
+                            </div>
+                            <div class="form-check">
+                                <input onclick="togglePermission(this)" class="form-check-input permission"
+                                    type="checkbox" name="permissions[]" value="2" id="orders">
+                                <label class="form-check-label" for="orders">Orders</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input onclick="togglePermission(this)" class="form-check-input permission"
+                                    type="checkbox" name="permissions[]" value="4" id="dishes">
+                                <label class="form-check-label" for="dishes">Dishes
                                     Menu</label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
-                                    id="permission2">
-                                <label class="form-check-label" for="permission2">Users</label>
+                                <input onclick="togglePermission(this)" class="form-check-input permission"
+                                    type="checkbox" name="permissions[]" value="8" id="users">
+                                <label class="form-check-label" for="users">Users</label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
-                                    id="permission2">
-                                <label class="form-check-label" for="permission2">Comments
+                                <input onclick="togglePermission(this)" class="form-check-input permission"
+                                    type="checkbox" name="permissions[]" value="16" id="comments">
+                                <label class="form-check-label" for="comments">Comments
                                     Section</label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
-                                    id="permission2">
-                                <label class="form-check-label" for="permission2">Contact</label>
+                                <input onclick="togglePermission(this)" class="form-check-input permission"
+                                    type="checkbox" name="permissions[]" value="32" id="contact">
+                                <label class="form-check-label" for="contact">Contact</label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
-                                    id="permission2">
-                                <label class="form-check-label" for="permission2">Opening/Closing
+                                <input onclick="togglePermission(this)" class="form-check-input permission"
+                                    type="checkbox" name="permissions[]" value="64" id="opclose">
+                                <label class="form-check-label" for="opclose">Opening/Closing
                                     Times</label>
                             </div>
                         </div>
@@ -309,53 +314,61 @@ if (isset($_POST['addUserBtn']))
                         <!-- Permissions -->
                         <div class="form-group">
                             <label><b>Permissions:</b></label>
+
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission1"
-                                    id="permission1">
-                                <label class="form-check-label" for="permission1">Reservation</label>
+                                <input class="form-check-input" type="checkbox" onclick="toggleAllPermissions(this)"
+                                    name="permissions[]" value="-1" id="all">
+                                <label class="form-check-label" for="all">All</label>
+                            </div>
+
+
+                            <div class="form-check">
+                                <input onclick="togglePermission(this)" class="form-check-input permission"
+                                    type="checkbox" name="permissions[]" value="1" id="reservation">
+                                <label class="form-check-label" for="reservation">Reservation</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
-                                    id="permission2">
-                                <label class="form-check-label" for="permission2">Orders</label>
+                                <input onclick="togglePermission(this)" class="form-check-input permission"
+                                    type="checkbox" name="permissions[]" value="2" id="orders">
+                                <label class="form-check-label" for="orders">Orders</label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
-                                    id="permission2">
-                                <label class="form-check-label" for="permission2">Dishes
+                                <input onclick="togglePermission(this)" class="form-check-input permission"
+                                    type="checkbox" name="permissions[]" value="4" id="dishes">
+                                <label class="form-check-label" for="dishes">Dishes
                                     Menu</label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
-                                    id="permission2">
-                                <label class="form-check-label" for="permission2">Users</label>
+                                <input onclick="togglePermission(this)" class="form-check-input permission"
+                                    type="checkbox" name="permissions[]" value="8" id="users">
+                                <label class="form-check-label" for="users">Users</label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
-                                    id="permission2">
-                                <label class="form-check-label" for="permission2">Comments
+                                <input onclick="togglePermission(this)" class="form-check-input permission"
+                                    type="checkbox" name="permissions[]" value="16" id="comments">
+                                <label class="form-check-label" for="comments">Comments
                                     Section</label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
-                                    id="permission2">
-                                <label class="form-check-label" for="permission2">Contact</label>
+                                <input onclick="togglePermission(this)" class="form-check-input permission"
+                                    type="checkbox" name="permissions[]" value="32" id="contact">
+                                <label class="form-check-label" for="contact">Contact</label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="permissions[]" value="permission2"
-                                    id="permission2">
-                                <label class="form-check-label" for="permission2">Opening/Closing
+                                <input onclick="togglePermission(this)" class="form-check-input permission"
+                                    type="checkbox" name="permissions[]" value="64" id="opclose">
+                                <label class="form-check-label" for="opclose">Opening/Closing
                                     Times</label>
                             </div>
 
                         </div>
                         <!-- Submit -->
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" name="modifyUserBtn" class="btn btn-primary">Save changes</button>
                     </form>
                 </div>
             </div>
@@ -372,8 +385,28 @@ if (isset($_POST['addUserBtn']))
         document.getElementById('phoneNumber').value = user.phone_number;
         // Further logic to populate permissions if needed
     }
-    </script>
 
+    function togglePermission(source) {
+
+        let all = document.getElementById('all');
+        let elts = document.querySelectorAll('.permission');
+
+        all.checked = true;
+
+        elts.forEach((elt) => {
+            if (!elt.checked)
+                all.checked = false;
+        })
+    }
+
+    function toggleAllPermissions(source) {
+        const checkboxes = document.querySelectorAll('.permission');
+        checkboxes.forEach(checkbox => {
+
+            checkbox.checked = source.checked;
+        });
+    }
+    </script>
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

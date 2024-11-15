@@ -32,7 +32,7 @@ class clsUser
         return Dbh::connect();
     }
     
-    public function __construct($id, $fname, $lname, $email, $pswd, $phone ,$role, $prmsn)
+    public function __construct($id=null, $fname='', $lname='', $email='', $pswd='', $phone='' ,$role='', $prmsn=null)
     {
         $this->user_id = $id;
         $this->first_name = $fname;
@@ -160,7 +160,6 @@ class clsUser
     }
 
     // DeleteUser
-
     public function DeleteUser($id)
     {
         $conn = self::Conncect();
@@ -170,5 +169,45 @@ class clsUser
 
     }
 
+    // Save method to insert a new user into the database
+    public function Save()
+    {
+
+        // CREATE PROCEDURE add_new_user(
+        //     IN fname VARCHAR(255),
+        //     IN lname VARCHAR(255),
+        //     IN em VARCHAR(255),
+        //     IN pswd VARCHAR(255),
+        //     IN rle VARCHAR(255),
+        //     IN phone VARCHAR(255),
+        //     IN perm INT
+        // )
+        
+
+        // private $user_id;
+        // private $first_name;
+        // private $last_name;
+        // private $email;
+        // private $password;
+        // private $phone_number;
+        // private $role;
+        // private $permissions;
+
+
+        $conn = self::Conncect();
+
+        $fname = $this->first_name;
+        $lname = $this->last_name;
+        $email = $this->email;
+        $pswd = $this->password;
+        $phone = $this->phone_number;
+        $role = $this->role;
+        $prmsn = $this->permissions;
+
+        // Prepare and execute the statement
+        $stmt = $conn->prepare("CALL add_new_user()");
+        
+        return $stmt->execute();
+    }
     
  }
