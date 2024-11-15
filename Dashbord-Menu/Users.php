@@ -28,7 +28,6 @@ if (isset($_SESSION['deleteStatus']))
 if (isset($_POST['addUserBtn']))
 {
     clsAddNewUser::AddNewUser();
-    // Shof, F kolla input permission dir une valeur binary
 }
 
 ?>
@@ -265,7 +264,6 @@ if (isset($_POST['addUserBtn']))
                                     Times</label>
                             </div>
                         </div>
-
                         <!-- Submit Button -->
                         <button type="submit" name="addUserBtn" class="btn btn-primary">Add User</button>
                     </form>

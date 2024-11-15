@@ -1,30 +1,38 @@
 <?php
 
-
-// user_id INT AUTO_INCREMENT PRIMARY KEY,
-// first_name VARCHAR(100) NOT NULL,
-// last_name VARCHAR(100) NOT NULL,
-// email VARCHAR(150) NOT NULL UNIQUE,
-// password VARCHAR(255) NOT NULL,
-// role ENUM('admin', 'client') NOT NULL,
-// phone_number VARCHAR(20),
-// permissions int,
-
-
 include_once 'clsUser.php';
 
 class clsAddNewUser
 {
+    // private static $_permissions = 0;
+
+    // private static function handlePermissions($perms)
+    // {
+    //     foreach($perms as $p) {
+    //         self::$_permissions += $p; 
+    //     }
+    // }
+
     public static function AddNewUser()
     {
-        if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['phoneNumber']) && isset($_POST['permissions']))
-        {
-            echo "<script type='text/javascript'>alert('Yes');</script>";        
+        if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['phoneNumber']) && isset($_POST['permissions'])) {
+
+            echo "Yes";
+
+            // $perms = $_POST['permissions'];
+            // if (in_array(-1, $perms)) {
+            //     echo 'All permissions selected<br><br>';
+            //     return; 
+            // } 
+            // else {
+            //     self::handlePermissions($perms);
+            //     echo 'Permissions result: ' . self::$_permissions;
+            // }
+        } 
+        else {
+            
+            echo "No";
+            // header("location:../Dashbord-Menu/Users.php");
         }
-        else
-        {
-            header("location:../Dashbord-Menu/Users.php");
-        }
-    
     }
 }
