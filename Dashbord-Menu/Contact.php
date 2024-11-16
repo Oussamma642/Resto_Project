@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -7,93 +8,103 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-    
+
     <input type="checkbox" id="sidebar-toggle">
+
     <div class="sidebar">
         <div class="sidebar-header">
             <h3 class="brand">
-                <span class="ti-unlink"></span> 
-                <span>easywire</span>
-            </h3> 
+                <span class="ti-unlink"></span>
+                <span>Admin-Menu</span>
+            </h3>
             <label for="sidebar-toggle" class="ti-menu-alt"></label>
         </div>
-        
+
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="">
+                    <a href="Home.php">
                         <span class="ti-home"></span>
                         <span>Home</span>
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <span class="ti-face-smile"></span>
-                        <span><a href="Dashbord-Menu/Reservations.html">Reservations</a></span>
+                        <span class="ti-calendar"></span>
+                        <span><a href="Reservations.php">Reservations</a></span>
                     </a>
                 </li>
                 <li>
                     <a href="">
                         <span class="ti-agenda"></span>
-                        <span><a href="Dashbord-Menu/Commandes.html">Commandes</a></span>
+                        <span><a href="Orders.php">Orders</a></span>
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <span class="ti-time"></span>
-                        <span><a href="Dashbord-Menu/MenuPlats">Menu</a></span>
+                        <span class="ti-clipboard"></span>
+                        <span><a href="Dishses.php">Dishes Menu</a></span>
                     </a>
                 </li>
 
                 <li>
                     <a href="">
-                        <span class="ti-clipboard"></span>
-                        <span><a href="Dashbord-Menu/Avis.html">Avis</a></span>
+                        <span class="ti-user"></span>
+                        <span><a href="Users.php">Users</a></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="ti-comment"></span>
+                        <span><a href="Comments.php">Comments</a></span>
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <span class="ti-folder"></span>
-                        <span><a href="Dashbord-Menu/OuvertureFermeture.html">Ouverture/Fermeture</a></span>
+                        <span class="ti-email"></span>
+                        <span><a href="Contact.php">Contact</a></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="ti-time"></span>
+                        <span><a href="OpClose.php">Opening/Closing Time</a></span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
-                        <span class="ti-book"></span>
-                        <span>Contacts</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <span class="ti-settings"></span>
-                        <span>Account</span>
+                    <a href="Logout.php">
+                        <span class="ti-power-off"></span>
+                        <span>Logout</span>
                     </a>
                 </li>
             </ul>
         </div>
     </div>
-    
-    
+
+
     <div class="main-content">
-        
+
         <header>
             <div class="search-wrapper">
                 <span class="ti-search"></span>
                 <input type="search" placeholder="Search">
             </div>
-            
+
             <div class="social-icons">
                 <span class="ti-bell"></span>
                 <span class="ti-comment"></span>
                 <div></div>
             </div>
         </header>
-        
+
         <main>
-            
+
             <h2 class="dash-title">Overview</h2>
-            
+
             <div class="dash-cards">
                 <div class="card-single">
                     <div class="card-body">
@@ -107,7 +118,7 @@
                         <a href="">View all</a>
                     </div>
                 </div>
-                
+
                 <div class="card-single">
                     <div class="card-body">
                         <span class="ti-reload"></span>
@@ -120,7 +131,7 @@
                         <a href="">View all</a>
                     </div>
                 </div>
-                
+
                 <div class="card-single">
                     <div class="card-body">
                         <span class="ti-check-box"></span>
@@ -134,13 +145,13 @@
                     </div>
                 </div>
             </div>
-            
-            
+
+
             <section class="recent">
                 <div class="activity-grid">
                     <div class="activity-card">
                         <h3>Recent activity</h3>
-                        
+
                         <div class="table-responsive">
                             <table>
                                 <thead>
@@ -222,7 +233,7 @@
                             </table>
                         </div>
                     </div>
-                    
+
                     <div class="summary">
                         <div class="summary-card">
                             <div class="summary-single">
@@ -247,7 +258,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="bday-card">
                             <div class="bday-flex">
                                 <div class="bday-img"></div>
@@ -256,7 +267,7 @@
                                     <small>Birthday Today</small>
                                 </div>
                             </div>
-                            
+
                             <div class="text-center">
                                 <button>
                                     <span class="ti-gift"></span>
@@ -267,10 +278,11 @@
                     </div>
                 </div>
             </section>
-            
+
         </main>
-        
+
     </div>
-    
+
 </body>
+
 </html>

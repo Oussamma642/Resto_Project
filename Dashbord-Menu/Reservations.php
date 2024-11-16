@@ -87,11 +87,12 @@ afficherMessage();
 <body>
 
     <input type="checkbox" id="sidebar-toggle">
+
     <div class="sidebar">
         <div class="sidebar-header">
             <h3 class="brand">
                 <span class="ti-unlink"></span>
-                <span>easywire</span>
+                <span>Admin-Menu</span>
             </h3>
             <label for="sidebar-toggle" class="ti-menu-alt"></label>
         </div>
@@ -99,51 +100,60 @@ afficherMessage();
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="../Home.html">
+                    <a href="Home.php">
                         <span class="ti-home"></span>
-                        <span><a href="../index.html">Home</a></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./Reservations.php">
-                        <span class="ti-face-smile"></span>
-                        <span>Reservation</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./Orders.php">
-                        <span class="ti-agenda"></span>
-                        <span>Orders</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./Users.html">
-                        <span class="ti-clipboard"></span>
-                        <span>Users</span>
+                        <span>Home</span>
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <span class="ti-folder"></span>
-                        <span>Menu Plats</span>
+                        <span class="ti-calendar"></span>
+                        <span><a href="Reservations.php">Reservations</a></span>
                     </a>
                 </li>
+                <li>
+                    <a href="">
+                        <span class="ti-agenda"></span>
+                        <span><a href="Orders.php">Orders</a></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="ti-clipboard"></span>
+                        <span><a href="Dishses.php">Dishes Menu</a></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="ti-user"></span>
+                        <span><a href="Users.php">Users</a></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="ti-comment"></span>
+                        <span><a href="Comments.php">Comments</a></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="ti-email"></span>
+                        <span><a href="Contact.php">Contact</a></span>
+                    </a>
+                </li>
+
                 <li>
                     <a href="">
                         <span class="ti-time"></span>
-                        <span>Timesheet</span>
+                        <span><a href="OpClose.php">Opening/Closing Time</a></span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
-                        <span class="ti-book"></span>
-                        <span>Contacts</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <span class="ti-settings"></span>
-                        <span>Account</span>
+                    <a href="Logout.php">
+                        <span class="ti-power-off"></span>
+                        <span>Logout</span>
                     </a>
                 </li>
             </ul>

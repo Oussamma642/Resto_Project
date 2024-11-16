@@ -28,7 +28,7 @@ if (isset($_POST['btn']))
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-image: url("./img/pageAuth.jpg");
+        /*background-image: url("./img/pageAuth.jpg");*/
         background-repeat: no-repeat;
         background-size: cover;
         font-family: Arial, sans-serif;
@@ -49,16 +49,15 @@ if (isset($_POST['btn']))
         backdrop-filter: blur(7px);
         -webkit-backdrop-filter: blur(7px);
         border: 1px solid rgba(255, 255, 255, 0.18);
-        right: 350px;
         bottom: 50px;
         margin-top: 100px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 
     }
 
     h2 {
         text-align: center;
-        color: whitesmoke;
+        color: rgb(52, 6, 255);
         font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
             sans-serif;
     }
@@ -140,8 +139,8 @@ if (isset($_POST['btn']))
                         </div>
                     </form>
                     <div>
-                        <h1 class='alert alert-danger'>
-                            <?=(isset($_SESSION['MessageCnx']))? $_SESSION['MessageCnx'] : ''?></h1>
+                        <h6 class='alert alert-danger'>
+                            <?=(isset($_SESSION['MessageCnx']))? $_SESSION['MessageCnx'] : ''?></h6>
                     </div>
                 </div>
                 <div>

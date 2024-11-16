@@ -1,21 +1,9 @@
 <?php
 
-enum Permissions : int
-{
-    case All = -1;
-    case Reservation = 1;
-    case Orders = 2;
-    case DishesMenu = 4;
-    case Users = 8;
-    case CommentsSection = 16;
-    case Contact = 32;
-    case OpClose = 64;
-
-}
+include_once 'clsPermissions.php';
 
 class clsUser
 {
-
     private $user_id;
     private $first_name;
     private $last_name;
@@ -171,7 +159,6 @@ class clsUser
     }
 
     // Update Method into the database
-
     public function Update()
     {
         $id = $this->user_id;
@@ -205,4 +192,16 @@ class clsUser
         return $stmt->execute();
     }
     
- }
+    
+    public function CheckAccessPermission(Permission $Permission)
+    {
+        if ($this->permission == Permission::All)
+            return false;
+
+        if (($this->permissions & $Permission) == $Permission)
+            return true;
+        else
+            return false;
+    }
+
+}
