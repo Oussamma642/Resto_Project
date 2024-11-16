@@ -193,10 +193,10 @@ class clsUser
     }
     
     
-    public function CheckAccessPermission(Permission $Permission)
+    public function CheckAccessPermission(int $Permission):bool
     {
-        if ($this->permission == Permission::All)
-            return false;
+        if ($this->permissions == Permissions::All)
+            return true;
 
         if (($this->permissions & $Permission) == $Permission)
             return true;

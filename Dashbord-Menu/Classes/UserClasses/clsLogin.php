@@ -14,9 +14,10 @@ class clsLogin
             header("Location:Dashbord-Menu/Home.php");
             exit(); // Stop further execution after redirect
         } 
-        else {
+        else 
+        {
             $_SESSION['MessageCnx'] = 'Email/Password is invalid!!';
-            header("Location:Dashbord-Menu/Authentication.php");
+            header("Location:./Authentication.php");
             exit(); // Stop further execution after redirect
         }
     }

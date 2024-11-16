@@ -1,5 +1,7 @@
 <?php
 
+
+include_once 'Classes/UserClasses/clsUser.php';
 session_start();
 
 if (!isset($_SESSION['currUser']))
@@ -7,6 +9,13 @@ if (!isset($_SESSION['currUser']))
   header("location:./Authentication.php");  
 }
 
+$currUser = $_SESSION['currUser'];
+
+// Check if user has Permission on this page:
+if (!$currUser->CheckAccessPermission(Permissions::Contact))
+{
+    header("location:Home.php");
+}
 
 
 ?>

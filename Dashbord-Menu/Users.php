@@ -6,10 +6,20 @@ include_once 'Classes/UserClasses/ModifyUser.php';
 
 session_start();
 
-// if (isset())
+if (!isset($_SESSION['currUser']))
+{
+    header("location:../Authentication.php");
+}
+
 
 //Object's Instantiation of the Login user ;
 $currUser = $_SESSION['currUser'];
+
+if (!$currUser->CheckAccessPermission(Permissions::Users))
+{
+    header("location:Home.php");
+}
+
 
 // Get List Of Users
 $LstUsers = clsListUsers::ListUsers();

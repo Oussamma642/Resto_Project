@@ -1,5 +1,7 @@
 <?php
 
+include_once 'Classes/UserClasses/clsUser.php';
+
 session_start();
 
 if (!isset($_SESSION['currUser']))
@@ -7,7 +9,12 @@ if (!isset($_SESSION['currUser']))
     header("location:../Authentication.php");
 }
 
+$currUser = $_SESSION['currUser'];
 
+if (!$currUser->CheckAccessPermission(Permissions::Reservation))
+{
+    header("location:Home.php");
+}
 
 include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\ReservationClasses\LstReservation.php';
 
