@@ -1,18 +1,8 @@
 
 
-delimiter //
-
-private $user_id;
-private $first_name;
-private $last_name;
-private $email;
-private $password;
-private $phone_number;
-private $role;
-private $permissions;
-
-
 call update_user(15, 'Mohammed','Tazi-Issa','tazi@gmail.com','0000az','060606','admin',1);
+
+drop procedure if exists update_user; 
 delimiter //
 create procedure update_user
 (
@@ -26,7 +16,6 @@ create procedure update_user
     in prmsn int
 )
 begin
-
     update users 
     set 
         first_name = fname,

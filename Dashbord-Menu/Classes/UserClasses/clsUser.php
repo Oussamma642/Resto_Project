@@ -32,6 +32,7 @@ class clsUser
         return Dbh::connect();
     }
     
+
     public function __construct($id=null, $fname='', $lname='', $email='', $pswd='', $phone='' ,$role='', $prmsn=null)
     {
         $this->user_id = $id;
@@ -183,7 +184,7 @@ class clsUser
         $prmsn = $this->permissions;
 
         $conn = self::Conncect();
-        $stmt = $conn->prepare("CALL update_user($id,'$fname', '$lname', '$email', '$pswd', '$role', '$phone', $prmsn)");
+        $stmt = $conn->prepare("CALL update_user($id,'$fname', '$lname', '$email', '$pswd', '$phone', '$role', $prmsn)");
         return $stmt->execute();
 
     }

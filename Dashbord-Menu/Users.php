@@ -320,7 +320,7 @@ if (isset($_SESSION['updateUserStatus']))
                         <!-- User ID -->
                         <div class="form-group">
                             <label for="firstName"><b>User ID:</b></label>
-                            <input type="text" disabled class="form-control" id="id" name="id">
+                            <input type="text" readonly class="form-control" id="id" name="id">
                         </div>
 
                         <!-- First Name -->
