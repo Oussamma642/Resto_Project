@@ -6,6 +6,25 @@ Ce répertoire représente le côté Admin qui gère plusieurs fonctionnalités 
 ## Structure du projet
 La structure du projet est comme suit :
 
+C:.
+├───css
+├───Dashbord-Menu
+│   └───Classes
+│       ├───DbhConnection
+│       ├───OpeningClosingClasses
+│       ├───OrderClasses
+│       ├───ReservationClasses
+│       └───UserClasses
+├───DataBase
+│   ├───Menu_items
+│   ├───Orders
+│   ├───OuvertureFermture
+│   ├───Reservations
+│   └───Users
+└───img
+
+## Une Explication détaillée:
+
 ### Dossier `css`
 - `style.css`  
 - `boostrap.css`  
@@ -74,4 +93,6 @@ Ce dossier contient tout ce qui concerne les utilisateurs dans la base de donné
 #### Dossier `Menu_items`
 ### Dossier `Images`
 Ce dossier contient toutes les images nécessaires pour l'interface.
+
+
 
