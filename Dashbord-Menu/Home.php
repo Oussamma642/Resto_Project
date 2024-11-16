@@ -1,12 +1,15 @@
 <?php
     
-    include_once 'Classes/UserClasses/clsUser.php';
-    session_start();
 
+    include_once 'Classes/UserClasses/clsUser.php';
+    
+    session_start();
     if (!isset($_SESSION['currUser']))
     {
-      header("location:./Authentication.php");  
+      header("location:../Authentication.php");  
     }
+
+
 
     $currUser = $_SESSION['currUser'];
 

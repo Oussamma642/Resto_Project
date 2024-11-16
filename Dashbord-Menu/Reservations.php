@@ -1,6 +1,17 @@
 <?php
 
+session_start();
+
+if (!isset($_SESSION['currUser']))
+{
+    header("location:../Authentication.php");
+}
+
+
+
 include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\ReservationClasses\LstReservation.php';
+
+
 $reservations = getReservationList();
 
 /* Show the message of the modification on a reservation within alert JS function */

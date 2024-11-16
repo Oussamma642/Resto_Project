@@ -1,5 +1,12 @@
 <?php
 
+session_start();
+if (!isset($_SESSION['currUser']))
+{
+    header("location:../Authentication.php");
+}
+
+
 include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\OpeningClosingClasses\clsOpeningClose.php';
 $list = clsOpeningClose::ListOpCl();
 
