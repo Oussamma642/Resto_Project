@@ -1,7 +1,8 @@
 <?php
 
-
 include_once 'Classes/UserClasses/clsUser.php';
+include_once 'Classes/ContactsClasses/clsListContacts.php';
+
 session_start();
 
 if (!isset($_SESSION['currUser']))
@@ -17,6 +18,8 @@ if (!$currUser->CheckAccessPermission(Permissions::Contact))
     header("location:Home.php");
 }
 
+$LstContact = clsListContacts::ListContacts();
+
 
 ?>
 
@@ -29,6 +32,7 @@ if (!$currUser->CheckAccessPermission(Permissions::Contact))
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="../css/style.css">
+    <!-- <link rel="stylesheet" href="../css/bootstrap.css"> -->
 </head>
 
 <body>
@@ -127,52 +131,69 @@ if (!$currUser->CheckAccessPermission(Permissions::Contact))
                         <h3>Contacts</h3>
 
                         <div class="table-responsive">
-                            <table>
+                            <table style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Nom Complet</th>
                                         <th>Email</th>
                                         <th>Date</th>
                                         <th>Objet</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
+
+                                <tbody>
+                                    <?php
+    foreach($LstContact as $l)
+    {
+        ?>
+                                    <tr>
+                                        <td><?=$l['fullName']?></td>
+                                        <td><?=$l['email']?></td>
+                                        <td><?=$l['created_at']?></td>
+                                        <td><?=$l['subject']?></td>
+                                        <td><?=$l['status']?></td>
+                                        <td>
+                                            <button style="width: 100%" type="button" class="btn btn-danger"
+                                                data-toggle="modal" data-target="#modifyModal"
+                                                onclick="populateForm(<?= htmlspecialchars(json_encode($usr)) ?>)">
+                                                Modify
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <?php
+    }
+?>
+                                </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <div class="summary" style="margin-top">
-                        <div class="summary-card">
-                            <div class="summary-single">
-                                <span class="ti-id-badge"></span>
-                                <div>
-                                    <h5>196</h5>
-                                    <small>Pending Contacts</small>
-                                </div>
-                            </div>
-                            <div class="summary-single">
-                                <span class="ti-calendar"></span>
-                                <div>
-                                    <h5>16</h5>
-                                    <small>Resolved Contacts</small>
-                                </div>
-                            </div>
-                            <div class="summary-single">
-                                <span class="ti-face-smile"></span>
-                                <div>
-                                    <h5>12</h5>
-                                    <small>Archived Contacts</small>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
             </section>
 
         </main>
 
     </div>
+
+    <script>
+    function populateForm(user) {
+        document.getElementById('id').value = user.user_id;
+        document.getElementById('firstName').value = user.first_name;
+        document.getElementById('lastName').value = user.last_name;
+        document.getElementById('email').value = user.email;
+        document.getElementById('password').value = user.password;
+        document.getElementById('phoneNumber').value = user.phone_number;
+        // Further logic to populate permissions if needed
+    }
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 </body>
 

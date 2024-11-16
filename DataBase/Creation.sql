@@ -68,12 +68,15 @@ CREATE TABLE order_items (
 CREATE TABLE contacts (
     contact_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,  -- Référence à l'utilisateur qui a écrit le message
-    name VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL,
+    subject VARCHAR(255) NOT NULL,  -- Objet du message de contact
     message TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('pending', 'resolved', 'archived') DEFAULT 'pending', -- Statut du message
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Date de création
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- Dernière mise à jour
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE SET NULL
 );
+
 
 CREATE TABLE reviews (
     review_id INT AUTO_INCREMENT PRIMARY KEY,

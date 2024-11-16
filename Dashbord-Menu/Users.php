@@ -5,12 +5,10 @@ include_once 'Classes/UserClasses/clsAddNewUser.php';
 include_once 'Classes/UserClasses/ModifyUser.php';
 
 session_start();
-
 if (!isset($_SESSION['currUser']))
 {
     header("location:../Authentication.php");
 }
-
 
 //Object's Instantiation of the Login user ;
 $currUser = $_SESSION['currUser'];
