@@ -65,6 +65,13 @@ Ce dossier contient tout ce qui concerne les utilisateurs dans la base de donné
 - `ListUsersProc.sql` (Procédure pour lister tous les utilisateurs)
 - `UpdateProc.sql` (Procédure pour modifier un utilisateur)
 
+#### Dossier `Reservations`
+- `contient des fichiers sql pour les reservations dans la base des donnees`
+#### Dossier `OuvertureFermeture`
+- `contient des fichiers sql pour les Ouverture/Fermeture dans la base des donnees`
+#### Dossier `Oders`
+- `contient des fichiers sql pour les commandes dans la base des donnees`
+#### Dossier `Menu_items`
 ### Dossier `Images`
 Ce dossier contient toutes les images nécessaires pour l'interface.
 
