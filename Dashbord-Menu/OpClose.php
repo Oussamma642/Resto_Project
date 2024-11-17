@@ -25,7 +25,7 @@ if (isset($_POST['btn']))
     if (isset($_POST['open']) && isset($_POST['close']) && isset($_POST['id']) )
     {
         $status = clsOpeningClose::Modify($_POST['id'], $_POST['open'], $_POST['close']);
-        header("location:OuvertureFermeture.php");
+        header("location:OpClose.php");
     }
 }
 

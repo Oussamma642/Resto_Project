@@ -20,4 +20,11 @@ class clsContact
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function ModifyContact($contactID, $adminRep, $p_status)
+    {
+        $conn = self::Connect();
+        $stmt = $conn->prepare("CALL UpdateContactResponse($contactID, '$adminRep', '$p_status')");
+        return $stmt->execute();
+
+    }
 }

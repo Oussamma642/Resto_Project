@@ -72,6 +72,7 @@ CREATE TABLE contacts (
     subject VARCHAR(255) NOT NULL,  -- Objet du message de contact
     message TEXT NOT NULL,
     status ENUM('pending', 'resolved', 'archived') DEFAULT 'pending', -- Statut du message
+    response text DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Date de création
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- Dernière mise à jour
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE SET NULL

@@ -2,6 +2,7 @@
 
 include_once 'Classes/UserClasses/clsUser.php';
 include_once 'Classes/ContactsClasses/clsListContacts.php';
+include_once 'Classes/ContactsClasses/clsModifyContact.php';
 
 session_start();
 
@@ -18,8 +19,14 @@ if (!$currUser->CheckAccessPermission(Permissions::Contact))
     header("location:Home.php");
 }
 
+// Get The Contact List
 $LstContact = clsListContacts::ListContacts();
 
+// When To answer the Contact message
+if (isset($_POST['send']))
+{
+    clsModifyContact::ModifyContact();
+}
 
 ?>
 
@@ -33,6 +40,13 @@ $LstContact = clsListContacts::ListContacts();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <style>
+    .message-box {
+        max-height: 200px;
+        overflow-y: auto;
+        background-color: #f8f9fa;
+    }
+    </style>
 </head>
 
 <body>
@@ -174,7 +188,8 @@ $LstContact = clsListContacts::ListContacts();
                     </div>
                     <div class="modal-body">
                         <form id="MessageContent" method="post">
-
+                            <!-- Contact ID -->
+                            <input type="hidden" name="contactId" id="contactId">
                             <!-- User ID -->
                             <div class="form-group">
                                 <label for="firstName"><b>User ID:</b></label>
@@ -186,7 +201,7 @@ $LstContact = clsListContacts::ListContacts();
                                 <input type="text" readonly class="form-control" id="fullname" name="fullname">
                             </div>
 
-                            <!-- User Emil -->
+                            <!-- User Email -->
                             <div class="form-group">
                                 <label for="firstName"><b>User Email:</b></label>
                                 <input type="text" readonly class="form-control" id="email" name="email">
@@ -196,26 +211,22 @@ $LstContact = clsListContacts::ListContacts();
 
                             <div class="form-group">
                                 <label for=""><b>The Message:</b></label>
-                                <div id='messageBox' class="message-box p-3 border rounded bg-light mb-4"
-                                    style="white-space: pre-wrap; word-wrap: break-word;">
+                                <div id='messageBox' class="message-box p-3 border rounded bg-light mb-4">
                                     This is the received message.
                                 </div>
                             </div>
 
                             <!-- Reponse -->
-
                             <div class="form-group">
                                 <label for="tArea" class="form-label">Your
                                     Message</label>
                                 <textarea class="form-control" name='reponse' id="tArea" rows="4"
                                     placeholder="Write your message here...">
                                 </textarea>
-
                             </div>
                     </div>
-
                     <!-- Submit -->
-                    <button type="submit" name="modifyUserBtn" class="btn btn-primary">Save changes</button>
+                    <button type="submit" name="send" class="btn btn-primary">Send</button>
                     </form>
                 </div>
             </div>
@@ -225,6 +236,7 @@ $LstContact = clsListContacts::ListContacts();
 
     <script>
     function populateForm(l) {
+        document.getElementById('contactId').value = l.contact_id
         document.getElementById('id').value = l.user_id;
         document.getElementById('fullname').value = l.fullName;
         document.getElementById('email').value = l.email;
