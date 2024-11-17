@@ -17,7 +17,7 @@ CREATE TABLE users (
 );
 
 INSERT into users (first_name, last_name, email, password, role, phone_number, permissions)
-VALUES ('Mehdi', 'Fatimy', 'mehdifatimi84@gmail.com', '5555', 'client', '050505', 0);
+VALUES ('Azzedine', 'Rih', 'azzedinerih2001@gmail.com', '4444', 'client', '06060606', 0);
 
 CREATE TABLE menu_items (
     item_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -82,7 +82,7 @@ CREATE TABLE contacts (
 );
 
 INSERT INTO contacts (user_id, email, subject, message) 
-VALUES (31, 'mehdifatimi84@gmail.com', 'Demande emploi', 'Hellllooooooo bro how are you doing');
+VALUES (32, 'azzedinerih2001@gmail.com', 'Subject', 'Bonjour bro how are you doing');
 
 CREATE TABLE reviews (
     review_id INT AUTO_INCREMENT PRIMARY KEY,
