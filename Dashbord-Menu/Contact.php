@@ -141,10 +141,10 @@ if (isset($_POST['send']))
                     <table class="table striped" style="margin-top:100px">
                         <thead>
                             <tr>
-                                <th>Nom Complet</th>
+                                <th>FullName</th>
                                 <th>Email</th>
                                 <th>Date</th>
-                                <th>Objet</th>
+                                <th>Subject</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
