@@ -9,6 +9,7 @@ session_start();
 if (!isset($_SESSION['currUser']))
 {
   header("location:./Authentication.php");  
+  exit();
 }
 
 $currUser = $_SESSION['currUser'];
@@ -192,23 +193,29 @@ if (isset($_POST['send']))
                             <input type="hidden" name="contactId" id="contactId">
                             <!-- User ID -->
                             <div class="form-group">
-                                <label for="firstName"><b>User ID:</b></label>
-                                <input type="text" readonly class="form-control" id="id" name="id">
+                                <label for="usrId"><b>User ID:</b></label>
+                                <input type="text" readonly class="form-control" id="usrId" name="id">
                             </div>
                             <!-- User Full Name -->
                             <div class="form-group">
-                                <label for="firstName"><b>User FullName:</b></label>
+                                <label for="fullname"><b>User FullName:</b></label>
                                 <input type="text" readonly class="form-control" id="fullname" name="fullname">
                             </div>
 
                             <!-- User Email -->
                             <div class="form-group">
-                                <label for="firstName"><b>User Email:</b></label>
+                                <label for="email"><b>User Email:</b></label>
                                 <input type="text" readonly class="form-control" id="email" name="email">
                             </div>
 
-                            <!-- Mssage box -->
+                            <!-- Subject of The email -->
 
+                            <div class="form-group">
+                                <label for="subject"><b>Subject</b></label>
+                                <input type="text" readonly class="form-control" id="subject" name="subject">
+                            </div>
+
+                            <!-- Mssage box -->
                             <div class="form-group">
                                 <label for=""><b>The Message:</b></label>
                                 <div id='messageBox' class="message-box p-3 border rounded bg-light mb-4">
@@ -237,9 +244,10 @@ if (isset($_POST['send']))
     <script>
     function populateForm(l) {
         document.getElementById('contactId').value = l.contact_id
-        document.getElementById('id').value = l.user_id;
+        document.getElementById('usrId').value = l.user_id;
         document.getElementById('fullname').value = l.fullName;
         document.getElementById('email').value = l.email;
+        document.getElementById('subject').value = l.subject;
         document.getElementById('messageBox').innerHTML = l.message;
         // Further logic to populate permissions if needed
     }
