@@ -163,16 +163,21 @@ if (isset($_SESSION['updateUserStatus']))
 
     <div class="main-content">
         <header>
-            <h3 class="mt-3" style="padding-left: 30%;">Welcome
+            <h3 class="mt-3" style="padding-left: 30%;">User FullName:
                 <?=$currUser->getLastName() . ' ' . $currUser->getFirstName()?></h3>
         </header>
 
         <main>
-            <h3 class="text-center">List Of Users</h3>
+
 
             <div class="container">
                 <div class="row">
                     <div class="col">
+                        <button style="width" type="button" class="btn btn-danger" data-toggle="modal"
+                            data-target="#addUserModal">
+                            Add User
+                        </button>
+
                         <table class="table table-striped mt-3">
                             <thead>
                                 <tr class="text-center">
@@ -210,15 +215,6 @@ if (isset($_SESSION['updateUserStatus']))
 
                             </tbody>
                         </table>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col mt-3">
-
-                        <button style="width:100%" type="button" class="btn btn-danger" data-toggle="modal"
-                            data-target="#addUserModal">
-                            Add User
-                        </button>
                     </div>
                 </div>
             </div>
