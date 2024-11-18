@@ -21,22 +21,18 @@ include_once '.\Classes\ReservationClasses\clsLstReservation.php';
 $reservations = clsListReservation::LstReservation();
 
 /* Show the message of the modification on a reservation within alert JS function */
-function afficherMessage()
-{
-    // session_start();  // Start the session
-    // Check if a message is set in the session
-    if (isset($_SESSION['Message'])) {
-        // Retrieve the message from the session
-        $message = $_SESSION['Message'];
-    
-        // Display the message in a JavaScript alert
-        echo "<script type='text/javascript'>alert('$message');</script>";
-    
-        // Clear the message after displaying it so it doesn't show again on refresh
-        unset($_SESSION['Message']);
-    }    
-}
-afficherMessage();
+
+if (isset($_SESSION['Message'])) {
+    // Retrieve the message from the session
+    $message = $_SESSION['Message'];
+
+    // Display the message in a JavaScript alert
+    echo "<script type='text/javascript'>alert('$message');</script>";
+
+    // Clear the message after displaying it so it doesn't show again on refresh
+    unset($_SESSION['Message']);
+}    
+
 
 ?>
 <!DOCTYPE html>
@@ -225,14 +221,12 @@ afficherMessage();
                 </div>
             </div>
 
-
-
             <!-- <h1 class="dash-title">Reservations Field</h1> -->
 
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <table class="table table-striped mt-3">
+                        <table class="table table-striped mt-3" style="margin-bottom:150px">
                             <thead>
                                 <tr>
                                     <th>First Name</th>

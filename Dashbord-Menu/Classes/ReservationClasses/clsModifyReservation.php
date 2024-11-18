@@ -1,6 +1,6 @@
 <?php
 
-include_once 'clsReservation';
+include_once 'clsReservation.php';
 
 class clsModifyReservation 
 {
@@ -18,17 +18,19 @@ class clsModifyReservation
     {
         if (self::CheckForms()) 
         {
-            clsReservation::ModifyReservation($_GET['id'], $_GET['status']);
-            // echo "Reservation status updated to: " . htmlspecialchars($_GET['status']);
+            session_start();
+            $_SESSION['Message'] = (clsReservation::ModifyReservation($_GET['id'], $_GET['status'])) ? 
+            "The status changed succufully!!" :
+            "Failed to change the status!!";
         } 
         else 
         {
-            echo "Invalid parameters.";
+            $_SESSION['Message'] = "Missing filed, check your form!";
         }
+        header("location:../../Reservations.php");
     }
 }
 
-// Ensure the script only runs if accessed directly
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     clsModifyReservation::ModifyReservation();
 }
