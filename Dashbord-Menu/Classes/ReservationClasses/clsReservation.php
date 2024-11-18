@@ -12,8 +12,7 @@ class clsReservation
 
     // Reservations List
     public static function ListReservation()
-    {
-        
+    { 
         // Conncet with DB
         $conn = clsReservation::Conncect();
 
@@ -24,18 +23,12 @@ class clsReservation
         // Fetch all reservations as an associative array
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
-    public static function AcceptReservation($id)
+  
+    public static function ModifyReservation($id, $status)
     {
         $conn = clsReservation::Conncect();
-        $stmt = $conn->prepare("CALL ModifyReservationStatus($id, 'confirmed')");
+        $stmt = $conn->prepare("CALL ModifyReservationStatus($id, '$status')");
         return $stmt->execute();
     }
     
-    public static function CancelReservation($id)
-    {
-        $conn = clsReservation::Conncect();
-        $stmt = $conn->prepare("CALL ModifyReservationStatus($id, 'canceled')");
-        return $stmt->execute();
-    }   
 }

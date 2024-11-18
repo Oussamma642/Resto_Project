@@ -16,15 +16,14 @@ if (!$currUser->CheckAccessPermission(Permissions::Reservation))
     header("location:Home.php");
 }
 
-include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\ReservationClasses\LstReservation.php';
+include_once '.\Classes\ReservationClasses\clsLstReservation.php';
 
-
-$reservations = getReservationList();
+$reservations = clsListReservation::LstReservation();
 
 /* Show the message of the modification on a reservation within alert JS function */
 function afficherMessage()
 {
-    session_start();  // Start the session
+    // session_start();  // Start the session
     // Check if a message is set in the session
     if (isset($_SESSION['Message'])) {
         // Retrieve the message from the session
@@ -49,6 +48,7 @@ afficherMessage();
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
 
     <style>
     /* Style of Button Handle Staut  */
@@ -107,11 +107,11 @@ afficherMessage();
     <input type="checkbox" id="sidebar-toggle">
 
     <div class="sidebar">
-        <div class="sidebar-header">
-            <h3 class="brand">
+        <div class="sidebar-header mt-3">
+            <h5 class="brand">
                 <span class="ti-unlink"></span>
                 <span>Admin-Menu</span>
-            </h3>
+            </h5>
             <label for="sidebar-toggle" class="ti-menu-alt"></label>
         </div>
 
@@ -182,16 +182,11 @@ afficherMessage();
     <div class="main-content">
 
         <header>
-            <div class="search-wrapper">
+            <div class="search-wrapper mt-2">
                 <span class="ti-search"></span>
                 <input type="search" placeholder="Search">
             </div>
 
-            <div class="social-icons">
-                <span class="ti-bell"></span>
-                <span class="ti-comment"></span>
-                <div></div>
-            </div>
         </header>
 
         <main>
@@ -201,40 +196,31 @@ afficherMessage();
             <div class="dash-cards">
                 <div class="card-single">
                     <div class="card-body">
-                        <span class="ti-briefcase"></span>
-                        <div>
-                            <h5>Account Balance</h5>
-                            <h4>$30,659.45</h4>
+                        <span class="ti-close"></span>
+                        <div class="mt-4">
+                            <h5>Canceled</h5>
+                            <h4>30</h4>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
                     </div>
                 </div>
 
                 <div class="card-single">
                     <div class="card-body">
                         <span class="ti-reload"></span>
-                        <div>
+                        <div class="mt-4">
                             <h5>Pending</h5>
-                            <h4>$19,500.45</h4>
+                            <h4>19</h4>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
                     </div>
                 </div>
 
                 <div class="card-single">
                     <div class="card-body">
                         <span class="ti-check-box"></span>
-                        <div>
-                            <h5>Processed</h5>
-                            <h4>$20,659</h4>
+                        <div class="mt-4">
+                            <h5>Confirmed</h5>
+                            <h4>20</h4>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
                     </div>
                 </div>
             </div>
@@ -243,102 +229,58 @@ afficherMessage();
 
             <!-- <h1 class="dash-title">Reservations Field</h1> -->
 
-            <section class="recent">
-                <div class="activity-grid">
-                    <div class="activity-card">
-                        <h3>Reservation List</h3>
-
-                        <div class="table-responsive">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Reservation Date</th>
-                                        <th>Time</th>
-                                        <th>Guests Number</th>
-                                        <th>Status</th>
-                                        <th>Handle Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-striped mt-3">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Reservation Date</th>
+                                    <th>Time</th>
+                                    <th>Guests Number</th>
+                                    <th>Status</th>
+                                    <th>Handle Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
                                 foreach($reservations as $r)
                                 {
                                     ?>
-                                    <tr>
-                                        <td><?=$r['first_name']?></td>
-                                        <td><?=$r['last_name']?></td>
-                                        <td><?=$r['reservation_date']?></td>
-                                        <td><?=$r['time_slot']?></td>
-                                        <td><?=$r['number_of_guests']?></td>
-                                        <td><?=$r['status']?></td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <button class="dropbtn"><?=$r['status']?></button>
-                                                <div class="dropdown-content">
-                                                    <a
-                                                        href="./Classes/ReservationClasses/AcceptReservation.php?id=<?=$r['reservation_id']?>">Accept</a>
-                                                    <a
-                                                        href="./Classes/ReservationClasses/CancelReservation.php?id=<?=$r['reservation_id']?>">Cancel</a>
-                                                </div>
+                                <tr>
+                                    <td><?=$r['first_name']?></td>
+                                    <td><?=$r['last_name']?></td>
+                                    <td><?=$r['reservation_date']?></td>
+                                    <td><?=$r['time_slot']?></td>
+                                    <td><?=$r['number_of_guests']?></td>
+                                    <td><?=$r['status']?></td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="dropbtn">Handle Status</button>
+                                            <div class="dropdown-content">
+                                                <a
+                                                    href="./Classes/ReservationClasses/clsModifyReservation.php?status=pending&id=<?=$r['reservation_id']?>">Pending</a>
+                                                <a
+                                                    href="./Classes/ReservationClasses/clsModifyReservation.php?status=confirmed&id=<?=$r['reservation_id']?>">Confirm</a>
+                                                <a
+                                                    href="./Classes/ReservationClasses/clsModifyReservation.php?status=canceled&id=<?=$r['reservation_id']?>">Cancel</a>
                                             </div>
+                                        </div>
 
-                                        </td>
-                                    </tr>
-                                    <?php   
+                                    </td>
+                                </tr>
+                                <?php   
                                 }
                             ?>
 
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                            </tbody>
 
-                    <div class="summary">
-                        <div class="summary-card">
-                            <div class="summary-single">
-                                <span class="ti-id-badge"></span>
-                                <div>
-                                    <h5>196</h5>
-                                    <small>Number of staff</small>
-                                </div>
-                            </div>
-                            <div class="summary-single">
-                                <span class="ti-calendar"></span>
-                                <div>
-                                    <h5>16</h5>
-                                    <small>Number of leave</small>
-                                </div>
-                            </div>
-                            <div class="summary-single">
-                                <span class="ti-face-smile"></span>
-                                <div>
-                                    <h5>12</h5>
-                                    <small>Profile update request</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bday-card">
-                            <div class="bday-flex">
-                                <div class="bday-img"></div>
-                                <div class="bday-info">
-                                    <h5>Dwayne F. Sanders</h5>
-                                    <small>Birthday Today</small>
-                                </div>
-                            </div>
-
-                            <div class="text-center">
-                                <button>
-                                    <span class="ti-gift"></span>
-                                    Wish him
-                                </button>
-                            </div>
-                        </div>
+                        </table>
                     </div>
                 </div>
-            </section>
+            </div>
 
         </main>
     </div>

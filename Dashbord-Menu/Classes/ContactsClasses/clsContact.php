@@ -81,27 +81,27 @@ class clsContact
     }
 
     public static function ModifyContact($contactID, $adminRep, $p_status)
-{
-    try {
-        $conn = self::Connect();
-
-        // Préparer la requête avec des paramètres liés
-        $stmt = $conn->prepare('CALL UpdateContactResponse(?, ?, ?)');
-
-        // Exécuter la requête en passant les paramètres
-        return $stmt->execute([$contactID, $adminRep, $p_status]);
-
-    } catch (PDOException $e) {
-        // Gérer les erreurs PDO (log ou affichage d'un message)
-        echo 'Error: ' . $e->getMessage();
-        return false;
+    {
+        try {
+            $conn = self::Connect();
+        
+            // Préparer la requête avec des paramètres liés
+            $stmt = $conn->prepare('CALL UpdateContactResponse(?, ?, ?)');
+        
+            // Exécuter la requête en passant les paramètres
+            return $stmt->execute([$contactID, $adminRep, $p_status]);
+        
+        } catch (PDOException $e) {
+            // Gérer les erreurs PDO (log ou affichage d'un message)
+            echo 'Error: ' . $e->getMessage();
+            return false;
+        }
     }
-}
 
 
     public static function SendMail($To, $fullname , $subject, $response)
-    {
-        self::_SendMail($To, $fullname , $subject, $response);   
+    {        
+        self::_SendMail($To, $fullname , $subject, trim($response));   
     }
 
 }
