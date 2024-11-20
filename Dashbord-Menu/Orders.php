@@ -104,11 +104,11 @@ if (isset($_SESSION['Message'])) {
     <input type="checkbox" id="sidebar-toggle">
 
     <div class="sidebar">
-        <div class="sidebar-header">
-            <h3 class="brand">
+        <div class="sidebar-header mt-3">
+            <h5 class="brand">
                 <span class="ti-unlink"></span>
                 <span>Admin-Menu</span>
-            </h3>
+            </h5>
             <label for="sidebar-toggle" class="ti-menu-alt"></label>
         </div>
 
