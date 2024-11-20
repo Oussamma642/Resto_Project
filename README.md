@@ -3,6 +3,9 @@
 ## Description
 Ce répertoire représente le côté Admin qui gère plusieurs fonctionnalités relatives à un projet de restaurant. Il est composé de 4 dossiers principaux. Dans chaque dossier, il existe des sous-dossiers/sous-fichiers.
 
+## Les téchnologies utilisées
+PHP, HTML, CSS, JavaScript
+
 ## Structure du projet
 La structure du projet est comme suit :
 
