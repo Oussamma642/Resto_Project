@@ -10,7 +10,9 @@ SELECT
     users.last_name,
     users.email,
     orders.order_date,
-    orders.delivery_method
+    orders.delivery_method,
+    orders.delivery_address,
+    orders.status
     FROM 
     users
 INNER JOIN orders ON orders.user_id = users.user_id;
@@ -19,15 +21,14 @@ DELIMITER ;
 
 
 -- The content of each order
+DROP PROCEDURE Order_Items_Details;
 DELIMITER //
 CREATE PROCEDURE Order_Items_Details(in orderId int)
 BEGIN 
     SELECT
         menu_items.name AS DishName,
         order_items.price, 
-        order_items.quantity,  
-        orders.delivery_address,
-        orders.status
+        order_items.quantity 
     FROM 
         users
     INNER JOIN orders ON orders.user_id = users.user_id
@@ -44,7 +45,7 @@ returns DECIMAL
 reads sql data
 BEGIN
     DECLARE sumOrd DECIMAL(10,2);
-    SELECT sum(price * quantity) INTO sumOrd
+    SELECT sum(price * quantity) as total_amount INTO sumOrd
     FROM order_items
     where order_id = OrderId;
     return sumOrd;

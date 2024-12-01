@@ -10,9 +10,6 @@ function ModifyOrder()
     if (isset($_GET['id']) && isset($_GET['status']) && isset($_GET['email']) && isset($_GET['lname']))
     {
 
-       // ModifyOrder($id, $status, $email, $lname) : bool
-
-
         if (clsOrders::ModifyOrder($_GET['id'], $_GET['status'], $_GET['email'],$_GET['lname']))
         {
             $_SESSION['Message'] = "The Order has been " . $_GET['status'] ." succufully!!";

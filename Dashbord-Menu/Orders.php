@@ -237,12 +237,12 @@ if (isset($_SESSION['Message'])) {
                                     <th>Email</th>
                                     <th>Date</th>
                                     <th>Delivery Method</th>
+                                    <th>Adress</th>
+                                    <th>Status</th>
                                     <th>Details</th>
                                 </tr>
                             </thead>
-
                             <tbody>
-
                                 <?php
                                     foreach($orders as $or)
                                     {   
@@ -252,6 +252,8 @@ if (isset($_SESSION['Message'])) {
                                     <td><?=$or['email']?></td>
                                     <td><?=$or['order_date']?></td>
                                     <td><?=$or['delivery_method']?></td>
+                                    <td><?=$or['delivery_address']?></td>
+                                    <td><?=$or['status']?></td>
 
                                     <td><button type="button" class="btn btn-danger" data-toggle="modal"
                                             data-target="#modifyOrder"
@@ -273,8 +275,8 @@ if (isset($_SESSION['Message'])) {
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div style="width:100%" class="modal-body">
-                                        <!-- <div id="orderDetails" class="mt-4"></div> -->
+                                    <div class="modal-body">
+
 
                                         <table class="table table-bordered mt-4">
                                             <thead>
@@ -282,14 +284,16 @@ if (isset($_SESSION['Message'])) {
                                                     <th>Dish Name</th>
                                                     <th>Price</th>
                                                     <th>Quantity</th>
-                                                    <th>Delivery Address</th>
-                                                    <th>Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="orderDetails">
 
                                             </tbody>
                                         </table>
+
+                                        <div class="mt-4">
+                                            <h1 id="orderTotal">Hello</h1>
+                                        </div>
 
                                     </div>
                                     <!-- Submit -->
@@ -310,10 +314,10 @@ if (isset($_SESSION['Message'])) {
 
     <script>
     function fetchOrderDetails(orderId) {
-        const BASE_URL = `http://localhost/Resto_Project/Dashbord-Menu/Classes/OrderClasses/order_items.php`;
+        const BASE_URL = `http://localhost/Resto_Project/Dashbord-Menu/Classes/OrderClasses`;
 
         const fetchDetails = async () => {
-            const response = await fetch(`${BASE_URL}?orderId=${orderId}`);
+            const response = await fetch(`${BASE_URL}/order_items.php?orderId=${orderId}`);
             const data = await response.json();
 
             let detailsTable = '';
@@ -324,12 +328,15 @@ if (isset($_SESSION['Message'])) {
                 <td>${data[i].DishName}</td>
                 <td>${data[i].price}</td>
                 <td>${data[i].quantity}</td>
-                <td>${data[i].delivery_address}</td>
-                <td>${data[i].status}</td>
             </tr>
             `;
             }
             document.getElementById('orderDetails').innerHTML = detailsTable;
+
+            // Total AMount
+            response = await fetch(`${BASE_URL}/order_total.php?orderId=${orderId}`);
+            let totalData = await response.json();
+            document.getElementById('orderTotal').innerHTML = `Total Amount: ${totalData.total_amount}`;
         }
         fetchDetails();
     }
