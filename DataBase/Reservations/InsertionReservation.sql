@@ -14,3 +14,12 @@ INSERT INTO reservations (user_id, reservation_date, time_slot, number_of_guests
 (9, '2024-11-09', '20:15:00', 3, 'pending'),
 (10, '2024-11-10', '18:30:00', 1, 'pending');
 
+INSERT INTO reservations (user_id, reservation_date, time_slot, number_of_guests, status, nbrTable)
+VALUES (
+    (SELECT user_id FROM users WHERE email = 'gregoremendell@gmail.com'),  -- Récupération de l'user_id
+    '2024-12-05',   -- Date de la réservation
+    '18:00',        -- Créneau horaire (format HH:MM)
+    4,              -- Nombre de convives
+    'pending',      -- Statut initial de la réservation
+    1               -- Numéro de la table (exemple)
+);

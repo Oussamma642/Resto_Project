@@ -1,8 +1,12 @@
 <?php
 
 
+include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\ContactsClasses\clsContact.php';
 class clsReservation
 {
+
+    protected $Contact;
+    
 
     private static function Conncect()
     {
@@ -24,11 +28,27 @@ class clsReservation
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
   
-    public static function ModifyReservation($id, $status)
+    public function __construct()
+    {
+        $this->Contact = new clsContact();   
+    }
+
+    public static function ModifyReservation($id, $status, $email, $lname) : bool
     {
         $conn = clsReservation::Conncect();
+        
         $stmt = $conn->prepare("CALL ModifyReservationStatus($id, '$status')");
-        return $stmt->execute();
+        $stmt->execute();
+
+        if ($stmt)
+        {
+            clsContact::SendMail($email, $lname, "Votre Reservation", "", true, $status);
+            return true;
+        }
+        else {
+            return false;
+        }
+
     }
     
 }

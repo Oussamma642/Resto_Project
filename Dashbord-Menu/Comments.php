@@ -12,7 +12,7 @@ $currUser = $_SESSION['currUser'];
 
 // Check if user has Permission on this page:
 if (!$currUser->CheckAccessPermission(Permissions::CommentsSection))
-{
+{   
     header("location:Home.php");
 }
 

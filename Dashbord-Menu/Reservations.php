@@ -231,8 +231,10 @@ if (isset($_SESSION['Message'])) {
                                 <tr>
                                     <th>First Name</th>
                                     <th>Last Name</th>
+                                    <th>Email</th>
                                     <th>Reservation Date</th>
                                     <th>Time</th>
+                                    <th>Tables</th>
                                     <th>Guests Number</th>
                                     <th>Status</th>
                                     <th>Handle Status</th>
@@ -246,8 +248,10 @@ if (isset($_SESSION['Message'])) {
                                 <tr>
                                     <td><?=$r['first_name']?></td>
                                     <td><?=$r['last_name']?></td>
+                                    <td><?=$r['email']?></td>
                                     <td><?=$r['reservation_date']?></td>
                                     <td><?=$r['time_slot']?></td>
+                                    <td><?=$r['nbrTable']?></td>
                                     <td><?=$r['number_of_guests']?></td>
                                     <td><?=$r['status']?></td>
                                     <td>
@@ -255,11 +259,11 @@ if (isset($_SESSION['Message'])) {
                                             <button class="dropbtn">Handle Status</button>
                                             <div class="dropdown-content">
                                                 <a
-                                                    href="./Classes/ReservationClasses/clsModifyReservation.php?status=pending&id=<?=$r['reservation_id']?>">Pending</a>
+                                                    href="./Classes/ReservationClasses/clsModifyReservation.php?status=pending&id=<?=$r['reservation_id']?>&email=<?=$r['email']?>&lname=<?=$r['last_name']?>">Pending</a>
                                                 <a
-                                                    href="./Classes/ReservationClasses/clsModifyReservation.php?status=confirmed&id=<?=$r['reservation_id']?>">Confirm</a>
+                                                    href="./Classes/ReservationClasses/clsModifyReservation.php?status=confirmed&id=<?=$r['reservation_id']?>&email=<?=$r['email']?>&lname=<?=$r['last_name']?>">Confirm</a>
                                                 <a
-                                                    href="./Classes/ReservationClasses/clsModifyReservation.php?status=canceled&id=<?=$r['reservation_id']?>">Cancel</a>
+                                                    href="./Classes/ReservationClasses/clsModifyReservation.php?status=canceled&id=<?=$r['reservation_id']?>&email=<?=$r['email']?>&lname=<?=$r['last_name']?>">Cancel</a>
                                             </div>
                                         </div>
 

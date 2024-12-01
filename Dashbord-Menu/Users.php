@@ -168,8 +168,6 @@ if (isset($_SESSION['updateUserStatus']))
         </header>
 
         <main>
-
-
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -180,7 +178,7 @@ if (isset($_SESSION['updateUserStatus']))
 
                         <table class="table table-striped mt-3">
                             <thead>
-                                <tr class="text-center">
+                                <tr>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Email</th>

@@ -17,7 +17,8 @@ CREATE TABLE users (
 );
 
 INSERT into users (first_name, last_name, email, password, role, phone_number, permissions)
-VALUES ('Azzedine', 'Rih', 'azzedinerih2001@gmail.com', '4444', 'client', '06060606', 0);
+VALUES ('', '', '@gmail.com', '4444', 'client', '06060606', 0);
+VALUES ('Oussama', 'SAMI-MOHAMED', 'gregoremendell@gmail.com', '9999', 'client', '0652155542', 0);
 
 CREATE TABLE menu_items (
     item_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -41,6 +42,35 @@ CREATE TABLE reservations (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
+
+
+CREATE TABLE reservations (
+    reservation_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    reservation_date DATE NOT NULL,
+    time_slot TIME NOT NULL,
+    nbrTables int not null check (nbrTables <=20),
+    number_of_guests INT NOT NULL check (number_of_guests <= 4 * nbrTables),  -- Suppression du CHECK
+    status ENUM('pending', 'confirmed', 'canceled') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+
+ALTER TABLE reservations
+ADD COLUMN nbrTable INT;
+
+ALTER TABLE reservations
+MODIFY COLUMN nbrTable INT DEFAULT 1;
+
+ALTER TABLE reservations
+ADD CONSTRAINT check_nbrTable CHECK (nbrTable BETWEEN 1 AND 20);
+
+ALTER TABLE reservations
+MODIFY COLUMN number_of_guests INT NOT NULL;
+
+ALTER TABLE reservations
+ADD CONSTRAINT check_number_of_guests CHECK (number_of_guests <= 4 * nbrTable);
 
 
 CREATE TABLE orders (
@@ -82,7 +112,7 @@ CREATE TABLE contacts (
 );
 
 INSERT INTO contacts (user_id, email, subject, message) 
-VALUES (32, 'azzedinerih2001@gmail.com', 'Subject', 'Bonjour bro how are you doing');
+VALUES (32, '@gmail.com', 'Subject', 'Bonjour bro how are you doing');
 
 CREATE TABLE reviews (
     review_id INT AUTO_INCREMENT PRIMARY KEY,

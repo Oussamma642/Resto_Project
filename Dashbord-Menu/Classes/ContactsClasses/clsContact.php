@@ -16,7 +16,7 @@ class clsContact
 {
 
     // Send Email 
-    private static function _SendMail($To, $fullname , $subject, $response)
+    private static function _SendMail($To, $fullname , $subject, $response, $reservation=false, $status="confirmed")
     {
         $mail = new PHPMailer(true);
 
@@ -37,18 +37,29 @@ class clsContact
         //Content
         $mail->isHTML(true);               //Set email format to HTML
         $mail->Subject = $subject;   // email subject headings
-        $mail->Body    = " Cher $fullname
+                
+        if (!$reservation){
 
-        Nous avons bien reçu votre message, Concernant votre demande:
-        <br>-------------------------------------<br>
-        {$response}
-        <br>-------------------------------------<br>
+            $mail->Body = " Cher $fullname
+            Nous avons bien reçu votre message, Concernant votre demande:
+            <br>-------------------------------------<br>
+            {$response}
+            <br>-------------------------------------<br>
+            
+            Si vous avez des questions supplémentaires, n'hésitez pas à nous contacter.
+            
+            Cordialement,
+            L'équipe de Resto_Project" ;
+        }
+        else{
+            $mail->Body = "Cher $fullname,
+            Concernant votre Reservation:
+            Nous voudrons vous dire qu'il a été {$status},
+            Si vous avez des questions supplémentaires, n'hésitez pas à nous contacter.
+            Cordialement,
+            L'équipe de Resto_Project"; 
+        }
 
-        Si vous avez des questions supplémentaires, n'hésitez pas à nous contacter.
-
-        Cordialement,
-        L'équipe de Resto_Project"; 
-    
         // Success sent message alert
         $mail->send();
         // echo
@@ -99,9 +110,9 @@ class clsContact
     }
 
 
-    public static function SendMail($To, $fullname , $subject, $response)
+    public static function SendMail($To, $fullname , $subject, $response, $reservation=false, $status="confirmed")
     {        
-        self::_SendMail($To, $fullname , $subject, trim($response));   
+        self::_SendMail($To, $fullname , $subject, trim($response), $reservation, $status);   
     }
 
 }

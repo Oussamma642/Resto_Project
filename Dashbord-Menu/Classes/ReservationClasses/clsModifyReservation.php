@@ -6,7 +6,7 @@ class clsModifyReservation
 {
     private static function CheckForms(): bool
     {
-        if (isset($_GET['id']) && isset($_GET['status'])) {
+        if (isset($_GET['id']) && isset($_GET['status']) && isset($_GET['email']) && isset($_GET['lname'])) {
             if (in_array($_GET['status'], ['pending', 'confirmed', 'canceled'])) {
                 return true;
             }
@@ -19,7 +19,7 @@ class clsModifyReservation
         if (self::CheckForms()) 
         {
             session_start();
-            $_SESSION['Message'] = (clsReservation::ModifyReservation($_GET['id'], $_GET['status'])) ? 
+            $_SESSION['Message'] = (clsReservation::ModifyReservation($_GET['id'], $_GET['status'], $_GET['email'], $_GET['lname'])) ? 
             "The status changed succufully!!" :
             "Failed to change the status!!";
         } 

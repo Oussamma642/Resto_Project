@@ -1,5 +1,7 @@
 
 
+drop procedure ModifyReservationStatus;
+
 delimiter //
 CREATE PROCEDURE ModifyReservationStatus(in idRes int, in st varchar(30))
 
