@@ -22,6 +22,20 @@ class clsOrders
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function LstContentOrder($orderID)
+    {
+        // Conncet with DB
+        $conn = clsOrders::Conncect();
+        // Prepare and execute the statement
+        $stmt = $conn->prepare("CALL Order_Items_Details($orderID)");
+        $stmt->execute();
+        // Fetch all reservations as an associative array
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    
+
     public static function ModifyOrder($id, $status, $email, $lname) : bool
     {
         // Conncet with DB

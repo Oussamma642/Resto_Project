@@ -79,7 +79,6 @@ CREATE TABLE orders (
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     total_amount DECIMAL(10, 2) NOT NULL,
     status ENUM('pending', 'completed', 'canceled') DEFAULT 'pending',
-    payment_status ENUM('paid', 'unpaid') DEFAULT 'unpaid',
     delivery_method ENUM('takeaway', 'delivery') NOT NULL,
     delivery_address VARCHAR(255),
     description TEXT DEFAULT NULL,  -- Colonne description pour les commandes spécifiques

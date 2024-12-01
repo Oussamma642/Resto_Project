@@ -228,17 +228,18 @@ if (isset($_SESSION['Message'])) {
                         <table class="table table-striped mt-4" style="margin-bottom:150px">
                             <thead>
                                 <tr>
+
+                                    <!-- orders.order_id,
+                                    users.last_name,
+                                    users.email,
+                                    orders.order_date,
+                                    orders.delivery_method -->
+
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Dishes</th>
                                     <th>Date</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total Amount</th>
                                     <th>Delivery Method</th>
-                                    <th>Adress</th>
-                                    <th>Status</th>
-                                    <th>Handle Status</th>
+                                    <th>Details</th>
                                 </tr>
                             </thead>
 
@@ -251,28 +252,9 @@ if (isset($_SESSION['Message'])) {
                                 <tr>
                                     <td><?=$or['last_name']?></td>
                                     <td><?=$or['email']?></td>
-                                    <td><?=$or['DishName']?></td>
                                     <td><?=$or['order_date']?></td>
-                                    <td><?=$or['price']?></td>
-                                    <td><?=$or['quantity']?></td>
-                                    <td><?=$or['Total_Amount']?></td>
                                     <td><?=$or['delivery_method']?></td>
-                                    <td><?=(empty($or['delivery_address']))? 'Takeaway' : $or['delivery_address']?>
-                                    </td>
-                                    <td><?=$or['status']?></td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="dropbtn">Handle Status</button>
-                                            <div class="dropdown-content">
-                                                <a
-                                                    href="./Classes/OrderClasses/ModifyOrder.php?status=completed&id=<?=$or['order_id']?>&email=<?=$or['email']?>&lname=<?=$or['last_name']?>">Completed</a>
-                                                <a
-                                                    href="./Classes/OrderClasses/ModifyOrder.php?status=canceled&id=<?=$or['order_id']?>&email=<?=$or['email']?>&lname=<?=$or['last_name']?>">Canceled</a>
-                                                <a
-                                                    href="./Classes/OrderClasses/ModifyOrder.php?status=pending&id=<?=$or['order_id']?>&email=<?=$or['email']?>&lname=<?=$or['last_name']?>">Pending</a>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    <td><button type="button" class="btn btn-danger">See details</button></td>
                                 </tr>
                                 <?php
                                     }
