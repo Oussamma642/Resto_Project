@@ -14,12 +14,10 @@ require 'phpmailer/src/SMTP.php';
 
 class clsContact
 {
-
     // Send Email 
-    private static function _SendMail($To, $fullname , $subject, $response, $reservation=false, $status="confirmed")
+    private static function _SendMail($To, $fullname , $subject, $response, $reservation, $status, $order, $statusOrder)
     {
         $mail = new PHPMailer(true);
-
         //Server settings
         $mail->isSMTP();                              //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';       //Set the SMTP server to send through
@@ -37,9 +35,29 @@ class clsContact
         //Content
         $mail->isHTML(true);               //Set email format to HTML
         $mail->Subject = $subject;   // email subject headings
-                
-        if (!$reservation){
+        
 
+        if ($reservation == true && $status != ""){
+            
+            // $messageResOrd = self::handleStatusResOrd(true, $status);
+            
+            $mail->Body = "Cher $fullname,
+            Concernant votre Reservation:
+            Nous voudrons vous dire qu'il a été {$status},
+            Si vous avez des questions supplémentaires, n'hésitez pas à nous contacter.
+            Cordialement,
+            L'équipe de Resto_Project"; 
+        }
+        else if($order == true && $statusOrder != ""){
+
+            $mail->Body = "Cher $fullname,
+            Concernant votre Commande:
+            Nous voudrons vous dire qu'il a été {$statusOrder},
+            Si vous avez des questions supplémentaires, n'hésitez pas à nous contacter.
+            Cordialement,
+            L'équipe de Resto_Project"; 
+        }
+        else{
             $mail->Body = " Cher $fullname
             Nous avons bien reçu votre message, Concernant votre demande:
             <br>-------------------------------------<br>
@@ -51,27 +69,8 @@ class clsContact
             Cordialement,
             L'équipe de Resto_Project" ;
         }
-        else{
-            $mail->Body = "Cher $fullname,
-            Concernant votre Reservation:
-            Nous voudrons vous dire qu'il a été {$status},
-            Si vous avez des questions supplémentaires, n'hésitez pas à nous contacter.
-            Cordialement,
-            L'équipe de Resto_Project"; 
-        }
-
-        // Success sent message alert
         $mail->send();
-        // echo
-        // " 
-        // <script> 
-        //  alert('Message was sent successfully!');
-        //  document.location.href = 'index.php';
-        // </script>
-        // ";
-    
     }
-
 
     private static function Connect()
     {
@@ -109,10 +108,9 @@ class clsContact
         }
     }
 
-
-    public static function SendMail($To, $fullname , $subject, $response, $reservation=false, $status="confirmed")
+    public static function SendMail($To, $fullname , $subject, $response, $reservation=false, $status="",$order=false, $statusOrder="")
     {        
-        self::_SendMail($To, $fullname , $subject, trim($response), $reservation, $status);   
+        self::_SendMail($To, $fullname , $subject, trim($response), $reservation, $status, $order, $statusOrder);   
     }
 
 }

@@ -229,6 +229,7 @@ if (isset($_SESSION['Message'])) {
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>Email</th>
                                     <th>Dishes</th>
                                     <th>Date</th>
                                     <th>Price</th>
@@ -249,6 +250,7 @@ if (isset($_SESSION['Message'])) {
                                     ?>
                                 <tr>
                                     <td><?=$or['last_name']?></td>
+                                    <td><?=$or['email']?></td>
                                     <td><?=$or['DishName']?></td>
                                     <td><?=$or['order_date']?></td>
                                     <td><?=$or['price']?></td>
@@ -263,11 +265,11 @@ if (isset($_SESSION['Message'])) {
                                             <button class="dropbtn">Handle Status</button>
                                             <div class="dropdown-content">
                                                 <a
-                                                    href="./Classes/OrderClasses/ModifyOrder.php?status=completed&id=<?=$or['order_id']?>">Completed</a>
+                                                    href="./Classes/OrderClasses/ModifyOrder.php?status=completed&id=<?=$or['order_id']?>&email=<?=$or['email']?>&lname=<?=$or['last_name']?>">Completed</a>
                                                 <a
-                                                    href="./Classes/OrderClasses/ModifyOrder.php?status=canceled&id=<?=$or['order_id']?>">Canceled</a>
+                                                    href="./Classes/OrderClasses/ModifyOrder.php?status=canceled&id=<?=$or['order_id']?>&email=<?=$or['email']?>&lname=<?=$or['last_name']?>">Canceled</a>
                                                 <a
-                                                    href="./Classes/OrderClasses/ModifyOrder.php?status=pending&id=<?=$or['order_id']?>">Pending</a>
+                                                    href="./Classes/OrderClasses/ModifyOrder.php?status=pending&id=<?=$or['order_id']?>&email=<?=$or['email']?>&lname=<?=$or['last_name']?>">Pending</a>
                                             </div>
                                         </div>
                                     </td>
@@ -275,9 +277,7 @@ if (isset($_SESSION['Message'])) {
                                 <?php
                                     }
                                     ?>
-
                             </tbody>
-
                         </table>
                     </div>
                 </div>

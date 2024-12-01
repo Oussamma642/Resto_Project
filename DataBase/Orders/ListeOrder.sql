@@ -1,11 +1,14 @@
 
-DELIMITER //
+-- status ENUM('pending', 'completed', 'canceled') DEFAULT 'pending',
 
+drop procedure Orders_Liste;
+DELIMITER //
 CREATE PROCEDURE Orders_Liste()
 BEGIN
     SELECT 
         orders.order_id,
         users.last_name,
+        users.email,
         menu_items.name AS DishName,
         orders.order_date, 
         order_items.price, 
@@ -20,6 +23,8 @@ BEGIN
     INNER JOIN order_items ON order_items.order_id = orders.order_id
     INNER JOIN menu_items ON menu_items.item_id = order_items.item_id
     ORDER BY 
+        (orders.status = 'pending')DESC,
+        (orders.status = 'completed')DESC,
         users.last_name ASC,    -- Sort by last name in ascending order
         orders.order_date DESC; -- Sort by order date in descending order (you can change it to ASC for ascending)
 END //

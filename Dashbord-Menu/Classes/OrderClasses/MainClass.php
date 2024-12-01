@@ -1,5 +1,6 @@
 <?php
 
+include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\ContactsClasses\clsContact.php';
 class clsOrders
 {
 
@@ -21,12 +22,25 @@ class clsOrders
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function ModifyOrder($id, $status)
+    public static function ModifyOrder($id, $status, $email, $lname) : bool
     {
         // Conncet with DB
         $conn = clsOrders::Conncect();
         // Prepare and execute the statement
         $stmt = $conn->prepare("CALL ModifyOrder($id, '$status')");
-        return $stmt->execute();
+        $stmt->execute();
+
+        if ($stmt){
+
+            // public static function SendMail($To, $fullname , $subject, $response, $reservation=false, $status="confirmed",$order=false, $statusOrder="completed")
+            // {        
+            //     self::_SendMail($To, $fullname , $subject, trim($response), $reservation, $status, $order, $statusOrder);   
+            // }
+        
+            
+            clsContact::SendMail($email, $lname, "Votre commande", "", false, "", true, $status);
+            return true;
+        }
+        return false;
     }
 }

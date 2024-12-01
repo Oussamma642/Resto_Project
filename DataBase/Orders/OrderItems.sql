@@ -16,3 +16,24 @@ VALUES
 (9, 3, 2, 8.00),  -- Commande 9, item 3, quantité 2
 (10, 1, 1, 12.50),-- Commande 10, item 1, quantité 1
 (10, 4, 1, 6.00); -- Commande 10, item 4, quantité 1
+
+
+-- Insérer la commande pour l'utilisateur Oussama Sami-Mohamed
+INSERT INTO orders (user_id, status, delivery_method, delivery_address, description)
+VALUES (
+    (SELECT user_id FROM users WHERE email = 'gregoremendell@gmail.com'), -- Récupérer user_id
+    'pending',  -- Statut de la commande
+    'unpaid',  -- Statut du paiement
+    'takeaway',  -- Méthode de livraison
+    'N/A',  -- Adresse de livraison (N/A pour takeaway)
+    NULL  -- Description (aucune description spécifique)
+);
+
+-- Insérer un ou plusieurs articles dans la commande (exemple avec un article)
+INSERT INTO order_items (order_id, item_id, quantity, price)
+VALUES (
+    (SELECT order_id FROM orders WHERE user_id = (SELECT user_id FROM users WHERE email = 'gregoremendell@gmail.com') ORDER BY order_date DESC LIMIT 1), -- Récupérer le dernier order_id de l'utilisateur
+    1,  -- Item ID de l'article
+    1,  -- Quantité commandée
+    100.00  -- Prix de l'article
+);

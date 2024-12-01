@@ -7,7 +7,6 @@ class clsReservation
 
     protected $Contact;
     
-
     private static function Conncect()
     {
         include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\DbhConnection\Dbh.php';
@@ -42,6 +41,8 @@ class clsReservation
 
         if ($stmt)
         {
+            // private static function _SendMail($To, $fullname , $subject, $response, $reservation=false, $status="", $order=false, $statusOrder="") : void
+
             clsContact::SendMail($email, $lname, "Votre Reservation", "", true, $status);
             return true;
         }

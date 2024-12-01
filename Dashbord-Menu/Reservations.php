@@ -92,9 +92,9 @@ if (isset($_SESSION['Message'])) {
         border-radius: 0%;
         background-color: rgb(156, 85, 85);
         color: white;
-
     }
     </style>
+
 
 </head>
 
@@ -174,7 +174,6 @@ if (isset($_SESSION['Message'])) {
         </div>
     </div>
 
-
     <div class="main-content">
 
         <header>
@@ -226,7 +225,7 @@ if (isset($_SESSION['Message'])) {
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <table class="table table-striped mt-3" style="margin-bottom:150px">
+                        <table class="table table-striped table-bordered mt-3" style="margin-bottom:150px">
                             <thead>
                                 <tr>
                                     <th>First Name</th>
@@ -242,39 +241,44 @@ if (isset($_SESSION['Message'])) {
                             </thead>
                             <tbody>
                                 <?php
-                                foreach($reservations as $r)
-                                {
-                                    ?>
-                                <tr>
-                                    <td><?=$r['first_name']?></td>
-                                    <td><?=$r['last_name']?></td>
-                                    <td><?=$r['email']?></td>
-                                    <td><?=$r['reservation_date']?></td>
-                                    <td><?=$r['time_slot']?></td>
-                                    <td><?=$r['nbrTable']?></td>
-                                    <td><?=$r['number_of_guests']?></td>
-                                    <td><?=$r['status']?></td>
+        foreach ($reservations as $r) {
+            // Choix de la classe CSS en fonction du statut
+            $rowClass = '';
+            if ($r['status'] === 'confirmed') {
+                $rowClass = 'table-success'; // Vert pour confirmed
+            } elseif ($r['status'] === 'canceled') {
+                $rowClass = 'table-danger'; // Rouge pour canceled
+            } elseif ($r['status'] === 'pending') {
+                $rowClass = 'table-warning'; // Jaune pour pending
+            }
+        ?>
+                                <tr class="<?= $rowClass ?>">
+                                    <td><?= $r['first_name'] ?></td>
+                                    <td><?= $r['last_name'] ?></td>
+                                    <td><?= $r['email'] ?></td>
+                                    <td><?= $r['reservation_date'] ?></td>
+                                    <td><?= $r['time_slot'] ?></td>
+                                    <td><?= $r['nbrTable'] ?></td>
+                                    <td><?= $r['number_of_guests'] ?></td>
+                                    <td><?= $r['status'] ?></td>
                                     <td>
                                         <div class="dropdown">
                                             <button class="dropbtn">Handle Status</button>
                                             <div class="dropdown-content">
                                                 <a
-                                                    href="./Classes/ReservationClasses/clsModifyReservation.php?status=pending&id=<?=$r['reservation_id']?>&email=<?=$r['email']?>&lname=<?=$r['last_name']?>">Pending</a>
+                                                    href="./Classes/ReservationClasses/clsModifyReservation.php?status=pending&id=<?= $r['reservation_id'] ?>&email=<?= $r['email'] ?>&lname=<?= $r['last_name'] ?>">Pending</a>
                                                 <a
-                                                    href="./Classes/ReservationClasses/clsModifyReservation.php?status=confirmed&id=<?=$r['reservation_id']?>&email=<?=$r['email']?>&lname=<?=$r['last_name']?>">Confirm</a>
+                                                    href="./Classes/ReservationClasses/clsModifyReservation.php?status=confirmed&id=<?= $r['reservation_id'] ?>&email=<?= $r['email'] ?>&lname=<?= $r['last_name'] ?>">Confirm</a>
                                                 <a
-                                                    href="./Classes/ReservationClasses/clsModifyReservation.php?status=canceled&id=<?=$r['reservation_id']?>&email=<?=$r['email']?>&lname=<?=$r['last_name']?>">Cancel</a>
+                                                    href="./Classes/ReservationClasses/clsModifyReservation.php?status=canceled&id=<?= $r['reservation_id'] ?>&email=<?= $r['email'] ?>&lname=<?= $r['last_name'] ?>">Cancel</a>
                                             </div>
                                         </div>
-
                                     </td>
                                 </tr>
-                                <?php   
-                                }
-                            ?>
-
+                                <?php
+        }
+        ?>
                             </tbody>
-
                         </table>
                     </div>
                 </div>

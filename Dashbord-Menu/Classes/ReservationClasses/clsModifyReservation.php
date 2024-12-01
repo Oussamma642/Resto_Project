@@ -19,6 +19,9 @@ class clsModifyReservation
         if (self::CheckForms()) 
         {
             session_start();
+         
+            // public static function ModifyReservation($id, $status, $email, $lname) : bool
+
             $_SESSION['Message'] = (clsReservation::ModifyReservation($_GET['id'], $_GET['status'], $_GET['email'], $_GET['lname'])) ? 
             "The status changed succufully!!" :
             "Failed to change the status!!";

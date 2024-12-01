@@ -1,12 +1,19 @@
 <?php
+
+
 function ModifyOrder()
 {
     include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\OrderClasses\MainClass.php';
     session_start();
 
-    if (isset($_GET['id']) && isset($_GET['status']))
+
+    if (isset($_GET['id']) && isset($_GET['status']) && isset($_GET['email']) && isset($_GET['lname']))
     {
-        if (clsOrders::ModifyOrder($_GET['id'], $_GET['status']))
+
+       // ModifyOrder($id, $status, $email, $lname) : bool
+
+
+        if (clsOrders::ModifyOrder($_GET['id'], $_GET['status'], $_GET['email'],$_GET['lname']))
         {
             $_SESSION['Message'] = "The Order has been " . $_GET['status'] ." succufully!!";
         } 
