@@ -48,6 +48,12 @@ if (isset($_SESSION['Message'])) {
 
     <style>
     /* Style of Button Handle Staut  */
+
+    .modal-dialog-custom {
+        max-width: 80%;
+        /* Définit la largeur à 80% de l'écran */
+    }
+
     .dropdown {
         position: relative;
         display: inline-block;
@@ -187,7 +193,6 @@ if (isset($_SESSION['Message'])) {
         </header>
 
         <main>
-
             <h2 class="dash-title">Overview</h2>
 
             <div class="dash-cards">
@@ -228,13 +233,6 @@ if (isset($_SESSION['Message'])) {
                         <table class="table table-striped mt-4" style="margin-bottom:150px">
                             <thead>
                                 <tr>
-
-                                    <!-- orders.order_id,
-                                    users.last_name,
-                                    users.email,
-                                    orders.order_date,
-                                    orders.delivery_method -->
-
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Date</th>
@@ -254,21 +252,96 @@ if (isset($_SESSION['Message'])) {
                                     <td><?=$or['email']?></td>
                                     <td><?=$or['order_date']?></td>
                                     <td><?=$or['delivery_method']?></td>
-                                    <td><button type="button" class="btn btn-danger">See details</button></td>
+
+                                    <td><button type="button" class="btn btn-danger" data-toggle="modal"
+                                            data-target="#modifyOrder"
+                                            onclick="fetchOrderDetails(<?=$or['order_id']?>)">See details</button></td>
                                 </tr>
                                 <?php
                                     }
                                     ?>
                             </tbody>
                         </table>
+                        <!-- Modify Order -->
+                        <div class="modal fade" id="modifyOrder" tabindex="-1" aria-labelledby="modifyModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-custom">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modifyModalLabel">Modify User</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div style="width:100%" class="modal-body">
+                                        <!-- <div id="orderDetails" class="mt-4"></div> -->
+
+                                        <table class="table table-bordered mt-4">
+                                            <thead>
+                                                <tr>
+                                                    <th>Dish Name</th>
+                                                    <th>Price</th>
+                                                    <th>Quantity</th>
+                                                    <th>Delivery Address</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="orderDetails">
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                    <!-- Submit -->
+                                    <button type="submit" name="modifyUserBtn" class="btn btn-primary">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+    </div>
 
-        </main>
+    </main>
+
 
     </div>
 
+    <script>
+    function fetchOrderDetails(orderId) {
+        const BASE_URL = `http://localhost/Resto_Project/Dashbord-Menu/Classes/OrderClasses/order_items.php`;
+
+        const fetchDetails = async () => {
+            const response = await fetch(`${BASE_URL}?orderId=${orderId}`);
+            const data = await response.json();
+
+            let detailsTable = '';
+
+            for (let i = 0; i < data.length; i++) {
+                detailsTable += `
+            <tr>
+                <td>${data[i].DishName}</td>
+                <td>${data[i].price}</td>
+                <td>${data[i].quantity}</td>
+                <td>${data[i].delivery_address}</td>
+                <td>${data[i].status}</td>
+            </tr>
+            `;
+            }
+            document.getElementById('orderDetails').innerHTML = detailsTable;
+        }
+        fetchDetails();
+    }
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 </body>
+
 
 </html>

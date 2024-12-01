@@ -34,7 +34,6 @@ class clsOrders
     }
 
 
-    
 
     public static function ModifyOrder($id, $status, $email, $lname) : bool
     {
@@ -45,12 +44,6 @@ class clsOrders
         $stmt->execute();
 
         if ($stmt){
-
-            // public static function SendMail($To, $fullname , $subject, $response, $reservation=false, $status="confirmed",$order=false, $statusOrder="completed")
-            // {        
-            //     self::_SendMail($To, $fullname , $subject, trim($response), $reservation, $status, $order, $statusOrder);   
-            // }
-        
             
             clsContact::SendMail($email, $lname, "Votre commande", "", false, "", true, $status);
             return true;
