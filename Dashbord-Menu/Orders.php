@@ -305,12 +305,7 @@ if (isset($_SESSION['Message'])) {
                                         <!-- Infos come from js -->
                                     </div>
                                     <div class="col-sm-4" id="links">
-                                        <!--     if (isset($_GET['id']) && isset($_GET['status']) && isset($_GET['email']) && isset($_GET['lname']))
- -->
-                                        <!-- <a href="./Classes/OrderClasses/ModifyOrder.php"
-                                            class="btn btn-outline-danger">Accept</a>
-                                        <a href="" class="btn btn-outline-danger">Cancel</a> -->
-                                        <!-- ./Classes/OrderClasses/ModifyOrder.php -->
+                                        <!-- Here the links of accept/cancel will be shwon from js -->
                                     </div>
                                     <div class="col-sm-2"></div>
 

@@ -44,7 +44,6 @@ class clsOrders
         $stmt->execute();
 
         if ($stmt){
-            
             clsContact::SendMail($email, $lname, "Votre commande", "", false, "", true, $status);
             return true;
         }

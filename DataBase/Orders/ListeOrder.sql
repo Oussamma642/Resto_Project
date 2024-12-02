@@ -1,5 +1,30 @@
 
 
+drop procedure Orders_Liste;
+DELIMITER //
+CREATE PROCEDURE Orders_Liste()
+BEGIN
+SELECT 
+    orders.order_id,
+    users.last_name,
+    users.email,
+    orders.order_date,
+    orders.delivery_method,
+    orders.delivery_address,
+    orders.status
+    FROM 
+    users
+INNER JOIN orders ON orders.user_id = users.user_id
+ORDER BY 
+        (orders.status = 'pending') DESC,
+        (orders.status = 'completed') DESC, 
+        orders.order_date DESC;     
+END //
+DELIMITER ;
+
+
+
+
 -- List Orders
 drop procedure Orders_Liste;
 DELIMITER //
