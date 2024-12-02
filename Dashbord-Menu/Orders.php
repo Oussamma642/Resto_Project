@@ -255,9 +255,14 @@ if (isset($_SESSION['Message'])) {
                                     <td><?=$or['delivery_address']?></td>
                                     <td><?=$or['status']?></td>
 
-                                    <td><button type="button" class="btn btn-danger" data-toggle="modal"
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal"
                                             data-target="#modifyOrder"
-                                            onclick="fetchOrderDetails(<?=$or['order_id']?>)">See details</button></td>
+                                            onclick="fetchOrderDetails(<?=$or['order_id']?>, '<?=$or['email']?>', '<?=$or['last_name']?>')">
+                                            See details
+                                        </button>
+                                    </td>
+
                                 </tr>
                                 <?php
                                     }
@@ -299,9 +304,13 @@ if (isset($_SESSION['Message'])) {
                                     <div class="col-sm-4" id="orderTotal">
                                         <!-- Infos come from js -->
                                     </div>
-                                    <div class="col-sm-4">
-                                        <a href="" class="btn btn-outline-danger">Accept</a>
-                                        <a href="" class="btn btn-outline-danger">Cancel</a>
+                                    <div class="col-sm-4" id="links">
+                                        <!--     if (isset($_GET['id']) && isset($_GET['status']) && isset($_GET['email']) && isset($_GET['lname']))
+ -->
+                                        <!-- <a href="./Classes/OrderClasses/ModifyOrder.php"
+                                            class="btn btn-outline-danger">Accept</a>
+                                        <a href="" class="btn btn-outline-danger">Cancel</a> -->
+                                        <!-- ./Classes/OrderClasses/ModifyOrder.php -->
                                     </div>
                                     <div class="col-sm-2"></div>
 
@@ -309,19 +318,15 @@ if (isset($_SESSION['Message'])) {
                             </div>
 
                         </div>
-                        <!-- Submit -->
-                        <!-- <button type="submit" name="modifyUserBtn" class="btn btn-primary">Save
-                            changes</button> -->
                     </div>
                 </div>
             </div>
-
     </div>
     </main>
     </div>
 
     <script>
-    function fetchOrderDetails(orderId) {
+    function fetchOrderDetails(orderId, email, lname) {
         const BASE_URL = `http://localhost/Resto_Project/Dashbord-Menu/Classes/OrderClasses`;
 
         const fetchDetails = async () => {
@@ -359,8 +364,12 @@ if (isset($_SESSION['Message'])) {
             document.getElementById('orderTotal').innerHTML =
                 `<p style="font-size:30px" id="orderTotal">Total Amount: <b>$${totalData.total_amount}</b> </p>`;
 
-
-
+            // Add the links:
+            document.getElementById('links').innerHTML = `
+            <a href="./Classes/OrderClasses/ModifyOrder.php?id=${orderId}&status=completed&email=${email}&lname=${lname}" class="btn btn-outline-danger">Accept</a>
+                    
+            <a href="./Classes/OrderClasses/ModifyOrder.php?id=${orderId}&status=canceled&email=${email}&lname=${lname}" class="btn btn-outline-danger">Cancel</a>       
+                `;
         }
         fetchDetails();
     }

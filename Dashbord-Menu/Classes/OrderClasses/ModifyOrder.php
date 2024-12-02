@@ -23,4 +23,14 @@ function ModifyOrder()
     header("Location: ../../Orders.php");
     exit();  // Make sure no further code is executed after the redirect
 }
-ModifyOrder();
+// ModifyOrder();
+
+if (isset($_GET['id']) && isset($_GET['status']) && isset($_GET['email']) && isset($_GET['lname'])){
+    echo "Yes<br>";
+    echo $_GET['id'] . "<br>";
+    echo $_GET['status'] . "<br>";
+    echo $_GET['email'] . "<br>";
+    echo $_GET['lname'] . "<br>";
+}
+else
+echo "NO";
