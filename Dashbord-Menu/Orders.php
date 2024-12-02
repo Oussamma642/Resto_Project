@@ -34,6 +34,15 @@ if (isset($_SESSION['Message'])) {
     unset($_SESSION['Message']);
 }
 
+// Nbr_Orders_Pending
+$nbrPending = clsOrders::nbrOrder_Pending();
+
+// Nbr_Orders_Completed
+$nbrCompleted = clsOrders::nbrOrder_Completed();
+
+//Nbr_Orders_Canceled
+$nbrCanceled = clsOrders::nbrOrder_Canceled();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -201,7 +210,7 @@ if (isset($_SESSION['Message'])) {
                         <span class="ti-close"></span>
                         <div class="mt-4">
                             <h5>Canceled</h5>
-                            <h4>30</h4>
+                            <h4><?=$nbrCanceled?></h4>
                         </div>
                     </div>
                 </div>
@@ -211,7 +220,7 @@ if (isset($_SESSION['Message'])) {
                         <span class="ti-reload"></span>
                         <div class="mt-4">
                             <h5>Pending</h5>
-                            <h4>19</h4>
+                            <h4><?=$nbrPending?></h4>
                         </div>
                     </div>
                 </div>
@@ -220,8 +229,8 @@ if (isset($_SESSION['Message'])) {
                     <div class="card-body">
                         <span class="ti-check-box"></span>
                         <div class="mt-4">
-                            <h5>Confirmed</h5>
-                            <h4>20</h4>
+                            <h5>Completed</h5>
+                            <h4><?=$nbrCompleted?></h4>
                         </div>
                     </div>
                 </div>
