@@ -14,7 +14,6 @@ CREATE TABLE orders (
 );
 
 
-
 DELIMITER //
 CREATE PROCEDURE ModifyOrder(in idOrd int, in st VARCHAR(20))
 begin 

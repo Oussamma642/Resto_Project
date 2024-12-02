@@ -246,8 +246,17 @@ if (isset($_SESSION['Message'])) {
                                 <?php
                                     foreach($orders as $or)
                                     {   
+                                          // Choix de la classe CSS en fonction du statut
+            $rowClass = '';
+            if ($or['status'] === 'completed') {
+                $rowClass = 'table-success'; // Vert pour confirmed
+            } elseif ($or['status'] === 'canceled') {
+                $rowClass = 'table-danger'; // Rouge pour canceled
+            } elseif ($or['status'] === 'pending') {
+                $rowClass = 'table-warning'; // Jaune pour pending
+            }
                                     ?>
-                                <tr>
+                                <tr class="<?= $rowClass ?>">
                                     <td><?=$or['last_name']?></td>
                                     <td><?=$or['email']?></td>
                                     <td><?=$or['order_date']?></td>
