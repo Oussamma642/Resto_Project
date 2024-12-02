@@ -39,9 +39,10 @@ END //
 DELIMITER ;
 
 -- Create function to return the total amount of an order
+drop function Total_Order_Amount;
 DELIMITER //
 create function Total_Order_Amount(OrderId int)
-returns DECIMAL
+returns DECIMAL(10,2)
 reads sql data
 BEGIN
     DECLARE sumOrd DECIMAL(10,2);

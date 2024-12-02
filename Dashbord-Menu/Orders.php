@@ -264,52 +264,60 @@ if (isset($_SESSION['Message'])) {
                                     ?>
                             </tbody>
                         </table>
-                        <!-- Modify Order -->
-                        <div class="modal fade" id="modifyOrder" tabindex="-1" aria-labelledby="modifyModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-custom">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modifyModalLabel">Modify User</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-
-
-                                        <table class="table table-bordered mt-4">
-                                            <thead>
-                                                <tr>
-                                                    <th>Dish Name</th>
-                                                    <th>Price</th>
-                                                    <th>Quantity</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="orderDetails">
-
-                                            </tbody>
-                                        </table>
-
-                                        <div class="mt-4">
-                                            <h1 id="orderTotal">Hello</h1>
-                                        </div>
-
-                                    </div>
-                                    <!-- Submit -->
-                                    <button type="submit" name="modifyUserBtn" class="btn btn-primary">Save
-                                        changes</button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
+            <!-- Modify Order -->
+            <div class="modal fade" id="modifyOrder" tabindex="-1" aria-labelledby="modifyModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-custom">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modifyModalLabel">Modify User</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <table class="table table-bordered mt-4">
+                                <thead>
+                                    <tr>
+                                        <th>Dish Name</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="orderDetails">
+
+                                </tbody>
+                            </table>
+
+                            <div class="container mt-4">
+                                <div class="row">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-4" id="orderTotal">
+                                        <!-- Infos come from js -->
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <a href="" class="btn btn-outline-danger">Accept</a>
+                                        <a href="" class="btn btn-outline-danger">Cancel</a>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Submit -->
+                        <!-- <button type="submit" name="modifyUserBtn" class="btn btn-primary">Save
+                            changes</button> -->
+                    </div>
+                </div>
+            </div>
+
     </div>
-
     </main>
-
-
     </div>
 
     <script>
@@ -317,6 +325,8 @@ if (isset($_SESSION['Message'])) {
         const BASE_URL = `http://localhost/Resto_Project/Dashbord-Menu/Classes/OrderClasses`;
 
         const fetchDetails = async () => {
+
+
             const response = await fetch(`${BASE_URL}/order_items.php?orderId=${orderId}`);
             const data = await response.json();
 
@@ -331,12 +341,26 @@ if (isset($_SESSION['Message'])) {
             </tr>
             `;
             }
+
             document.getElementById('orderDetails').innerHTML = detailsTable;
 
-            // Total AMount
-            response = await fetch(`${BASE_URL}/order_total.php?orderId=${orderId}`);
-            let totalData = await response.json();
-            document.getElementById('orderTotal').innerHTML = `Total Amount: ${totalData.total_amount}`;
+            // Total Amount 
+            const totalResponse = await fetch(`${BASE_URL}/order_total.php?orderId=${orderId}`);
+
+            if (!totalResponse.ok) throw new Error('Failed to fetch total amount');
+
+            const totalData = await totalResponse.json();
+
+            if (totalData.error) {
+                console.error(totalData.error);
+                document.getElementById('orderTotal').innerHTML = 'Error fetching total amount';
+                return;
+            }
+            document.getElementById('orderTotal').innerHTML =
+                `<p style="font-size:30px" id="orderTotal">Total Amount: <b>$${totalData.total_amount}</b> </p>`;
+
+
+
         }
         fetchDetails();
     }
@@ -347,8 +371,6 @@ if (isset($_SESSION['Message'])) {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
 </body>
-
 
 </html>

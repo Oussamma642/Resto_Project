@@ -1,6 +1,5 @@
 <?php
 
-
 include_once 'clsPermissions.php';
 
 class clsUser
@@ -14,14 +13,12 @@ class clsUser
     private $role;
     private $permissions;
         
-
     private static function Conncect()
     {
         include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\DbhConnection\Dbh.php';
         return Dbh::connect();
     }
     
-
     public function __construct($id=null, $fname='', $lname='', $email='', $pswd='', $phone='' ,$role='', $prmsn=null)
     {
         $this->user_id = $id;
@@ -205,4 +202,6 @@ class clsUser
             return false;
     }
 
+
+    
 }
