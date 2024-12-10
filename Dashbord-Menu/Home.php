@@ -108,15 +108,9 @@ $currUser = $_SESSION['currUser'];
 
     <div class="main-content">
 
-        <header>
-            <h1 style="padding-left: 30%;">Welcome <?=$currUser->getLastName() . ' ' . $currUser->getFirstName()?></h1>
-        </header>
-
-
         <main>
             <div class='comingsoon'>
-                <h1>Coming Soon</h1>
-
+                <h1>Welcome <?=$currUser->getLastName() . ' ' . $currUser->getFirstName()?></h1>
             </div>
         </main>
 
