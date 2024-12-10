@@ -16,6 +16,23 @@ if (!$currUser->CheckAccessPermission(Permissions::CommentsSection))
     header("location:Home.php");
 }
 
+include_once '.\Classes\CommentsClasses\clsComment.php';
+
+$comments = clsComment::ListComments();
+
+
+if (isset($_SESSION['Message'])) {
+    // Retrieve the message from the session
+    $message = $_SESSION['Message'];
+
+    // Display the message in a JavaScript alert
+    echo "<script type='text/javascript'>alert('$message');</script>";
+
+    // Clear the message after displaying it so it doesn't show again on refresh
+    unset($_SESSION['Message']);
+}    
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,20 +43,19 @@ if (!$currUser->CheckAccessPermission(Permissions::CommentsSection))
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+
     <style>
-    .comingsoon {
-        margin-top: 20%;
-        margin-left: 35%;
-    }
     </style>
+
 </head>
 
 <body>
 
     <input type="checkbox" id="sidebar-toggle">
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <h3 class="brand">
+    <div class="sidebar ">
+        <div class="sidebar-header mt-5">
+            <h3 class="brand ">
                 <span class="ti-unlink"></span>
                 <span>Admin-Menu</span>
             </h3>
@@ -118,13 +134,47 @@ if (!$currUser->CheckAccessPermission(Permissions::CommentsSection))
 
 
         <main>
-            <div class='comingsoon'>
-                <h1>Coming Soon</h1>
 
+            <div class="container-fluid mt-5">
+                <h2 class="text-center mb-4">Pending Comments</h2>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Comment</th>
+                            <th>Status</th>
+                            <th>Handle Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($comments as $comment): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($comment['FirstName']) ?></td>
+                            <td><?= htmlspecialchars($comment['LastName']) ?></td>
+                            <td><?= htmlspecialchars($comment['Comment']) ?></td>
+                            <td><?= htmlspecialchars($comment['Status']) ?></td>
+                            <td>
+                                <a
+                                    href="./Classes/CommentsClasses/clsModifyComment.php?status=accepted&id=<?=$comment['id']?>">
+                                    <button type="button" class="btn btn-danger">Accept</button></a>
+
+                                <a
+                                    href="./Classes/CommentsClasses/clsModifyComment.php?status=rejected&id=<?=$comment['id']?>">
+                                    <button type="button" class="btn btn-danger">Reject</button></a>
+
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
+
         </main>
 
     </div>
+
+
 
 </body>
 

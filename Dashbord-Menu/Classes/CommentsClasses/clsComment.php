@@ -27,5 +27,12 @@ class clsComment
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
+    public static function ModifyComment($id, $status){
+        
+        $conn = self::Conncect();
+        $stmt = $conn->prepare("CALL Update_Comment_Status($id, '$status')");
+        return $stmt->execute();
+    }
+    
 
 }
