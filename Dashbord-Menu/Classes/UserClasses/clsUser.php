@@ -202,6 +202,4 @@ class clsUser
             return false;
     }
 
-
-    
 }
