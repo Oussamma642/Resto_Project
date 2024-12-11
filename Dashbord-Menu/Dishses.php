@@ -204,12 +204,18 @@ foreach($Menu as $M){
                                     <div class="dropdown">
                                         <button class="dropbtn">Handle Status</button>
                                         <div class="dropdown-content">
-                                            <a
-                                                href="./Classes/ReservationClasses/clsModifyReservation.php?status=pending&id=<?= $r['reservation_id'] ?>&email=<?= $r['email'] ?>&lname=<?= $r['last_name'] ?>">Modify
-                                                Item</a>
+
+                                            <a data-toggle="modal" data-target="#modifyMenu"
+                                                onclick="populateForm(<?= htmlspecialchars(json_encode($M)) ?>)">
+                                                <button class="btn btn-danger">Modify
+                                                    Item</button>
+                                            </a>
+
+
                                             <a onclick="return confirm('Are you sure you want to delete this item?');"
-                                                href="./Classes/MenuClasses/clsDeleteDish.php?id=<?=$M['item_id']?>">Delete
-                                                Item
+                                                href="./Classes/MenuClasses/clsDeleteDish.php?id=<?=$M['item_id']?>">
+                                                <button class="btn btn-danger">Delete
+                                                    Item</button>
                                             </a>
                                         </div>
                                     </div>
@@ -226,6 +232,64 @@ foreach($Menu as $M){
         </div>
 
     </div>
+
+    <!-- Modify Modal -->
+    <div class="modal fade" id="modifyMenu" tabindex="-1" aria-labelledby="modifyModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modifyModalLabel">Modify Item</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="modifyForm" method="post">
+
+                        <!-- User ID -->
+                        <div class="form-group">
+                            <label for="id"><b>Item ID:</b></label>
+                            <input type="text" readonly class="form-control" id="id" name="id">
+                        </div>
+
+                        <!-- Dish Name -->
+                        <div class="form-group">
+                            <label for="Name"><b>Dish Name:</b></label>
+                            <input type="text" class="form-control" id="Name" name="Name" required>
+                        </div>
+                        <!-- Description-->
+                        <div class="form-group">
+                            <label for="Description"><b>Description:</b></label>
+                            <input type="text" class="form-control" id="Description" name="Description" required>
+                        </div>
+                        <!-- Price -->
+                        <div class="form-group">
+                            <label for="Price"><b>Price:</b></label>
+                            <input type="number" class="form-control" id="Price" name="Price" required>
+                        </div>
+                        <!-- Submit -->
+                        <button type="submit" name="modifyUserBtn" class="btn btn-primary">Save changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+    function populateForm(user) {
+        document.getElementById('id').value = user.item_id;
+        document.getElementById('Name').value = user.name;
+        document.getElementById('Description').value = user.description;
+        document.getElementById('Price').value = user.price;
+        // Further logic to populate permissions if needed
+    }
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 
