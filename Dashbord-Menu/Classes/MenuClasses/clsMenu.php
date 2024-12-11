@@ -9,7 +9,6 @@ class clsMenu
         return Dbh::connect();
     }
 
-    // Reservations List
     public static function ListMenu()
     { 
         // Conncet with DB
@@ -22,4 +21,12 @@ class clsMenu
         // Fetch all reservations as an associative array
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function deleteMenuItem($itemId) {
+        $conn = self::Conncect(); // Remplacez avec votre méthode de connexion
+        $stmt = $conn->prepare("CALL DeleteMenuItem($itemId)");
+        return $stmt->execute();
+    }
+    
+
 }

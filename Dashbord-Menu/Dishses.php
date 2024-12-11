@@ -20,6 +20,17 @@ include_once '.\Classes\MenuClasses\clsMenu.php';
 $Menu = clsMenu::ListMenu();
 
 
+if (isset($_SESSION['Message'])) {
+    // Retrieve the message from the session
+    $message = $_SESSION['Message'];
+
+    // Display the message in a JavaScript alert
+    echo "<script type='text/javascript'>alert('$message');</script>";
+
+    // Clear the message after displaying it so it doesn't show again on refresh
+    unset($_SESSION['Message']);
+}    
+
 
 ?>
 
@@ -196,8 +207,8 @@ foreach($Menu as $M){
                                             <a
                                                 href="./Classes/ReservationClasses/clsModifyReservation.php?status=pending&id=<?= $r['reservation_id'] ?>&email=<?= $r['email'] ?>&lname=<?= $r['last_name'] ?>">Modify
                                                 Item</a>
-                                            <a
-                                                href="./Classes/ReservationClasses/clsModifyReservation.php?status=confirmed&id=<?= $r['reservation_id'] ?>&email=<?= $r['email'] ?>&lname=<?= $r['last_name'] ?>">Delete
+                                            <a onclick="return confirm('Are you sure you want to delete this item?');"
+                                                href="./Classes/MenuClasses/clsDeleteDish.php?id=<?=$M['item_id']?>">Delete
                                                 Item
                                             </a>
                                         </div>
