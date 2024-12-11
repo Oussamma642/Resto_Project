@@ -1,7 +1,9 @@
 
 
+drop PROCEDURE GetMenuItems;
+
 DELIMITER //
-CREATE PROCEDURE GetMenuItems()
+CREATE PROCEDURE    ()
 BEGIN
     SELECT
         item_id,
@@ -9,7 +11,6 @@ BEGIN
         description,
         picturePath,
         price,
-        is_available,
         created_at,
         updated_at
     FROM menu_items;

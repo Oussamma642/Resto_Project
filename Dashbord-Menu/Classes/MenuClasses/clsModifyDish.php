@@ -76,7 +76,7 @@ class clsModifyDish{
         $fileSize = $_FILES['photo']['size'];
         $fileType = $_FILES['photo']['type'];
             
-        $uploadDir = __DIR__ . '/uploads/'; // Dossier "uploads" dans le même répertoire que le script
+        $uploadDir = 'uploads/'; // Dossier "uploads" dans le même répertoire que le script
         // Créer le dossier s'il n'existe pas
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
@@ -93,11 +93,15 @@ class clsModifyDish{
             // $relativePath = 'uploads/' . $fileNameNew;
             //($itemId, $name, $description, $picturePath, $price) {
 
-            clsMenu::ModifyItem($_POST['id'], $_POST['Name'] ,$_POST['Description'], $destPath, $_POST['Price']);
+            $relativePath = 'uploads/' . $fileNameNew;
+
+            $m =  clsMenu::ModifyItem($_POST['id'], $_POST['Name'] ,$_POST['Description'], $relativePath, $_POST['Price']);
+            
+            if($m){
+                header("location:../../Dishses.php");
+            }
         } 
-
     }
-
 }
 }
 

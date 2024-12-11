@@ -1,6 +1,8 @@
 <?php
 
 include_once '.\Classes\MenuClasses\clsMenu.php';
+include_once '.\Classes\MenuClasses\clsModifyDish.php';
+
 include_once 'Classes/UserClasses/clsUser.php';
 session_start();
 
@@ -34,9 +36,7 @@ if (isset($_SESSION['Message'])) {
 
 if (isset($_POST['modifyMenu']))
 {
-
-    
-
+    clsModifyDish::ModifyDish();
 }
 
 
