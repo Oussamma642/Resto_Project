@@ -1,5 +1,6 @@
 <?php
 
+include_once '.\Classes\MenuClasses\clsMenu.php';
 include_once 'Classes/UserClasses/clsUser.php';
 session_start();
 
@@ -16,9 +17,8 @@ if (!$currUser->CheckAccessPermission(Permissions::DishesMenu))
     header("location:Home.php");
 }
 
-include_once '.\Classes\MenuClasses\clsMenu.php';
+// List Menus
 $Menu = clsMenu::ListMenu();
-
 
 if (isset($_SESSION['Message'])) {
     // Retrieve the message from the session
@@ -30,6 +30,14 @@ if (isset($_SESSION['Message'])) {
     // Clear the message after displaying it so it doesn't show again on refresh
     unset($_SESSION['Message']);
 }    
+
+
+if (isset($_POST['modifyMenu']))
+{
+
+    
+
+}
 
 
 ?>
@@ -244,7 +252,7 @@ foreach($Menu as $M){
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="modifyForm" method="post">
+                    <form id="modifyForm" method="post" enctype="multipart/form-data">
 
                         <!-- User ID -->
                         <div class="form-group">
@@ -262,13 +270,19 @@ foreach($Menu as $M){
                             <label for="Description"><b>Description:</b></label>
                             <input type="text" class="form-control" id="Description" name="Description" required>
                         </div>
+
+                        <!-- Picutre -->
+                        <div class="form-group">
+                            <label for="photo"><b>Picture:</b></label>
+                            <input type="file" class="form-control" id="photo" accept="image/*" name="photo" required>
+                        </div>
                         <!-- Price -->
                         <div class="form-group">
                             <label for="Price"><b>Price:</b></label>
                             <input type="number" class="form-control" id="Price" name="Price" required>
                         </div>
                         <!-- Submit -->
-                        <button type="submit" name="modifyUserBtn" class="btn btn-primary">Save changes</button>
+                        <button type="submit" name="modifyMenu" class="btn btn-primary">Save changes</button>
                     </form>
                 </div>
             </div>

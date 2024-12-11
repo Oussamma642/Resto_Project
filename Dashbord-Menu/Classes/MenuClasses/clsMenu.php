@@ -29,4 +29,11 @@ class clsMenu
     }
     
 
+    public static function ModifyItem($itemId, $name, $description, $picturePath, $price) {
+        
+        $conn = self::Conncect(); // Remplacez avec votre méthode de connexion
+        $stmt = $conn->prepare("CALL UpdateMenuItem($itemId, '$name', '$description', '$picturePath', $price)");
+        return $stmt->execute();
+    }
+
 }
