@@ -2,6 +2,7 @@
 
 include_once '.\Classes\MenuClasses\clsMenu.php';
 include_once '.\Classes\MenuClasses\clsModifyDish.php';
+include_once '.\Classes\MenuClasses\clsAddNewDish.php';
 
 include_once 'Classes/UserClasses/clsUser.php';
 session_start();
@@ -38,6 +39,12 @@ if (isset($_POST['modifyMenu']))
 {
     clsModifyDish::ModifyDish();
 }
+
+if (isset($_POST['addMenu']))
+{
+    clsAddNewDish::AddDish();
+}
+
 
 
 ?>
@@ -186,6 +193,12 @@ if (isset($_POST['modifyMenu']))
 
         <div class="container" style="margin-top:100px">
             <div class="row">
+                <!-- Button to trigger Add New Dish Modal -->
+                <button type="button" class="btn btn-danger ml-3" data-toggle="modal" data-target="#addMenu">
+                    Add New Dish
+                </button>
+            </div>
+            <div class="row">
                 <div class="col-12">
                     <table class="table table-striped table-bordered">
                         <thead>
@@ -241,6 +254,50 @@ foreach($Menu as $M){
 
     </div>
 
+
+    <!-- Add New Dish Modal -->
+    <div class="modal fade" id="addMenu" tabindex="-1" aria-labelledby="addMenuLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addMenuLabel">Add New Dish</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addForm" method="post" enctype="multipart/form-data">
+                        <!-- Dish Name -->
+                        <div class="form-group">
+                            <label for="addName"><b>Dish Name:</b></label>
+                            <input type="text" class="form-control" id="addName" name="Name" required>
+                        </div>
+                        <!-- Description-->
+                        <div class="form-group">
+                            <label for="addDescription"><b>Description:</b></label>
+                            <input type="text" class="form-control" id="addDescription" name="Description" required>
+                        </div>
+                        <!-- Picture -->
+                        <div class="form-group">
+                            <label for="addPhoto"><b>Picture:</b></label>
+                            <input type="file" class="form-control" id="addPhoto" accept="image/*" name="photo"
+                                required>
+                        </div>
+                        <!-- Price -->
+                        <div class="form-group">
+                            <label for="addPrice"><b>Price:</b></label>
+                            <input type="number" class="form-control" id="addPrice" name="Price" required>
+                        </div>
+                        <!-- Submit -->
+                        <button type="submit" name="addMenu" class="btn btn-primary">Add Dish</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <!-- Modify Modal -->
     <div class="modal fade" id="modifyMenu" tabindex="-1" aria-labelledby="modifyModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -288,6 +345,7 @@ foreach($Menu as $M){
             </div>
         </div>
     </div>
+
 
 
     <script>
