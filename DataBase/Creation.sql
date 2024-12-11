@@ -26,7 +26,6 @@ CREATE TABLE menu_items (
     description TEXT,
     picturePath VARCHAR(255),  -- Correction de la longueur pour l'image
     price DECIMAL(10, 2) NOT NULL,
-    category ENUM('Breakfast', 'Lunch', 'Dinner') NOT NULL,  -- Remplacement de CHECK par ENUM pour compatibilité
     is_available BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
