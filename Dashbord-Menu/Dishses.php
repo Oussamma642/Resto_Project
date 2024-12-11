@@ -331,6 +331,10 @@ foreach($Menu as $M){
                         <!-- Picutre -->
                         <div class="form-group">
                             <label for="photo"><b>Picture:</b></label>
+                            <div>
+                                <img id="oldImage" src="" alt="Old Image"
+                                    style="width:200px;height:200px;object-fit: cover; border-radius:10px;">
+                            </div>
                             <input type="file" class="form-control" id="photo" accept="image/*" name="photo" required>
                         </div>
                         <!-- Price -->
@@ -354,6 +358,8 @@ foreach($Menu as $M){
         document.getElementById('Name').value = user.name;
         document.getElementById('Description').value = user.description;
         document.getElementById('Price').value = user.price;
+        var oldImage = document.getElementById('oldImage');
+        oldImage.src = user.picturePath;
         // Further logic to populate permissions if needed
     }
     </script>
