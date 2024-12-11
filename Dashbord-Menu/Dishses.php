@@ -204,11 +204,13 @@ if (isset($_POST['modifyMenu']))
 foreach($Menu as $M){
     ?>
                             <tr>
-                                <td><?=$M['name']?></td>
-                                <td><?=$M['description']?></td>
-                                <td><img src="<?=$M['picturePath']?>" alt=""></td>
-                                <td><?=$M['price']?></td>
-                                <td>
+                                <td style="vertical-align: middle;"><?=$M['name']?></td>
+                                <td style="vertical-align: middle;"><?=$M['description']?></td>
+                                <td style="vertical-align: middle;"><img
+                                        style="width:200px;height:200px; object-fit: cover; border-radius:10px"
+                                        src="<?=$M['picturePath']?>" alt=""></td>
+                                <td style="vertical-align: middle;"><?=$M['price']?></td>
+                                <td style="vertical-align: middle;">
                                     <div class="dropdown">
                                         <button class="dropbtn">Handle Status</button>
                                         <div class="dropdown-content">
@@ -218,8 +220,6 @@ foreach($Menu as $M){
                                                 <button class="btn btn-danger">Modify
                                                     Item</button>
                                             </a>
-
-
                                             <a onclick="return confirm('Are you sure you want to delete this item?');"
                                                 href="./Classes/MenuClasses/clsDeleteDish.php?id=<?=$M['item_id']?>">
                                                 <button class="btn btn-danger">Delete
