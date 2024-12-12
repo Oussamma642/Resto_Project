@@ -209,6 +209,27 @@ $Menu_Items = clsMenu::ListMenu();
             </div>
         </div>
     </section>
+    <!---- frame chatbot  -->
+    <div class="chat-icon" id="chat-icon">💬</div>
+
+<!-- Chatbot Iframe (hidden by default) -->
+<iframe id="chatbot-frame" src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2024/12/12/19/20241212193309-5AWYXWSA.json" title="Botpress Chatbot"></iframe>
+
+<script>
+  // Get the icon and iframe elements
+  const chatIcon = document.getElementById('chat-icon');
+  const chatbotFrame = document.getElementById('chatbot-frame');
+
+  // Toggle the display of the chatbot iframe when the icon is clicked
+  chatIcon.addEventListener('click', () => {
+    if (chatbotFrame.style.display === 'none' || chatbotFrame.style.display === '') {
+      chatbotFrame.style.display = 'block'; // Show the chatbot iframe
+    } else {
+      chatbotFrame.style.display = 'none';  // Hide the chatbot iframe
+    }
+  });
+</script>
+<!-- end Chatbot Iframe -->
 
     <section id="features" class="features">
         <div class="slider_overlay">

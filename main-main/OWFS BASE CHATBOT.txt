@@ -1,0 +1,178 @@
+Restaurant Website Chatbot Questions and Answers Base
+
+**Part 1: General Information**
+
+***English:***
+Q1: What are your opening hours?  
+A1: We are open every day from 8 AM to 11 PM.
+
+Q2: Do you have a buffet option?  
+A2: Yes, we offer a buffet for lunch and dinner, available from 12 PM to 3 PM and 6 PM to 9 PM.
+
+Q3: Where are you located?  
+A3: We are located in Marrakech, specifically in the Douar Jdid Haut Ista Ntic Syba area.
+
+***French:***
+Q1 : Quels sont vos horaires d'ouverture ?  
+R1 : Nous sommes ouverts tous les jours de 8h00 à 23h00.
+
+Q2 : Proposez-vous une option buffet ?  
+R2 : Oui, nous proposons un buffet pour le déjeuner et le dîner, disponible de 12h00 à 15h00 et de 18h00 à 21h00.
+
+Q3 : Où êtes-vous situés ?  
+R3 : Nous sommes situés à Marrakech, plus précisément dans le quartier Douar Jdid Haut Ista Ntic Syba.
+
+***Arabic:***
+س1: ما هي ساعات العمل؟  
+ج1: نحن نعمل يوميًا من الساعة 8 صباحًا حتى 11 مساءً.
+
+س2: هل لديكم خيار البوفيه؟  
+ج2: نعم، نقدم بوفيه للغداء والعشاء، متاح من الساعة 12 ظهرًا حتى 3 مساءً ومن 6 مساءً حتى 9 مساءً.
+
+س3: أين تقعون؟  
+ج3: نحن في مدينة مراكش، وتحديدًا في منطقة دوار جديد حي إستا نتيك سيبا.
+
+---
+
+**Part 2: Reservation and Contact**
+
+***English:***
+Q4: How can I make a reservation?  
+A4: You can make a reservation through our website or by calling us at +212703948136.
+
+Q5: Do you accept walk-ins?  
+A5: Yes, we accept walk-ins based on table availability.
+
+***French:***
+Q4 : Comment puis-je faire une réservation ?  
+R4 : Vous pouvez faire une réservation sur notre site Web ou en nous appelant au +212703948136.
+
+Q5 : Acceptez-vous les clients sans réservation ?  
+R5 : Oui, nous acceptons les clients sans réservation selon la disponibilité des tables.
+
+***Arabic:***
+س4: كيف يمكنني الحجز؟  
+ج4: يمكنك الحجز عبر موقعنا الإلكتروني أو بالاتصال بنا على الرقم +212703948136.
+
+س5: هل تقبلون الزبائن بدون حجز؟  
+ج5: نعم، نقبل الزبائن بدون حجز بناءً على توفر الطاولات.
+
+---
+
+**Part 3: Menu and Pricing**
+
+***English:***
+Q6: Where can I find your menu?  
+A6: Our menu is available on our website under the "Menu" section.
+
+Q7: Do you offer vegetarian and vegan options?  
+A7: Yes, we have a variety of vegetarian and vegan dishes available.
+
+***French:***
+Q6 : Où puis-je trouver votre menu ?  
+R6 : Notre menu est disponible sur notre site Web dans la section "Menu".
+
+Q7 : Proposez-vous des options végétariennes et végétaliennes ?  
+R7 : Oui, nous avons une variété de plats végétariens et végétaliens disponibles.
+
+***Arabic:***
+س6: أين أجد قائمتكم؟  
+ج6: قائمتنا متاحة على موقعنا الإلكتروني في قسم "القائمة".
+
+س7: هل تقدمون خيارات نباتية ونباتية صرفة؟  
+ج7: نعم، لدينا مجموعة متنوعة من الأطباق النباتية والنباتية الصرفة.
+
+---
+
+**Part 4: Special Services**
+
+***English:***
+Q8: Do you offer catering services?  
+A8: Yes, we offer catering services for events and private functions. Contact us for more details.
+
+Q9: Is there parking available?  
+A9: Yes, we have free parking available for our customers.
+
+Q10: Do you provide delivery services?  
+A10: Yes, we provide delivery services within a 10 km radius. Additional charges may apply.
+
+Q11: Can I book the entire restaurant for a private event?  
+A11: Yes, the entire restaurant can be booked for private events. Please contact us for pricing and availability.
+
+***French:***
+Q8 : Proposez-vous des services de traiteur ?  
+R8 : Oui, nous proposons des services de traiteur pour les événements et les fonctions privées. Contactez-nous pour plus de détails.
+
+Q9 : Y a-t-il un parking disponible ?  
+R9 : Oui, nous avons un parking gratuit pour nos clients.
+
+Q10 : Proposez-vous des services de livraison ?  
+R10 : Oui, nous proposons des services de livraison dans un rayon de 10 km. Des frais supplémentaires peuvent s'appliquer.
+
+Q11 : Puis-je réserver tout le restaurant pour un événement privé ?  
+R11 : Oui, il est possible de réserver tout le restaurant pour des événements privés. Veuillez nous contacter pour les tarifs et la disponibilité.
+
+***Arabic:***
+س8: هل تقدمون خدمات تقديم الطعام؟  
+ج8: نعم، نقدم خدمات تقديم الطعام للمناسبات والفعاليات الخاصة. اتصلوا بنا للحصول على مزيد من التفاصيل.
+
+س9: هل توجد مواقف سيارات متاحة؟  
+ج9: نعم، لدينا مواقف سيارات مجانية لعملائنا.
+
+س10: هل تقدمون خدمات التوصيل؟  
+ج10: نعم، نقدم خدمات التوصيل ضمن دائرة نصف قطرها 10 كيلومترات. قد يتم تطبيق رسوم إضافية.
+
+س11: هل يمكنني حجز المطعم بالكامل لمناسبة خاصة؟  
+ج11: نعم، يمكن حجز المطعم بالكامل للمناسبات الخاصة. يرجى الاتصال بنا لمعرفة الأسعار والتوافر.
+
+---
+
+**Part 5: Miscellaneous Questions**
+
+***English:***
+Q12: Do you have free Wi-Fi?  
+A12: Yes, free Wi-Fi is available for all customers.
+
+Q13: Are pets allowed?  
+A13: Pets are allowed in outdoor seating areas only.
+
+Q14: Do you have options for children?  
+A14: Yes, we offer a special kids' menu and high chairs are available.
+
+Q15: Is there live music?  
+A15: Yes, we have live music on weekends from 7 PM to 10 PM.
+
+Q16: Can I customize my order?  
+A16: Yes, we can accommodate specific dietary preferences or allergies.
+
+***French:***
+Q12 : Avez-vous un Wi-Fi gratuit ?  
+R12 : Oui, le Wi-Fi gratuit est disponible pour tous les clients.
+
+Q13 : Les animaux de compagnie sont-ils autorisés ?  
+R13 : Les animaux sont autorisés uniquement dans les espaces extérieurs.
+
+Q14 : Avez-vous des options pour les enfants ?  
+R14 : Oui, nous proposons un menu spécial pour enfants et des chaises hautes sont disponibles.
+
+Q15 : Y a-t-il de la musique live ?  
+R15 : Oui, nous avons de la musique live le week-end de 19h00 à 22h00.
+
+Q16 : Puis-je personnaliser ma commande ?  
+R16 : Oui, nous pouvons répondre à des préférences alimentaires spécifiques ou des allergies.
+
+***Arabic:***
+س12: هل لديكم خدمة واي فاي مجانية؟  
+ج12: نعم، الواي فاي مجاني لجميع العملاء.
+
+س13: هل يُسمح بالحيوانات الأليفة؟  
+ج13: الحيوانات الأليفة مسموح بها فقط في مناطق الجلوس الخارجية.
+
+س14: هل لديكم خيارات للأطفال؟  
+ج14: نعم، نقدم قائمة خاصة للأطفال والكراسي العالية متوفرة.
+
+س15: هل توجد موسيقى حية؟  
+ج15: نعم، لدينا موسيقى حية في عطلات نهاية الأسبوع من الساعة 7 مساءً حتى 10 مساءً.
+
+س16: هل يمكنني تخصيص طلبي؟  
+ج16: نعم، يمكننا تلبية تفضيلات أو حساسية غذائية محددة.
