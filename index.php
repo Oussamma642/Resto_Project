@@ -2,8 +2,8 @@
 
 // header("location:../Dashbord-Menu/Classes/ReservationClasses/clsAddNewRes.php");
 
-include_once '../Dashbord-Menu/Classes/ReservationClasses/clsAddNewRes.php';
-include_once '../Dashbord-Menu/Classes/MenuClasses/clsMenu.php';
+include_once 'Dashbord-Menu/Classes/ReservationClasses/clsAddNewRes.php';
+include_once 'Dashbord-Menu/Classes/MenuClasses/clsMenu.php';
 
 
 if (isset($_POST['reserver'])){
@@ -29,23 +29,23 @@ $Menu_Items = clsMenu::ListMenu();
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="main-main/assets/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="main-main/assets/css/font-awesome.min.css">
     <!--        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
 
 
     <!--For Plugins external css-->
-    <link rel="stylesheet" href="assets/css/animate/animate.css" />
-    <link rel="stylesheet" href="assets/css/plugins.css" />
+    <link rel="stylesheet" href="main-main/assets/css/animate/animate.css" />
+    <link rel="stylesheet" href="main-main/assets/css/plugins.css" />
 
     <!--Theme custom css -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="main-main/assets/css/style.css">
 
     <!--Theme Responsive css-->
-    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="main-main/assets/css/responsive.css" />
 
-    <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script src="main-main/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
 </head>
 
@@ -185,7 +185,7 @@ $Menu_Items = clsMenu::ListMenu();
                 <div class="abouts_content">
                     <div class="col-md-6">
                         <div class="single_abouts_text text-center wow slideInLeft" data-wow-duration="1s">
-                            <img id="img_about" src="./assets/images/ab.png" alt="img about" />
+                            <img id="img_about" src="main-main//assets/images/ab.png" alt="img about" />
 
                         </div>
                     </div>
@@ -212,24 +212,26 @@ $Menu_Items = clsMenu::ListMenu();
     <!---- frame chatbot  -->
     <div class="chat-icon" id="chat-icon">💬</div>
 
-<!-- Chatbot Iframe (hidden by default) -->
-<iframe id="chatbot-frame" src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2024/12/12/19/20241212193309-5AWYXWSA.json" title="Botpress Chatbot"></iframe>
+    <!-- Chatbot Iframe (hidden by default) -->
+    <iframe id="chatbot-frame"
+        src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2024/12/12/19/20241212193309-5AWYXWSA.json"
+        title="Botpress Chatbot"></iframe>
 
-<script>
-  // Get the icon and iframe elements
-  const chatIcon = document.getElementById('chat-icon');
-  const chatbotFrame = document.getElementById('chatbot-frame');
+    <script>
+    // Get the icon and iframe elements
+    const chatIcon = document.getElementById('chat-icon');
+    const chatbotFrame = document.getElementById('chatbot-frame');
 
-  // Toggle the display of the chatbot iframe when the icon is clicked
-  chatIcon.addEventListener('click', () => {
-    if (chatbotFrame.style.display === 'none' || chatbotFrame.style.display === '') {
-      chatbotFrame.style.display = 'block'; // Show the chatbot iframe
-    } else {
-      chatbotFrame.style.display = 'none';  // Hide the chatbot iframe
-    }
-  });
-</script>
-<!-- end Chatbot Iframe -->
+    // Toggle the display of the chatbot iframe when the icon is clicked
+    chatIcon.addEventListener('click', () => {
+        if (chatbotFrame.style.display === 'none' || chatbotFrame.style.display === '') {
+            chatbotFrame.style.display = 'block'; // Show the chatbot iframe
+        } else {
+            chatbotFrame.style.display = 'none'; // Hide the chatbot iframe
+        }
+    });
+    </script>
+    <!-- end Chatbot Iframe -->
 
     <section id="features" class="features">
         <div class="slider_overlay">
@@ -282,7 +284,7 @@ foreach($Menu_Items as $M){
 
     ?>
                             <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
-                                <img src="<?=$M['picturePath']?>" alt="" />
+                                <img src="main-main/<?=$M['picturePath']?>" alt="" />
                                 <div class="portfolio_images_overlay text-center">
                                     <h6><?=$M['name']?></h6>
                                     <p class="product_price">$<?=$M['price']?></p>
@@ -445,15 +447,15 @@ foreach($Menu_Items as $M){
         <a href="#"><i class="fa fa-chevron-up"></i></a>
     </div>
 
-    <script src="addCart.js"></script>
-    <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
-    <script src="assets/js/vendor/bootstrap.min.js"></script>
-    <script src="reserve.js"></script>
+    <script src="main-main/addCart.js"></script>
+    <script src="main-main/assets/js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="main-main/assets/js/vendor/bootstrap.min.js"></script>
+    <script src="main-main/reserve.js"></script>
 
-    <script src="assets/js/jquery-easing/jquery.easing.1.3.js"></script>
-    <script src="assets/js/wow/wow.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="main-main/assets/js/jquery-easing/jquery.easing.1.3.js"></script>
+    <script src="main-main/assets/js/wow/wow.min.js"></script>
+    <script src="main-main/assets/js/plugins.js"></script>
+    <script src="main-main/assets/js/main.js"></script>
 </body>
 
 </html>

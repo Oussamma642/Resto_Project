@@ -190,7 +190,7 @@ class clsUser
         
         $stmt->execute();
         
-        $result = $stmt->get_result();
+        // $result = $stmt->get_result();
         
         $lastId = $row['last_user_id'];
         
