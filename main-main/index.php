@@ -261,7 +261,7 @@ foreach($Menu_Items as $M){
                                     <p class="product_price">$<?=$M['price']?></p>
                                     <button type="submit" class="btn btn-primary" onclick="AddCart"
                                         style="background-color: chocolate;">add to cart</button>
-
+                                    <h1>Jell</h1>
                                 </div>
 
                             </div>
