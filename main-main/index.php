@@ -3,11 +3,15 @@
 // header("location:../Dashbord-Menu/Classes/ReservationClasses/clsAddNewRes.php");
 
 include_once '../Dashbord-Menu/Classes/ReservationClasses/clsAddNewRes.php';
+include_once '../Dashbord-Menu/Classes/MenuClasses/clsMenu.php';
+
 
 if (isset($_POST['reserver'])){
     clsAddNewReservation::AddNewReservation();
     // clsAddNewReservation::Test();    
 }
+
+$Menu_Items = clsMenu::ListMenu();
 
 ?>
 
@@ -142,10 +146,6 @@ if (isset($_POST['reserver'])){
                                 </div>
 
 
-
-
-
-
                             </div><!-- /.navbar-collapse -->
                         </div><!-- /.container-fluid -->
                     </nav>
@@ -248,86 +248,31 @@ if (isset($_POST['reserver'])){
                         </div>
 
                         <div class="main_portfolio_content">
+
+
+                            <?php
+foreach($Menu_Items as $M){
+
+    ?>
                             <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
-                                <img src="assets/images/p1.png" alt="" />
+                                <img src="<?=$M['picturePath']?>" alt="" />
                                 <div class="portfolio_images_overlay text-center">
-                                    <h6>amiricane Source Mushroom</h6>
-                                    <p class="product_price">$12</p>
+                                    <h6><?=$M['name']?></h6>
+                                    <p class="product_price">$<?=$M['price']?></p>
                                     <button type="submit" class="btn btn-primary" onclick="AddCart"
                                         style="background-color: chocolate;">add to cart</button>
 
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
-                                <img src="assets/images/p2.png" alt="" />
-                                <div class="portfolio_images_overlay text-center">
-                                    <h6>morocan Source Mushroom</h6>
-                                    <p class="product_price">$11</p>
-                                    <button type="submit" class="btn btn-primary" onclick="AddCart"
-                                        style="background-color: chocolate;">add to cart</button>
 
-                                </div>
                             </div>
-                            <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
-                                <img src="assets/images/p3.png" alt="" />
-                                <div class="portfolio_images_overlay text-center">
-                                    <h6>algirian Source Mushroom</h6>
-                                    <p class="product_price">$17</p>
-                                    <button type="submit" class="btn btn-primary" onclick="AddCart"
-                                        style="background-color: chocolate;">add to cart</button>
 
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
-                                <img src="assets/images/p4.png" alt="" />
-                                <div class="portfolio_images_overlay text-center">
-                                    <h6>Italian Source Mushroom</h6>
-                                    <p class="product_price">$22</p>
-                                    <button type="submit" class="btn btn-primary" onclick="AddCart"
-                                        style="background-color: chocolate;">add to cart</button>
 
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
-                                <img src="assets/images/p5.png" alt="" />
-                                <div class="portfolio_images_overlay text-center">
-                                    <h6>germaner Source Mushroom</h6>
-                                    <p class="product_price">$10</p>
-                                    <button type="submit" class="btn btn-primary" onclick="AddCart"
-                                        style="background-color: chocolate;">add to cart</button>
 
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
-                                <img src="assets/images/p6.png" alt="" />
-                                <div class="portfolio_images_overlay text-center">
-                                    <h6>Italian Source Mushroom</h6>
-                                    <p class="product_price">$20</p>
-                                    <button type="submit" class="btn btn-primary" onclick="AddCart"
-                                        style="background-color: chocolate;">add to cart</button>
+                            <?php
 
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
-                                <img src="assets/images/p7.png" alt="" />
-                                <div class="portfolio_images_overlay text-center">
-                                    <h6>brazilian Source Mushroom</h6>
-                                    <p class="product_price">$15</p>
-                                    <button type="submit" class="btn btn-primary" onclick="AddCart"
-                                        style="background-color: chocolate;">add to cart</button>
+}
+                        ?>
 
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
-                                <img src="assets/images/p8.png" alt="" />
-                                <div class="portfolio_images_overlay text-center">
-                                    <h6>tunusian Source Mushroom</h6>
-                                    <p class="product_price">$30</p>
-                                    <button type="submit" class="btn btn-primary" onclick="AddCart"
-                                        style="background-color: chocolate;">add to cart</button>
-
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
