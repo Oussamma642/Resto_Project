@@ -151,8 +151,6 @@ window.onload = function () {
 
 
 
-
-
 // Fonction pour afficher le formulaire de connexion
 function showLoginForm() {
     const cartContent = document.getElementById('cart-modal-content');

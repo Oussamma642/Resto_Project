@@ -271,9 +271,6 @@ foreach($Menu_Items as $M){
                                 </div>
 
                             </div>
-
-
-
                             <?php
 
 }
