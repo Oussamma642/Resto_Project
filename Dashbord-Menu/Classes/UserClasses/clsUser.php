@@ -192,14 +192,14 @@ class clsUser
         
         $result = $stmt->get_result();
         
-        $lastId = null;
+        $lastId = $row['last_user_id'];
         
-        if ($result && $row = $result->fetch_assoc()) {
-            $lastId = $row['last_user_id'];
-        }
+        // if ($result && $row = $result->fetch_assoc()) {
+        //     $lastId = $row['last_user_id'];
+        // }
     
-        $stmt->close();
-        $conn->close();
+        // $stmt->close();
+        // $conn->close();
     
         return $lastId;
     }

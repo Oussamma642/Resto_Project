@@ -1,11 +1,13 @@
 <?php
 
-include_once '../UserClasses/clsUser.php';
+// include_once '../UserClasses/clsUser.php';
+
+include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\UserClasses\clsUser.php';
 
 include_once 'clsReservation.php';
 
 class clsAddNewReservation{
-
+    
     private static function _CheckForms(){
 
         return (
@@ -20,11 +22,10 @@ class clsAddNewReservation{
     }
 
     public static function AddNewReservation(){
-        // ("CALL add_new_user('$fname', '$lname', '$email', '$pswd', '$role', '$phone', $prmsn)");
 
         if (self::_CheckForms()){
 
-            $usrId = null;
+            // $usrId = null;
             $currUser = clsUser::Find($_POST['email'], '0000');
 
             if ($currUser == null){  
@@ -44,9 +45,20 @@ class clsAddNewReservation{
             else{
                 $usrId = $currUser->getUserId();
             }
-            clsReservation::AddNewReservation($userId, $_POST['date'], $_POST['time'], $_POST['nbrGuests']);
+            clsReservation::AddNewReservation($usrId, $_POST['date'], $_POST['time'], $_POST['nbrGuests']);
         }
 
     }
 
+    public static function Test(){
+
+        echo $_POST['firstName'] . '<br><br>';
+        echo $_POST['lastName'] . '<br><br>';
+        echo $_POST['email'] . '<br><br>';
+        echo $_POST['phoneNumber'] . '<br><br>';
+        echo $_POST['nbrGuests'] . '<br><br>';
+        echo $_POST['date'] . '<br><br>';
+        echo $_POST['time'] . '<br><br>';
+
+    }
 }
