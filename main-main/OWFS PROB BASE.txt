@@ -1,0 +1,90 @@
+Here’s a base document to address potential issues related to booking a buffet at a restaurant website, such as problems with reservations, booking process issues, and general troubleshooting questions. I’ll provide these in English, French, and Arabic as you requested, breaking the content into parts for easier copying.
+
+---
+
+### **Part 1: Booking Issues & Troubleshooting**
+
+**1. English:**
+Q: I’m having trouble booking a table online. What should I do?  
+A: If you're experiencing difficulties with our online booking system, please ensure you're entering the correct details (such as date, time, and number of guests). If the issue persists, contact our support team at support@restaurant.com, or call us at (555) 123-4567.
+
+**French:**
+Q: J'ai des problèmes pour réserver une table en ligne. Que dois-je faire ?  
+R: Si vous rencontrez des difficultés avec notre système de réservation en ligne, assurez-vous que vous saisissez les bonnes informations (telles que la date, l'heure et le nombre de personnes). Si le problème persiste, contactez notre équipe d'assistance à support@restaurant.com, ou appelez-nous au (555) 123-4567.
+
+**Arabic:**
+س: أواجه مشكلة في حجز طاولة عبر الإنترنت. ماذا يجب عليّ أن أفعل؟  
+ج: إذا كنت تواجه صعوبة في استخدام نظام الحجز عبر الإنترنت، تأكد من إدخال التفاصيل الصحيحة (مثل التاريخ والوقت وعدد الضيوف). إذا استمر المشكلة، يرجى الاتصال بفريق الدعم لدينا على support@restaurant.com أو الاتصال بنا على (555) 123-4567.
+
+---
+
+**2. English:**
+Q: Can I change or cancel my reservation online?  
+A: Yes, you can modify or cancel your reservation by logging into your account on our website. If you need assistance, please contact us at support@restaurant.com or call (555) 123-4567.
+
+**French:**
+Q: Puis-je modifier ou annuler ma réservation en ligne ?  
+R: Oui, vous pouvez modifier ou annuler votre réservation en vous connectant à votre compte sur notre site web. Si vous avez besoin d'aide, veuillez nous contacter à support@restaurant.com ou appeler le (555) 123-4567.
+
+**Arabic:**
+س: هل يمكنني تعديل أو إلغاء حجز الطاولة عبر الإنترنت؟  
+ج: نعم، يمكنك تعديل أو إلغاء الحجز عبر تسجيل الدخول إلى حسابك على موقعنا الإلكتروني. إذا كنت بحاجة إلى المساعدة، يرجى الاتصال بنا عبر support@restaurant.com أو الاتصال على (555) 123-4567.
+
+---
+
+**3. English:**
+Q: I didn’t receive a confirmation email for my reservation. What should I do?  
+A: Please check your spam or junk folder. If you still haven't received the confirmation, please contact us at support@restaurant.com, and we will resend your confirmation.
+
+**French:**
+Q: Je n'ai pas reçu d'e-mail de confirmation pour ma réservation. Que dois-je faire ?  
+R: Vérifiez votre dossier de spam ou de courrier indésirable. Si vous n'avez toujours pas reçu la confirmation, contactez-nous à support@restaurant.com et nous vous renverrons la confirmation.
+
+**Arabic:**
+س: لم أستلم رسالة تأكيد لحجز طاولتي. ماذا يجب عليّ أن أفعل؟  
+ج: يرجى التحقق من مجلد الرسائل غير المرغوب فيها. إذا لم تستلم التأكيد، يرجى الاتصال بنا عبر support@restaurant.com وسنعيد إرسال التأكيد إليك.
+
+---
+
+**4. English:**
+Q: I can’t select my preferred time or date when booking.  
+A: This could be because the time or date you're trying to select is unavailable. Try selecting another time or date. If the issue persists, please contact us at support@restaurant.com for further assistance.
+
+**French:**
+Q: Je ne peux pas sélectionner mon heure ou ma date préférée lors de la réservation.  
+R: Cela peut être dû au fait que l'heure ou la date que vous essayez de sélectionner est déjà prise. Essayez de choisir une autre heure ou une autre date. Si le problème persiste, contactez-nous à support@restaurant.com pour obtenir de l'aide.
+
+**Arabic:**
+س: لا أستطيع تحديد الوقت أو التاريخ المفضل لي عند الحجز.  
+ج: قد يكون ذلك بسبب عدم توفر الوقت أو التاريخ الذي تحاول اختياره. حاول اختيار وقت أو تاريخ آخر. إذا استمر المشكلة، يرجى الاتصال بنا عبر support@restaurant.com للحصول على مساعدة إضافية.
+
+---
+
+### **Part 2: Payment & Pricing Issues**
+
+**1. English:**
+Q: I had an issue with my payment when booking. How can I resolve it?  
+A: Please check if your payment details are correct and that your card has sufficient funds. If the payment issue persists, contact our support team at support@restaurant.com for assistance.
+
+**French:**
+Q: J'ai rencontré un problème avec mon paiement lors de la réservation. Comment puis-je le résoudre ?  
+R: Vérifiez si vos informations de paiement sont correctes et si votre carte dispose de fonds suffisants. Si le problème de paiement persiste, contactez notre équipe d'assistance à support@restaurant.com pour obtenir de l'aide.
+
+**Arabic:**
+س: واجهت مشكلة في الدفع عند الحجز. كيف يمكنني حلها؟  
+ج: يرجى التحقق من صحة تفاصيل الدفع الخاصة بك وأن بطاقة الدفع تحتوي على رصيد كافٍ. إذا استمرت المشكلة، يرجى الاتصال بفريق الدعم لدينا عبر support@restaurant.com للمساعدة.
+
+---
+
+**2. English:**
+Q: What if I need to make a group reservation for the buffet?  
+A: For group reservations, please contact us directly at (555) 123-4567 or email us at groups@restaurant.com. We’ll be happy to assist with special arrangements.
+
+**French:**
+Q: Que faire si je souhaite réserver pour un groupe pour le buffet ?  
+R: Pour les réservations de groupe, veuillez nous contacter directement au (555) 123-4567 ou par e-mail à groups@restaurant.com. Nous serons heureux de vous aider pour les arrangements spéciaux.
+
+**Arabic:**
+س: ماذا أفعل إذا كنت أرغب في حجز طاولة لمجموعة في البوفيه؟  
+ج: لحجوزات المجموعات، يرجى الاتصال بنا مباشرة على الرقم (555) 123-4567 أو عبر البريد الإلكتروني groups@restaurant.com. سنكون سعداء بمساعدتك في الترتيبات الخاصة.
+document should h
