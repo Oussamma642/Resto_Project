@@ -336,6 +336,7 @@ foreach($Menu as $M){
                                     style="width:200px;height:200px;object-fit: cover; border-radius:10px;">
                             </div>
                             <input type="file" class="form-control" id="photo" accept="image/*" name="photo" required>
+                            <input type="hidden" id="oldImagePath" name="oldImagePath">
                         </div>
                         <!-- Price -->
                         <div class="form-group">
@@ -360,6 +361,8 @@ foreach($Menu as $M){
         document.getElementById('Price').value = user.price;
         var oldImage = document.getElementById('oldImage');
         oldImage.src = user.picturePath;
+
+        document.getElementById('oldImagePath').value = user.picturePath;
         // Further logic to populate permissions if needed
     }
     </script>

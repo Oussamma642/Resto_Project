@@ -50,12 +50,13 @@ class clsAddNewDish {
                 $m = clsMenu::addMenuItem($_POST['Name'], $_POST['Description'], $relativePath, $_POST['Price']);
                 
                 // Si l'insertion a réussi, redirige vers la page des plats
-                if ($m) {
-                    header("Location: ../../Dishes.php");
-                    exit();
-                }
+             
             }
+        
         }
+    
+        header("location:../Dashbord-Menu/Dishses.php");
+
     }
 }
 
