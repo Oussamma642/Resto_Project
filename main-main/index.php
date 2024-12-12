@@ -130,11 +130,17 @@ if (isset($_POST['reserver'])){
                                 <div id="login-form" style="display: none;">
                                     <h4>Please log in to proceed</h4>
                                     <form id="form-login">
-                                        <label for="account-number">Account Number:</label>
-                                        <input type="text" id="account-number" name="account-number" required><br><br>
+                                        <label for="account-number">firstName:</label>
+                                        <input type="text" id="firstName" name="firstName" required><br><br>
 
-                                        <label for="password">Password:</label>
-                                        <input type="password" id="password" name="password" required><br><br>
+                                        <label for="password">lastName:</label>
+                                        <input type="text" id="lastName" name="lastName" required><br><br>
+
+                                        <label for="email">Email:</label>
+                                        <input type="text" id="email" name="email" required><br><br>
+
+                                        <label for="phone-number">Adress:</label>
+                                        <input type="" id="adresse" name="adresse" required><br><br>
 
                                         <button type="submit"
                                             style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
