@@ -1,17 +1,17 @@
 <?php
 
-
 // header("location:../Dashbord-Menu/Classes/ReservationClasses/clsAddNewRes.php");
 
 include_once '../Dashbord-Menu/Classes/ReservationClasses/clsAddNewRes.php';
 
 if (isset($_POST['reserver'])){
     clsAddNewReservation::AddNewReservation();
-
     // clsAddNewReservation::Test();    
 }
 
 ?>
+
+
 <!doctype html>
 
 <head>
@@ -21,6 +21,9 @@ if (isset($_POST['reserver'])){
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- lien icon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
@@ -87,7 +90,7 @@ if (isset($_POST['reserver'])){
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
-                                </button>x
+                                </button>
                                 <a class="navbar-brand our_logo" href="#"><img src="assets/images/logo.png"
                                         alt="" /></a>
                             </div>
@@ -102,7 +105,47 @@ if (isset($_POST['reserver'])){
                                     <li><a href="#portfolio">Menu</a></li>
                                     <li><a href="#footer_widget">contact us</a></li>
                                     <li><a href="#table-booking" class="booking">Table Booking</a></li>
+                                    <li>
+                                        <div id="cart-icon" style="cursor: pointer; ">
+                                            <span id="cart-count">0</span>
+                                        </div>
+                                    </li>
+
                                 </ul>
+                                <!-- Modale Panier -->
+                                <div id="cart-modal"
+                                    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center; z-index: 1000;">
+                                    <div
+                                        style="background-color: white; padding: 20px; border-radius: 8px; width: 600px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                                        <h3>Your Cart</h3>
+                                        <div id="cart-modal-content" style="max-height: 200px; overflow-y: auto;"></div>
+                                        <button id="close-modal"
+                                            style="margin-top: 10px; padding: 10px 20px; background-color: red; color: white; border: none; border-radius: 5px; cursor: pointer;">Close</button>
+                                        <!-- Ajouter un bouton "Voir Panier" en dehors des articles -->
+                                        <button id="view-cart"
+                                            style="margin-top: 10px; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Voir
+                                            Panier</button>
+                                    </div>
+                                </div>
+                                <div id="login-form" style="display: none;">
+                                    <h4>Please log in to proceed</h4>
+                                    <form id="form-login">
+                                        <label for="account-number">Account Number:</label>
+                                        <input type="text" id="account-number" name="account-number" required><br><br>
+
+                                        <label for="password">Password:</label>
+                                        <input type="password" id="password" name="password" required><br><br>
+
+                                        <button type="submit"
+                                            style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+                                    </form>
+                                </div>
+
+
+
+
+
+
                             </div><!-- /.navbar-collapse -->
                         </div><!-- /.container-fluid -->
                     </nav>
@@ -193,7 +236,7 @@ if (isset($_POST['reserver'])){
             </div>
         </div>
     </section>
-
+    <!-- menu -->
     <section id="portfolio" class="portfolio">
         <div class="container">
             <div class="row">
@@ -208,65 +251,81 @@ if (isset($_POST['reserver'])){
                             <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
                                 <img src="assets/images/p1.png" alt="" />
                                 <div class="portfolio_images_overlay text-center">
-                                    <h6>Italian Source Mushroom</h6>
+                                    <h6>amiricane Source Mushroom</h6>
                                     <p class="product_price">$12</p>
-                                    <a href="" class="btn btn-primary">Click here</a>
+                                    <button type="submit" class="btn btn-primary" onclick="AddCart"
+                                        style="background-color: chocolate;">add to cart</button>
+
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
                                 <img src="assets/images/p2.png" alt="" />
                                 <div class="portfolio_images_overlay text-center">
-                                    <h6>Italian Source Mushroom</h6>
-                                    <p class="product_price">$12</p>
-                                    <a href="" class="btn btn-primary">Click here</a>
+                                    <h6>morocan Source Mushroom</h6>
+                                    <p class="product_price">$11</p>
+                                    <button type="submit" class="btn btn-primary" onclick="AddCart"
+                                        style="background-color: chocolate;">add to cart</button>
+
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
                                 <img src="assets/images/p3.png" alt="" />
                                 <div class="portfolio_images_overlay text-center">
-                                    <h6>Italian Source Mushroom</h6>
-                                    <p class="product_price">$12</p>
-                                    <a href="" class="btn btn-primary">Click here</a>
+                                    <h6>algirian Source Mushroom</h6>
+                                    <p class="product_price">$17</p>
+                                    <button type="submit" class="btn btn-primary" onclick="AddCart"
+                                        style="background-color: chocolate;">add to cart</button>
+
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
                                 <img src="assets/images/p4.png" alt="" />
                                 <div class="portfolio_images_overlay text-center">
                                     <h6>Italian Source Mushroom</h6>
-                                    <p class="product_price">$12</p>
-                                    <a href="" class="btn btn-primary">Click here</a>
+                                    <p class="product_price">$22</p>
+                                    <button type="submit" class="btn btn-primary" onclick="AddCart"
+                                        style="background-color: chocolate;">add to cart</button>
+
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
                                 <img src="assets/images/p5.png" alt="" />
                                 <div class="portfolio_images_overlay text-center">
-                                    <h6>Italian Source Mushroom</h6>
-                                    <p class="product_price">$12</p>
-                                    <a href="" class="btn btn-primary">Click here</a>
+                                    <h6>germaner Source Mushroom</h6>
+                                    <p class="product_price">$10</p>
+                                    <button type="submit" class="btn btn-primary" onclick="AddCart"
+                                        style="background-color: chocolate;">add to cart</button>
+
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
                                 <img src="assets/images/p6.png" alt="" />
                                 <div class="portfolio_images_overlay text-center">
                                     <h6>Italian Source Mushroom</h6>
-                                    <p class="product_price">$12</p>
-                                    <a href="" class="btn btn-primary">Click here</a>
+                                    <p class="product_price">$20</p>
+                                    <button type="submit" class="btn btn-primary" onclick="AddCart"
+                                        style="background-color: chocolate;">add to cart</button>
+
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
                                 <img src="assets/images/p7.png" alt="" />
                                 <div class="portfolio_images_overlay text-center">
-                                    <h6>Italian Source Mushroom</h6>
-                                    <p class="product_price">$12</p>
-                                    <a href="" class="btn btn-primary">Click here</a>
+                                    <h6>brazilian Source Mushroom</h6>
+                                    <p class="product_price">$15</p>
+                                    <button type="submit" class="btn btn-primary" onclick="AddCart"
+                                        style="background-color: chocolate;">add to cart</button>
+
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-4 col-xs-6 single_portfolio_text">
                                 <img src="assets/images/p8.png" alt="" />
                                 <div class="portfolio_images_overlay text-center">
-                                    <h6>Italian Source Mushroom</h6>
-                                    <p class="product_price">$12</p>
-                                    <a href="" class="btn btn-primary">Click here</a>
+                                    <h6>tunusian Source Mushroom</h6>
+                                    <p class="product_price">$30</p>
+                                    <button type="submit" class="btn btn-primary" onclick="AddCart"
+                                        style="background-color: chocolate;">add to cart</button>
+
                                 </div>
                             </div>
                         </div>
@@ -276,7 +335,6 @@ if (isset($_POST['reserver'])){
         </div>
     </section>
     <!-- Table Booking Section -->
-
 
     <section id="table-booking" class="py-5" style="display: none;">
         <div class="container">
@@ -339,8 +397,10 @@ if (isset($_POST['reserver'])){
                                 </div>
                             </div>
                             <div class="text-center">
+                                <button type="button" class=" btn-warning btn-lg w-100" id="back-first">Back</button>
                                 <button type="submit" class=" btn-warning btn-lg w-100" name="reserver"
                                     id=" btn_forms">Submit</button>
+
                             </div>
                             </form>
                         </div>
@@ -350,94 +410,81 @@ if (isset($_POST['reserver'])){
         </div>
     </section>
 
+
+
     <!-- Include Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
 
-
-
-
-
-
-
-
-    <section>
-
-
-        <section id="footer_widget" class="footer_widget ">
-            <div class="footer">
-                <div class="row">
-                    <div class="row container-fluid">
-                        <div class="footer_widget_content text-center">
-                            <div class="col-md-6">
-                                <div class="single_widget wow fadeIn" data-wow-duration="2s">
-                                    <h3>Take it easy with location</h3>
-                                    <div class="single_widget_info">
-                                        <p>112-Legere ancillae vix ne.
-                                            <span>Te elit putent propriae eum,</span>
-                                            <span>owfs</span>
-                                            <span class="phone_email">phone: 00 000 000</span>
-                                            <span>Email: OWFS202@restaurant.com</span>
-                                        </p>
-                                    </div>
+    <section id="footer_widget" class="footer_widget ">
+        <div class="footer">
+            <div class="row">
+                <div class="row container-fluid">
+                    <div class="footer_widget_content text-center">
+                        <div class="col-md-6">
+                            <div class="single_widget wow fadeIn" data-wow-duration="2s">
+                                <h3>Take it easy with location</h3>
+                                <div class="single_widget_info">
+                                    <p>112-Legere ancillae vix ne.
+                                        <span>Te elit putent propriae eum,</span>
+                                        <span>owfs</span>
+                                        <span class="phone_email">phone: 00 000 000</span>
+                                        <span>Email: OWFS202@restaurant.com</span>
+                                    </p>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-md-6">
-                                <div class="single_widget wow fadeIn" data-wow-duration="4s">
-                                    <h3>Take it easy with location</h3>
-                                    <div class="single_widget_info">
-                                        <p><span class="date_day">Monday To Friday</span>
-                                            <span>8:00am to 10:00pm(Breakfast)</span>
-                                            <span>11:00am to 10:00pm(Lunch/Diner)</span>
-                                            <span class="date_day">Saturday & Sunday</span>
-                                            <span>10:00am to 11:00pm(Brunch)</span>
-                                            <span>11:00am to 12:00pm(Lunch/Dinner)</span>
-                                        </p>
-                                    </div>
+                        <div class="col-md-6">
+                            <div class="single_widget wow fadeIn" data-wow-duration="4s">
+                                <h3>Take it easy with location</h3>
+                                <div class="single_widget_info">
+                                    <p><span class="date_day">Monday To Friday</span>
+                                        <span>8:00am to 10:00pm(Breakfast)</span>
+                                        <span>11:00am to 10:00pm(Lunch/Diner)</span>
+                                        <span class="date_day">Saturday & Sunday</span>
+                                        <span>10:00am to 11:00pm(Brunch)</span>
+                                        <span>11:00am to 12:00pm(Lunch/Dinner)</span>
+                                    </p>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4" style="padding: 20px; margin: 20px;">
-                                    <div class="footer_socail_icon">
-                                        <a href=""><i class="fa fa-facebook"></i></a>
-                                        <a href=""><i class="fa fa-google-plus"></i></a>
-                                        <a href=""><i class="fa fa-twitter"></i></a>
-                                        <a href=""><i class="fa fa-linkedin"></i></a>
-                                        <a href=""><i class="fa fa-pinterest-p"></i></a>
-                                        <a href=""><i class="fa fa-youtube"></i></a>
-                                        <a href=""><i class="fa fa-phone"></i></a>
-                                        <a href=""><i class="fa fa-camera"></i></a>
-                                    </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4" style="padding: 20px; margin: 20px;">
+                                <div class="footer_socail_icon">
+                                    <a href=""><i class="fa fa-facebook"></i></a>
+                                    <a href=""><i class="fa fa-google-plus"></i></a>
+                                    <a href=""><i class="fa fa-twitter"></i></a>
+                                    <a href=""><i class="fa fa-linkedin"></i></a>
+                                    <a href=""><i class="fa fa-pinterest-p"></i></a>
+                                    <a href=""><i class="fa fa-youtube"></i></a>
+                                    <a href=""><i class="fa fa-phone"></i></a>
+                                    <a href=""><i class="fa fa-camera"></i></a>
                                 </div>
-                                <div class="col-md-4"></div>
                             </div>
+                            <div class="col-md-4"></div>
                         </div>
                     </div>
                 </div>
             </div>
-
-        </section>
-
-
-
-        <!--Footer-->
-
-
-        <div class="scrollup">
-            <a href="#"><i class="fa fa-chevron-up"></i></a>
         </div>
 
+    </section>
+    <!--Footer-->
+    <div class="scrollup">
+        <a href="#"><i class="fa fa-chevron-up"></i></a>
+    </div>
 
-        <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
-        <script src="assets/js/vendor/bootstrap.min.js"></script>
-        <script src="reserve.js"></script>
+    <script src="addCart.js"></script>
+    <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="reserve.js"></script>
 
-        <script src="assets/js/jquery-easing/jquery.easing.1.3.js"></script>
-        <script src="assets/js/wow/wow.min.js"></script>
-        <script src="assets/js/plugins.js"></script>
-        <script src="assets/js/main.js"></script>
+    <script src="assets/js/jquery-easing/jquery.easing.1.3.js"></script>
+    <script src="assets/js/wow/wow.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

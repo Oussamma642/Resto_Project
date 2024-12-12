@@ -41,11 +41,16 @@ class clsAddNewReservation{
                     0
                 );
                 $usrId = $currUser->Save();   
+                echo '<script> console.log("Non Existe") </script>';
+
             }
             else{
                 $usrId = $currUser->getUserId();
+                echo '<script> console.log("Existe") </script>';
             }
             clsReservation::AddNewReservation($usrId, $_POST['date'], $_POST['time'], $_POST['nbrGuests']);
+
+            unset($currUser);
         }
 
     }
