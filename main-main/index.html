@@ -247,6 +247,7 @@
         </section>
         <!-- Table Booking Section -->
 
+
         <section id="table-booking" class="py-5" style="display: none;">
             <div class="container">
                 <div class="text-center mb-4">
@@ -260,21 +261,20 @@
                             <div class="card-body p-4">
                                 <h3 class="text-center mb-4">Reserve Your Table</h3>
                                 <form>
-                                    <div class="mb-3">
+                                    <div name="nbrGuests" class="mb-3">
                                         <select class="form-select" required>
                                             <option value="" disabled selected>No. of Persons</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
                                             <option value="4">4</option>
-                                            <option value="5+">5+</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <input type="date" class="form-control" required>
+                                        <input type="date" name="date" class="form-control" required>
                                     </div>
                                     <div class="mb-3">
-                                        <input type="time" class="form-control" required>
+                                        <input type="time" name="time" class="form-control" required>
                                     </div>
                                     <div class="text-center">
                                         <button type="button" class=" btn-warning btn-lg w-100"  id="reserve-first">Reserve</button>
@@ -290,22 +290,22 @@
                                 <form>
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
-                                            <input type="text" class="form-control" placeholder="First Name" required>
+                                            <input type="text" class="form-control" name="firstName" placeholder="First Name" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
-                                            <input type="text" class="form-control" placeholder="Last Name" required>
+                                            <input type="text" class="form-control" name="lastName" placeholder="Last Name" required>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
-                                            <input type="email" class="form-control" placeholder="E-Mail" required>
+                                            <input type="email" class="form-control" name="email" placeholder="E-Mail" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
-                                            <input type="tel" class="form-control" placeholder="Contact Number" required>
+                                            <input type="tel" class="form-control" name="phoneNumber" placeholder="Contact Number" required>
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class=" btn-warning btn-lg w-100" id=" btn_forms" >Submit</button>
+                                        <button type="submit" class=" btn-warning btn-lg w-100" name="" id=" btn_forms" >Submit</button>
                                     </div>
                                 </form>
                             </div>

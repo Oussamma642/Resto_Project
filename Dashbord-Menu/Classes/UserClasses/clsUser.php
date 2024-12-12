@@ -117,7 +117,7 @@ class clsUser
      }
     
      // Find The user 
-    public static function Find($email, $pswd)
+    public static function Find($email, $pswd='0000')
     {
         $conn = self::Conncect();
 
@@ -187,9 +187,22 @@ class clsUser
 
         $conn = self::Conncect();
         $stmt = $conn->prepare("CALL add_new_user('$fname', '$lname', '$email', '$pswd', '$role', '$phone', $prmsn)");
-        return $stmt->execute();
-    }
+        
+         $stmt->execute();
+        
+        $result = $stmt->get_result();
+        
+        $lastId = null;
+        
+        if ($result && $row = $result->fetch_assoc()) {
+            $lastId = $row['last_user_id'];
+        }
     
+        $stmt->close();
+        $conn->close();
+    
+        return $lastId;
+    }
     
     public function CheckAccessPermission(int $Permission):bool
     {

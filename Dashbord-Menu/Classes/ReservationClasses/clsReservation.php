@@ -1,6 +1,5 @@
 <?php
 
-
 include_once 'C:\xampp\desktop\htdocs\Resto_Project\Dashbord-Menu\Classes\ContactsClasses\clsContact.php';
 class clsReservation
 {
@@ -51,5 +50,15 @@ class clsReservation
         }
 
     }
-    
+
+    public static function AddNewReservation(
+        $userId,
+        $resDate, 
+        $resTime, 
+        $nbrGuest 
+    ){
+        $conn = self::Conncect();
+        $stmt = $conn->prepare("CALL add_new_reservation($userId, '$resDate', '$resTime', $nbrGuest)");
+        return $stmt->execute();
+    }   
 }
