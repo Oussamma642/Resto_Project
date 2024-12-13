@@ -12,16 +12,19 @@ CREATE TABLE reservations (
 );
 
 
+drop procedure add_new_reservation;
+
 delimiter //
 create procedure add_new_reservation(
     in userId int,
     in resDate date, 
     in resTime time, 
-    in nbrGuest int, 
+    in nbrGuest int,
+    in nbrTables 
     )
 begin 
-    insert into reservations (user_id, reservation_date, time_slot, number_of_guests)
-    VALUES (userId, resDate, resTime, nbrGuest);
+    insert into reservations (user_id, reservation_date, time_slot, number_of_guests, nbrTable)
+    VALUES (userId, resDate, resTime, nbrGuest, nbrTables);
 end //
 delimiter ;
 

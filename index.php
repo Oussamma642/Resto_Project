@@ -321,13 +321,15 @@ foreach($Menu_Items as $M){
                             <h3 class="text-center mb-4">Reserve Your Table</h3>
                             <form method="post">
                                 <div class="mb-3">
-                                    <select name="nbrGuests" class="form-select" required>
+                                    <input type="number" name="nbrGuests" class="form-control mb-2"
+                                        placeholder="Nombre de personnes" min="1" max="20" required>
+                                    <!-- <select name="nbrGuests" class="form-select" required>
                                         <option value="" disabled selected>No. of Persons</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
-                                    </select>
+                                    </select> -->
                                 </div>
                                 <div class="mb-3">
                                     <input type="date" name="date" class="form-control" required>

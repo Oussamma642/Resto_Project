@@ -15,7 +15,6 @@ BEGIN
     INSERT INTO users (first_name, last_name, email, password, role, phone_number, permissions)
     VALUES (fname, lname, em, pswd, rle, phone, perm);
 
-    SELECT LAST_INSERT_ID() AS last_user_id;
 END //
 
 delimiter ;

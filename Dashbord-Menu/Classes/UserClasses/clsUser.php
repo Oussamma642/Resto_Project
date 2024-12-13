@@ -174,9 +174,15 @@ class clsUser
 
     }
 
-    // Save method to insert a new user into the database
     public function Save()
     {
+
+        $conn = self::Conncect();
+
+        $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email, password, role, phone_number, permissions) 
+        VALUES (:fname, :lname, :email, :pswd, :role, :phone, :prmsn)");
+
+        // Bind parameters
         $fname = $this->first_name;
         $lname = $this->last_name;
         $email = $this->email;
@@ -184,26 +190,36 @@ class clsUser
         $phone = $this->phone_number;
         $role = $this->role;
         $prmsn = $this->permissions;
-
-        $conn = self::Conncect();
-        $stmt = $conn->prepare("CALL add_new_user('$fname', '$lname', '$email', '$pswd', '$role', '$phone', $prmsn)");
+            
         
+        $stmt->bindParam(':fname', $fname);
+        $stmt->bindParam(':lname', $lname);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':pswd', $pswd);
+        $stmt->bindParam(':role', $role);
+        $stmt->bindParam(':phone', $phone);
+        $stmt->bindParam(':prmsn', $prmsn);
+            
+        // Execute the statement
         $stmt->execute();
-        
-        // $result = $stmt->get_result();
-        
-        $lastId = $row['last_user_id'];
-        
-        // if ($result && $row = $result->fetch_assoc()) {
-        //     $lastId = $row['last_user_id'];
-        // }
+            
+        // Verify if the insert was successful
+        if ($stmt->rowCount() > 0) 
+        {
+            // Get the last inserted ID
+            $lastId = $conn->lastInsertId();
+            return $lastId;
+            echo "The last inserted user ID is: " . $lastId;
+        } 
+        else 
+        {
+            echo "Insert operation failed.";
+        }
+         
     
-        // $stmt->close();
-        // $conn->close();
-    
-        return $lastId;
-    }
-    
+}
+
+
     public function CheckAccessPermission(int $Permission):bool
     {
         if ($this->permissions == Permissions::All)

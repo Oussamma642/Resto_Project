@@ -51,14 +51,43 @@ class clsReservation
 
     }
 
-    public static function AddNewReservation(
-        $userId,
-        $resDate, 
-        $resTime, 
-        $nbrGuest 
-    ){
-        $conn = self::Conncect();
-        $stmt = $conn->prepare("CALL add_new_reservation($userId, '$resDate', '$resTime', $nbrGuest)");
-        return $stmt->execute();
-    }   
+    // public static function AddNewReservation(
+    //     $userId,
+    //     $resDate, 
+    //     $resTime, 
+    //     $nbrGuest,
+    //     $nbrTables
+    // ){
+    //     $conn = self::Conncect();
+    //     $stmt = $conn->prepare("CALL add_new_reservation($userId, '$resDate', '$resTime', $nbrGuest, $nbrTables)");
+    //     return $stmt->execute();
+    // }   
+
+    public static function AddNewReservation($userId, $resDate, $resTime, $nbrGuest, $nbrTables)
+    {
+        $conn = self::Conncect(); // Connexion à la base de données
+    
+        try {
+            // Préparer la requête pour appeler la procédure stockée
+            $stmt = $conn->prepare("CALL add_new_reservation(:userId, :resDate, :resTime, :nbrGuest, :nbrTables)");
+    
+            // Lier les paramètres à la requête préparée
+            $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+            $stmt->bindParam(':resDate', $resDate, PDO::PARAM_STR);
+            $stmt->bindParam(':resTime', $resTime, PDO::PARAM_STR);
+            $stmt->bindParam(':nbrGuest', $nbrGuest, PDO::PARAM_INT);
+            $stmt->bindParam(':nbrTables', $nbrTables, PDO::PARAM_INT);
+    
+            // Exécuter la requête
+            $stmt->execute();
+    
+            return true; // Succès
+        } catch (PDOException $e) {
+            // Afficher un message d'erreur dans la console
+            echo '<script> console.error("Erreur : ' . $e->getMessage() . '") </script>';
+            return false; // Échec
+        }
+    }
+    
+
 }

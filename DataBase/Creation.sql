@@ -16,6 +16,9 @@ CREATE TABLE users (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+INSERT into users(first_name, last_name, email, password, role, phone_number, permissions)
+VALUES ('Oussama', 'AIT-MOHAMED', 'user1@gmail.com', '1111', 'admin', '06060606', -1);
+
 INSERT into users (first_name, last_name, email, password, role, phone_number, permissions)
 VALUES ('', '', '@gmail.com', '4444', 'client', '06060606', 0);
 VALUES ('Oussama', 'SAMI-MOHAMED', 'gregoremendell@gmail.com', '9999', 'client', '0652155542', 0);
