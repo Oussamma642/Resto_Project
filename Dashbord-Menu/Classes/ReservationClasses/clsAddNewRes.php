@@ -91,18 +91,10 @@ class clsAddNewReservation{
                     0
                 );
     
-                // Sauvegarder l'utilisateur et récupérer l'ID
-                $usrId = $currUser->Save();
-                if ($usrId === null) {
-                    echo '<script> console.error("Erreur : impossible de créer l\'utilisateur.") </script>';
-                    return; // Arrêter l'exécution si la création échoue
-                }
-                echo '<script> console.log("Utilisateur créé avec succès : ID ' . $usrId . '") </script>';
-            } else {
-                // Si l'utilisateur existe, récupérer son ID
-                $usrId = $currUser->getUserId();
-                echo '<script> console.log("Utilisateur existant trouvé : ID ' . $usrId . '") </script>';
-            }
+                $currUser->Save();
+            } 
+
+            $usrId = $currUser->getUserId();
     
             // Calcul du nombre de tables nécessaires
             $nbrGuests = (int) $_POST['nbrGuests'];
@@ -127,18 +119,5 @@ class clsAddNewReservation{
             // Nettoyage
             unset($currUser);
         }
-    }
-    
-
-    public static function Test(){
-
-        echo $_POST['firstName'] . '<br><br>';
-        echo $_POST['lastName'] . '<br><br>';
-        echo $_POST['email'] . '<br><br>';
-        echo $_POST['phoneNumber'] . '<br><br>';
-        echo $_POST['nbrGuests'] . '<br><br>';
-        echo $_POST['date'] . '<br><br>';
-        echo $_POST['time'] . '<br><br>';
-
     }
 }

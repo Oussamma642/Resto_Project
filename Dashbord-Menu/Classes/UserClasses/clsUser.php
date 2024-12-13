@@ -178,7 +178,7 @@ class clsUser
     {
 
         $conn = self::Conncect();
-
+        
         $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email, password, role, phone_number, permissions) 
         VALUES (:fname, :lname, :email, :pswd, :role, :phone, :prmsn)");
 
@@ -190,7 +190,6 @@ class clsUser
         $phone = $this->phone_number;
         $role = $this->role;
         $prmsn = $this->permissions;
-            
         
         $stmt->bindParam(':fname', $fname);
         $stmt->bindParam(':lname', $lname);
@@ -208,15 +207,14 @@ class clsUser
         {
             // Get the last inserted ID
             $lastId = $conn->lastInsertId();
-            return $lastId;
-            echo "The last inserted user ID is: " . $lastId;
+            $this->user_id = $lastId;
+            return true;
         } 
         else 
         {
-            echo "Insert operation failed.";
+            return false;
         }
-         
-    
+        
 }
 
 
